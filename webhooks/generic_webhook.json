@@ -1,0 +1,54 @@
+{
+    "ActionGroup": {
+        "Actions": [
+            {
+                "ActionTarget": null,
+                "ActionTargetType": "SPECIFIC_HOST",
+                "ActionType": "EXECUTE_SCRIPT",
+                "Data": {
+                    "AlarmNames": [],
+                    "AwsRegion": null,
+                    "CloudAPIAction": null,
+                    "Hostname": [],
+                    "MetricDefinitions": [],
+                    "MetricNames": [],
+                    "MetricSource": null,
+                    "Retries": 0,
+                    "RuleRunbook": {
+                        "Category": "GIHUB",
+                        "Content": null,
+                        "RunbookId": null,
+                        "RunbookName": "",
+                        "Url": "",
+                        "Visibility": ""
+                    },
+                    "Tags": []
+                }
+            }
+        ]
+    },
+    "CapDuration": 1800000,
+    "CapLimit": 3,
+    "CompositeTrigger": {
+        "Data": {
+            "Regex": ""
+        },
+        "TriggerSource": "WEBHOOK",
+        "TriggerType": "WEBHOOK",
+        "Triggers": [
+            {
+                "Data": {
+                    "AlarmName": "",
+                    "AwsRegion": "",
+                    "CronExpression": "",
+                    "Port": null,
+                    "SearchString": null,
+                    "Url": null
+                },
+                "TriggerSource": "WEBHOOK",
+                "TriggerType": "WEBHOOK"
+            }
+        ]
+    },
+    "RuleName": "My webhook rule"
+}
