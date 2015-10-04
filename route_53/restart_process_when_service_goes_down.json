@@ -27,7 +27,7 @@
             {
                 "ActionTarget": null,
                 "ActionType": "EXECUTE_SCRIPT",
-                "ActionTargetType": "SPECIFIC_HOST"
+                "ActionTargetType": "SPECIFIC_HOST",
                 "Data": {
                     "Hostname": [],
                     "Retries": 0,
