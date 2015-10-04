@@ -3,15 +3,15 @@
     "CapLimit": 3,
     "CapDuration": 1800000,
     "CompositeTrigger": {
-        "TriggerType": "EXISTING_ALARM",
-        "TriggerSource": "NEWRELIC",
+        "TriggerType": "AVAILABILITY_CHECK",
+        "TriggerSource": "AVAILABILITY_CHECK",
         "Data": {
             "Regex": null
         },
         "Triggers": [
             {
-                "TriggerSource": "NEWRELIC",
-                "TriggerType": "EXISTNG_ALARM",
+                "TriggerSource": "AVAILABILITY_CHECK",
+                "TriggerType": "AVAILABILITY_TRIGGER",
                 "Data": {
                     "AlarmName": null,
                     "AwsRegion": null,
