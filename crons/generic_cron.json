@@ -20,7 +20,7 @@
                         "RunbookId": null,
                         "RunbookName": "",
                         "Url": "",
-                        "Visibility": ""
+                        "Visibility": "PUBLIC"
                     },
                     "Tags": []
                 }
