@@ -15,12 +15,12 @@
                     "MetricSource": null,
                     "Retries": 0,
                     "RuleRunbook": {
-                        "Category": "GITHUB",
+                        "Category": null, 
                         "Content": null,
                         "RunbookId": null,
                         "RunbookName": "",
                         "Url": "",
-                        "Visibility": "PUBLIC"
+                        "Visibility": null 
                     },
                     "Tags": []
                 }
