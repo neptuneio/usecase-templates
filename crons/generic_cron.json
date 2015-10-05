@@ -15,7 +15,7 @@
                     "MetricSource": null,
                     "Retries": 0,
                     "RuleRunbook": {
-                        "Category": "GIHUB",
+                        "Category": "GITHUB",
                         "Content": null,
                         "RunbookId": null,
                         "RunbookName": "",
