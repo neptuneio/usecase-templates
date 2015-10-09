@@ -27,7 +27,7 @@
             }
         ]
     },
-    "CapDuration": 1800000,
+    "CapDuration": 30,
     "CapLimit": 3,
     "CompositeTrigger": {
         "Data": {

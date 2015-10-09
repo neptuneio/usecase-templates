@@ -1,7 +1,7 @@
 {
        "RuleName": null,
        "CapLimit": 3,
-       "CapDuration": 1800000,
+       "CapDuration": 30,
        "CompositeTrigger": {
            "TriggerType": "EXISTING_ALARM",
            "TriggerSource": "NEWRELIC",
