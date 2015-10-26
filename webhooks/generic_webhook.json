@@ -14,14 +14,7 @@
                     "MetricNames": [],
                     "MetricSource": null,
                     "Retries": 0,
-                    "RuleRunbook": {
-                        "Category": null, 
-                        "Content": null,
-                        "RunbookId": null,
-                        "RunbookName": "",
-                        "Url": "",
-                        "Visibility": null 
-                    },
+                    "RuleRunbook": null,
                     "Tags": []
                 }
             }
