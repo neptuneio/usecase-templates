@@ -29,6 +29,30 @@
                     "ServiceCheckAction": null,
                     "Tags": []
                 }
+            },
+            {
+                "ActionTarget": null,
+                "ActionTargetType": null,
+                "ActionType": "WEBPAGE_SNAPSHOT",
+                "Active": false,
+                "Data": {
+                    "AlarmNames": [],
+                    "AwsRegion": null,
+                    "CloudAPIAction": null,
+                    "Height": 768,
+                    "Hostname": [],
+                    "LogProvider": null,
+                    "MetricDefinitions": [],
+                    "MetricNames": [],
+                    "MetricSource": null,
+                    "PingSource": null,
+                    "Retries": 0,
+                    "RuleRunbook": null,
+                    "ServiceCheckAction": null,
+                    "Tags": [],
+                    "Uri": "https://staging.newrelic.com/public/charts/fAmWyK06eYB",
+                    "Width": 1366
+                }
             }
         ]
     },

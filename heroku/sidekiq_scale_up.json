@@ -21,9 +21,9 @@
                         "Category": "GITHUB",
                         "Content": null,
                         "RunbookId": null,
-                        "RunbookName": "runbooks/cli/heroku/Heroku_app_diagnostics.sh",
+                        "RunbookName": "runbooks/cli/heroku/Heroku_auto_scale_dynos_and_workers.sh",
                         "Timeout": 2,
-                        "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/e0bbef11e99fba131bff24953ed5f825a7f74905",
+                        "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/1fe8f692e238a392f430ac070248e6c06b0c74e4",
                         "Visibility": "PUBLIC"
                     },
                     "ServiceCheckAction": null,
@@ -78,5 +78,5 @@
             }
         ]
     },
-    "RuleName": "Get diagnostics for heroku app on high error rate"
+    "RuleName": "Auto_scale heroku dynos on high queue size"
 }
