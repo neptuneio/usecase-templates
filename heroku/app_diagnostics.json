@@ -1,0 +1,58 @@
+{
+    "ActionGroup": {
+        "Actions": [
+            {
+                "ActionTarget": "HEROKU",
+                "ActionTargetType": null,
+                "ActionType": "CLI_ACTION",
+                "Active": true,
+                "Data": {
+                    "AlarmNames": [],
+                    "AwsRegion": null,
+                    "CloudAPIAction": null,
+                    "Hostname": [],
+                    "LogProvider": null,
+                    "MetricDefinitions": [],
+                    "MetricNames": [],
+                    "MetricSource": null,
+                    "PingSource": null,
+                    "Retries": 0,
+                    "RuleRunbook": {
+                        "Category": "GITHUB",
+                        "Content": null,
+                        "RunbookId": null,
+                        "RunbookName": "runbooks/cli/heroku/Heroku_app_diagnostics.sh",
+                        "Timeout": 2,
+                        "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/e0bbef11e99fba131bff24953ed5f825a7f74905",
+                        "Visibility": "PUBLIC"
+                    },
+                    "ServiceCheckAction": null,
+                    "Tags": []
+                }
+            }
+        ]
+    },
+    "CapDuration": 30,
+    "CapLimit": 3,
+    "CompositeTrigger": {
+        "Data": {
+            "Regex": null
+        },
+        "TriggerSource": null,
+        "TriggerType": null,
+        "Triggers": [
+            {
+                "Data": {
+                    "AlarmName": null,
+                    "AwsRegion": null,
+                    "Port": null,
+                    "SearchString": null,
+                    "Url": null
+                },
+                "TriggerSource": null,
+                "TriggerType": null
+            }
+        ]
+    },
+    "RuleName": "Get diagnostics for heroku app on high error rate"
+}
