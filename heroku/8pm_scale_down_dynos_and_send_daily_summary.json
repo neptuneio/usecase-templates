@@ -1,0 +1,83 @@
+{
+    "ActionGroup": {
+        "Actions": [
+            {
+                "ActionTarget": "HEROKU",
+                "ActionTargetType": null,
+                "ActionType": "CLI_ACTION",
+                "Active": true,
+                "Data": {
+                    "AlarmNames": [],
+                    "AwsRegion": null,
+                    "CloudAPIAction": null,
+                    "Hostname": [],
+                    "LogProvider": null,
+                    "MetricDefinitions": [],
+                    "MetricNames": [],
+                    "MetricSource": null,
+                    "PingSource": null,
+                    "Retries": 0,
+                    "RuleRunbook": {
+                        "Category": "GITHUB",
+                        "Content": null,
+                        "RunbookId": null,
+                        "RunbookName": "runbooks/cli/heroku/Heroku_auto_scale_dynos_and_workers.sh",
+                        "Timeout": 2,
+                        "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/1fe8f692e238a392f430ac070248e6c06b0c74e4",
+                        "Visibility": "PUBLIC"
+                    },
+                    "ServiceCheckAction": null,
+                    "Tags": []
+                }
+            },
+            {
+                "ActionTarget": null,
+                "ActionTargetType": null,
+                "ActionType": "WEBPAGE_SNAPSHOT",
+                "Active": false,
+                "Data": {
+                    "AlarmNames": [],
+                    "AwsRegion": null,
+                    "CloudAPIAction": null,
+                    "Height": 768,
+                    "Hostname": [],
+                    "LogProvider": null,
+                    "MetricDefinitions": [],
+                    "MetricNames": [],
+                    "MetricSource": null,
+                    "PingSource": null,
+                    "Retries": 0,
+                    "RuleRunbook": null,
+                    "ServiceCheckAction": null,
+                    "Tags": [],
+                    "Uri": "https://staging.newrelic.com/public/charts/fAmWyK06eYB",
+                    "Width": 1366
+                }
+            }
+        ]
+    },
+    "CapDuration": 30,
+    "CapLimit": 3,
+    "CompositeTrigger": {
+        "Data": {
+            "Regex": ""
+        },
+        "TriggerSource": "CRON",
+        "TriggerType": "CRON",
+        "Triggers": [
+            {
+                "Data": {
+                    "AlarmName": "",
+                    "AwsRegion": "",
+                    "CronExpression": "0 20 * * *",
+                    "Port": null,
+                    "SearchString": null,
+                    "Url": null
+                },
+                "TriggerSource": "CRON",
+                "TriggerType": "CRON_TRIGGER"
+            }
+        ]
+    },
+    "RuleName": "8pm scale down heroku dynos and send a daily performance summary report"
+}
