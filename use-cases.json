@@ -548,7 +548,7 @@
                         "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_restart_app.sh",
                         "steps": [
                             "Restart heroku app",
-                            "Send me last 200 lines of heroku app log",
+                            "Send me last 200 lines of heroku app log"
                         ]
                     }
                 }
@@ -1224,6 +1224,4 @@
             ]
         }
     }
-
-
 ]
