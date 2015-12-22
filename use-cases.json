@@ -40,7 +40,7 @@
             "template": {
                 "id": "",
                 "category": "amazon_ec2",
-                "name": ""
+                "name": "",
             },
             "action": [
                 {
@@ -533,7 +533,7 @@
     {
         "tags": [ "Heroku", "Popular" ],
         "trigger": {
-            "description": "Whenever heroku app is unresponsive or has R.14, H.27 errors"
+            "description": "Whenever heroku app is unresponsive or has R14(memory) or H10(app crashed) issues"
         },
         "action_group" : {
             "template": {
@@ -559,7 +559,7 @@
     {
         "tags": [ "Heroku", "Popular" ],
         "trigger": {
-            "description": "Whenever sidekiq queue size is high for heroku app"
+            "description": "Whenever sidekiq queue size is > threshold for a heroku app"
         },
         "action_group" : {
             "template": {
@@ -619,7 +619,7 @@
     {
         "tags": [ "Heroku" ],
         "trigger": {
-            "description": "Whenever request throughput is less than a threshold"
+            "description": "Whenever request throughput is < a threshold"
         },
         "action_group" : {
             "template": {
