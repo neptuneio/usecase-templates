@@ -62,13 +62,14 @@
         "Data": {
             "Regex": null
         },
-        "TriggerSource": null,
+        "TriggerSource": "CRON",
         "TriggerType": null,
         "Triggers": [
             {
                 "Data": {
                     "AlarmName": null,
                     "AwsRegion": null,
+                    "CronExpression": "0 20 * * 0",
                     "Port": null,
                     "SearchString": null,
                     "Url": null
