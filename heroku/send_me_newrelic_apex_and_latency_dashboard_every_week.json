@@ -47,7 +47,8 @@
                     "Tags": [],
                     "Uri": "https://staging.newrelic.com/public/charts/fAmWyK06eYB",
                     "Width": 1366
-             }
+		}
+            }
         ]
     },
     "CapDuration": 30,
@@ -73,5 +74,5 @@
             }
         ]
     },
-    "RuleName": "Every sunday take pg db backup"
+    "RuleName": "Send me newrelic apex and latency dashboard every week"
 }

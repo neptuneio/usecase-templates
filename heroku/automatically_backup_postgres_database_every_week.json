@@ -55,5 +55,5 @@
             }
         ]
     },
-    "RuleName": "Every sunday take pg db backup"
+    "RuleName": "Automatically backup postgres database every week"
 }

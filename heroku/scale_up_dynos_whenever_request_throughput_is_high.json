@@ -78,5 +78,5 @@
             }
         ]
     },
-    "RuleName": "Auto_scale heroku dynos on high queue size"
+    "RuleName": "Scale up dynos whenever request throughput is high"
 }

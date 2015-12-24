@@ -54,5 +54,5 @@
             }
         ]
     },
-    "RuleName": "Restart my_app on memory leak alert"
+    "RuleName": "Restart heroku app when it throws memory or app crashed errors"
 }

@@ -78,5 +78,5 @@
             }
         ]
     },
-    "RuleName": "Get diagnostics for heroku app on high error rate"
+    "RuleName": "Send me diagnostics whenever app error rate is high"
 }

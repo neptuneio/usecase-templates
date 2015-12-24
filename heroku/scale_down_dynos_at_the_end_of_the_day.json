@@ -79,5 +79,5 @@
             }
         ]
     },
-    "RuleName": "8pm scale down heroku dynos and send a daily performance summary report"
+    "RuleName": "Scale down dynos at the end of the day"
 }
