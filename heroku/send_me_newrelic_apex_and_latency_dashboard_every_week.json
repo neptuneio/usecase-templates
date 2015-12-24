@@ -2,14 +2,15 @@
     "ActionGroup": {
         "Actions": [
             {
-                "ActionTarget": "HEROKU",
+                "ActionTarget": null,
                 "ActionTargetType": null,
-                "ActionType": "CLI_ACTION",
-                "Active": true,
+                "ActionType": "WEBPAGE_SNAPSHOT",
+                "Active": false,
                 "Data": {
                     "AlarmNames": [],
                     "AwsRegion": null,
                     "CloudAPIAction": null,
+                    "Height": 768,
                     "Hostname": [],
                     "LogProvider": null,
                     "MetricDefinitions": [],
@@ -17,17 +18,11 @@
                     "MetricSource": null,
                     "PingSource": null,
                     "Retries": 0,
-                    "RuleRunbook": {
-                        "Category": "GITHUB",
-                        "Content": null,
-                        "RunbookId": null,
-                        "RunbookName": "runbooks/cli/heroku/Heroku_pg_db_backup.sh",
-                        "Timeout": 2,
-                        "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/22763a410e1021da877d7b179b670a9798eb187b",
-                        "Visibility": "PUBLIC"
-                    },
+                    "RuleRunbook": null,
                     "ServiceCheckAction": null,
-                    "Tags": []
+                    "Tags": [],
+                    "Uri": "https://staging.newrelic.com/public/charts/fAmWyK06eYB",
+                    "Width": 1366
                 }
             },
             {
@@ -52,8 +47,7 @@
                     "Tags": [],
                     "Uri": "https://staging.newrelic.com/public/charts/fAmWyK06eYB",
                     "Width": 1366
-                }
-            }
+             }
         ]
     },
     "CapDuration": 30,

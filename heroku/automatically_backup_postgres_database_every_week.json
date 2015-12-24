@@ -1,0 +1,59 @@
+{
+    "ActionGroup": {
+        "Actions": [
+            {
+                "ActionTarget": "HEROKU",
+                "ActionTargetType": null,
+                "ActionType": "CLI_ACTION",
+                "Active": true,
+                "Data": {
+                    "AlarmNames": [],
+                    "AwsRegion": null,
+                    "CloudAPIAction": null,
+                    "Hostname": [],
+                    "LogProvider": null,
+                    "MetricDefinitions": [],
+                    "MetricNames": [],
+                    "MetricSource": null,
+                    "PingSource": null,
+                    "Retries": 0,
+                    "RuleRunbook": {
+                        "Category": "GITHUB",
+                        "Content": null,
+                        "RunbookId": null,
+                        "RunbookName": "runbooks/cli/heroku/Heroku_pg_db_backup.sh",
+                        "Timeout": 2,
+                        "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/22763a410e1021da877d7b179b670a9798eb187b",
+                        "Visibility": "PUBLIC"
+                    },
+                    "ServiceCheckAction": null,
+                    "Tags": []
+                }
+            }
+        ]
+    },
+    "CapDuration": 30,
+    "CapLimit": 3,
+    "CompositeTrigger": {
+        "Data": {
+            "Regex": null
+        },
+        "TriggerSource": "CRON",
+        "TriggerType": null,
+        "Triggers": [
+            {
+                "Data": {
+                    "AlarmName": null,
+                    "AwsRegion": null,
+                    "CronExpression": "0 20 * * 0",
+                    "Port": null,
+                    "SearchString": null,
+                    "Url": null
+                },
+                "TriggerSource": null,
+                "TriggerType": null
+            }
+        ]
+    },
+    "RuleName": "Every sunday take pg db backup"
+}

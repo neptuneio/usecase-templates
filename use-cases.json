@@ -540,7 +540,7 @@
             "template": {
                 "id": "",
                 "category": "heroku",
-                "name": "restart_heroku_app.json"
+                "name": "restart_heroku_app_when_it_throws_memory_or_app_crahsed_errors.json"
             },
             "action": [
                 {
@@ -567,7 +567,7 @@
             "template": {
                 "id": "",
                 "category": "heroku",
-                "name": "sidekiq_scale_up.json"
+                "name": "scale_up_dynos_whenever_sidekiq_queue_size_is_high.json"
             },
             "action": [
                 {
@@ -602,7 +602,7 @@
             "template": {
                 "id": "",
                 "category": "heroku",
-                "name": "8pm_scale_down_dynos_and_send_daily_summary.json"
+                "name": "scale_down_dynos_at_the_end_of_the_day.json"
             },
             "action": [
                 {
@@ -638,7 +638,7 @@
             "template": {
                 "id": "",
                 "category": "heroku",
-                "name": "sidekiq_scale_up.json"
+                "name": "scale_up_dynos_whenever_request_throughput_is_high.json"
             },
             "action": [
                 {
@@ -673,7 +673,7 @@
             "template": {
                 "id": "",
                 "category": "heroku",
-                "name": "pg_backup.json"
+                "name": "send_me_newrelic_apex_and_latency_dashboard_every_week.json"
             },
             "action": [
                 {
@@ -698,7 +698,7 @@
             "template": {
                 "id": "",
                 "category": "heroku",
-                "name": "pg_backup.json"
+                "name": "automatically_backup_postgres_database_every_week.json"
             },
             "action": [
                 {
@@ -725,7 +725,7 @@
             "template": {
                 "id": "",
                 "category": "heroku",
-                "name": "app_diagnostics.json"
+                "name": "send_me_diagnostics_whenever_app_error_rate_is_high.json"
             },
             "action": [
                 {
