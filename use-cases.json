@@ -532,6 +532,7 @@
 
     {
         "tags": [ "Heroku", "Popular" ],
+        "tagline" : "Restart Heroku app when it throws R14(memory) or H10(app crashed) errors",
         "trigger": {
             "description": "Whenever heroku app is unresponsive or has R14(memory) or H10(app crashed) issues"
         },
@@ -558,6 +559,7 @@
 
     {
         "tags": [ "Heroku", "Popular" ],
+        "tagline" : "Scale up dynos whenever sidekiq queue size is high",
         "trigger": {
             "description": "Whenever sidekiq queue size is high"
         },
@@ -592,6 +594,7 @@
 
     {
         "tags": [ "Heroku" ],
+        "tagline" : "Scale down dynos everyday at the end of the day",
         "trigger": {
             "description": "Every day at 8pm"
         },
@@ -627,6 +630,7 @@
 
     {
         "tags": [ "Heroku" ],
+        "tagline" : "Scale up dynos whenever request throughput is high",
         "trigger": {
             "description": "Whenever request throughput is less than a threshold"
         },
@@ -661,6 +665,32 @@
 
     {
         "tags": [ "Heroku" ],
+        "tagline" : "Send me newrelic apdex and latency dashboard every week",
+        "trigger": {
+            "description": "Every week on sunday night"
+        },
+        "action_group" : {
+            "template": {
+                "id": "",
+                "category": "heroku",
+                "name": "pg_backup.json"
+            },
+            "action": [
+                {
+                    "type": "Graph Snapshot",
+                    "data": {
+                        "steps": [
+                            "Get weekly summary snapshot of NewRelic appdex",
+                            "Get weekly summary snapshot of NewRelic latency graph"
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "tags": [ "Heroku" ],
+        "tagline" : "Automatically backup postgres database every week",
         "trigger": {
             "description": "Every week on sunday night"
         },
@@ -679,22 +709,15 @@
                             "Take a backup of postgres db"
                         ]
                     }
-                },
-                {
-                    "type": "Graph Snapshot",
-                    "data": {
-                        "steps": [
-                            "Get weekly summary snapshot of NewRelic appdex",
-                            "Get weekly summary snapshot of NewRelic latency graph"
-                        ]
-                    }
                 }
             ]
         }
     },
 
+
     {
         "tags": [ "Heroku","NewRelic", "Popular" ],
+        "tagline" : "Send me diagnostics whenever app error rate is high",
         "trigger": {
             "description": "Whenever heroku app error rate is > 2%"
         },
