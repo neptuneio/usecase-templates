@@ -532,7 +532,7 @@
 
     {
         "tags": [ "Heroku", "Popular" ],
-        "tagline" : "Restart Heroku app when it throws R14(memory) or H10(app crashed) errors",
+        "tagline" : "Restart Heroku app when it throws memory or app crashed errors",
         "trigger": {
             "description": "Whenever heroku app is unresponsive or has R14(memory) or H10(app crashed) issues"
         },
@@ -594,7 +594,7 @@
 
     {
         "tags": [ "Heroku" ],
-        "tagline" : "Scale down dynos everyday at the end of the day",
+        "tagline" : "Scale down dynos at the end of the day",
         "trigger": {
             "description": "Every day at 8pm"
         },
