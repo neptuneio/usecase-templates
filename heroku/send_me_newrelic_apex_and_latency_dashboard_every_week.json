@@ -5,7 +5,7 @@
                 "ActionTarget": null,
                 "ActionTargetType": null,
                 "ActionType": "WEBPAGE_SNAPSHOT",
-                "Active": false,
+                "Active": true,
                 "Data": {
                     "AlarmNames": [],
                     "AwsRegion": null,
