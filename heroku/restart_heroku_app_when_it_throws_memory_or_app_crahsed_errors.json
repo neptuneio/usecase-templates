@@ -50,7 +50,7 @@
                     "Url": null
                 },
                 "TriggerSource": null,
-                "TriggerType": null
+                "TriggerType": "CRON_TRIGGER",
             }
         ]
     },
