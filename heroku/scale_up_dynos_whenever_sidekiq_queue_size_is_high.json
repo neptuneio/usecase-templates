@@ -63,7 +63,7 @@
             "Regex": null
         },
         "TriggerSource": null,
-        "CompositeTriggerType": null,
+        "CompositeTriggerType": "CRON",
         "Triggers": [
             {
                 "Data": {
