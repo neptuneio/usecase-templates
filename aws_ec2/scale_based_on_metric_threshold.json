@@ -3,7 +3,7 @@
     "CapLimit": 3,
     "CapDuration": 30,
     "CompositeTrigger": {
-        "TriggerType": "NEW_ALARM_REGEX",
+        "CompositeTriggerType": "NEW_ALARM_REGEX",
         "TriggerSource": "AWS_CLOUDWATCH",
         "Data": {
             "AwsRegion": "us-east-1",

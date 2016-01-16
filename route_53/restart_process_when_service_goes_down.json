@@ -3,7 +3,7 @@
     "CapLimit": 3,
     "CapDuration": 30,
     "CompositeTrigger": {
-        "TriggerType": "AVAILABILITY_CHECK",
+        "CompositeTriggerType": "AVAILABILITY_CHECK",
         "TriggerSource": "AVAILABILITY_CHECK",
         "Data": {
             "Regex": null

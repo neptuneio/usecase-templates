@@ -63,7 +63,7 @@
             "Regex": null
         },
         "TriggerSource": null,
-        "TriggerType": null,
+        "CompositeTriggerType": null,
         "Triggers": [
             {
                 "Data": {

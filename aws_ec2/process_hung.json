@@ -3,7 +3,7 @@
        "CapLimit": 3,
        "CapDuration": 30,
        "CompositeTrigger": {
-           "TriggerType": "EXISTING_ALARM",
+           "CompositeTriggerType": "EXISTING_ALARM",
            "TriggerSource": "NEWRELIC",
            "Data": {
                "Regex": null

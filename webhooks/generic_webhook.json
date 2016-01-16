@@ -27,7 +27,7 @@
             "Regex": ""
         },
         "TriggerSource": "WEBHOOK",
-        "TriggerType": "WEBHOOK",
+        "CompositeTriggerType": "WEBHOOK",
         "Triggers": [
             {
                 "Data": {

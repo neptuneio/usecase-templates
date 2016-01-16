@@ -39,7 +39,7 @@
             "Regex": null
         },
         "TriggerSource": "CRON",
-        "TriggerType": null,
+        "CompositeTriggerType": null,
         "Triggers": [
             {
                 "Data": {
