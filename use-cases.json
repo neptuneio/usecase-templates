@@ -531,7 +531,7 @@
     },
 
     {
-        "tags": [ "Heroku", "Popular" ],
+        "tags": [ "Heroku", "Popular", "Papertrail", "Logentries", "Librato" ],
         "tagline" : "Restart Heroku app when it throws memory or app crashed errors",
         "trigger": {
             "description": "Whenever heroku app is unresponsive or has R14(memory) or H10(app crashed) issues"
@@ -558,7 +558,33 @@
     },
 
     {
-        "tags": [ "Heroku", "Popular" ],
+        "tags": [ "Heroku", "Papertrail", "Logentries", "Librato" ],
+        "tagline" : "Restart only one Heroku Dyno when it reports memory exceeded error",
+        "trigger": {
+            "description": "Whenever heroku dyno reports memory quota exceeded error (R14 error), restart only that particular dyno instead of restarting entire app."
+        },
+        "action_group" : {
+            "template": {
+                "id": "",
+                "category": "heroku",
+                "name": "restart_heroku_dyno_when_it_throws_memory_error.json"
+            },
+            "action": [
+                {
+                    "type": "CLI Action",
+                    "data": {
+                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_restart_dyno.sh",
+                        "steps": [
+                            "Restart heroku dyno"
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+
+    {
+        "tags": [ "Heroku", "Popular", "Librato" ],
         "tagline" : "Scale up dynos whenever sidekiq queue size is high",
         "trigger": {
             "description": "Whenever sidekiq queue size is high"
@@ -664,7 +690,7 @@
     },
 
     {
-        "tags": [ "Heroku" ],
+        "tags": [ "Heroku", "NewRelic" ],
         "tagline" : "Send me newrelic apdex and latency dashboard every week",
         "trigger": {
             "description": "Every week on sunday night"

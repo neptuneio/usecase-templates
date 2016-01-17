@@ -1,0 +1,58 @@
+{
+    "ActionGroup": {
+        "Actions": [
+            {
+                "ActionTarget": "HEROKU",
+                "ActionTargetType": null,
+                "ActionType": "CLI_ACTION",
+                "Active": true,
+                "Data": {
+                    "AlarmNames": [],
+                    "AwsRegion": null,
+                    "CloudAPIAction": null,
+                    "Hostname": [],
+                    "LogProvider": null,
+                    "MetricDefinitions": [],
+                    "MetricNames": [],
+                    "MetricSource": null,
+                    "PingSource": null,
+                    "Retries": 0,
+                    "RuleRunbook": {
+                        "Category": "GITHUB",
+                        "Content": null,
+                        "RunbookId": null,
+                        "RunbookName": "runbooks/cli/heroku/Heroku_restart_dyno.sh",
+                        "Timeout": 2,
+                        "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/00c4238e8bc2a48ccfb9e726217ba44839e8fc48",
+                        "Visibility": "PUBLIC"
+                    },
+                    "ServiceCheckAction": null,
+                    "Tags": []
+                }
+            }
+        ]
+    },
+    "CapDuration": 30,
+    "CapLimit": 3,
+    "CompositeTrigger": {
+        "Data": {
+            "Regex": null
+        },
+        "TriggerSource": null,
+        "CompositeTriggerType": "CRON",
+        "Triggers": [
+            {
+                "Data": {
+                    "AlarmName": null,
+                    "AwsRegion": null,
+                    "Port": null,
+                    "SearchString": null,
+                    "Url": null
+                },
+                "TriggerSource": null,
+                "TriggerType": "CRON_TRIGGER"
+            }
+        ]
+    },
+    "RuleName": "Restart heroku dyno when it throws memory quota exceeded errors"
+}
