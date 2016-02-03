@@ -1,0 +1,54 @@
+{
+    "ActionGroup": {
+        "Actions": [
+            {
+                "ActionTarget": "HEROKU",
+                "ActionTargetType": null,
+                "ActionType": "CLI_ACTION",
+                "Active": true,
+                "Data": {
+                    "AlarmNames": [],
+                    "AwsRegion": null,
+                    "CloudAPIAction": null,
+                    "Hostname": [],
+                    "LogProvider": null,
+                    "MetricDefinitions": [],
+                    "MetricNames": [],
+                    "MetricSource": null,
+                    "PingSource": null,
+                    "Retries": 0,
+                    "RuleRunbook": {
+                        "Category": "GITHUB",
+                        "Content": null,
+                        "RunbookId": null,
+                        "RunbookName": "runbooks/cli/heroku/postgres/Diagnose_postgres_issues.sh",
+                        "Timeout": 2,
+                        "Visibility": "PUBLIC"
+                    },
+                    "ServiceCheckAction": null,
+                    "Tags": []
+                }
+            }
+        ]
+    },
+    "CapDuration": 30,
+    "CapLimit": 3,
+    "CompositeTrigger": {
+        "Data": {
+            "Regex": ""
+        },
+        "TriggerSource": "NEWRELIC",
+        "CompositeTriggerType": "EXISTING_ALARM",
+        "Triggers": [
+            {
+                "Data": {
+                    "AlarmName": "",
+                    "AwsRegion": "",
+                },
+                "TriggerSource": "NEWRELIC",
+                "TriggerType": "EXISTING_ALARM"
+            }
+        ]
+    },
+    "RuleName": "Diagnose Postgres issues"
+}

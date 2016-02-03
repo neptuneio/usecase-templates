@@ -1290,5 +1290,31 @@
                 }
             ]
         }
+    },
+
+    {
+        "tags": [ "Heroku", "Postgres", "Database" ],
+        "tagline" : "Diagnose Postgres slowness or issues",
+        "trigger": {
+            "description": "Whenever heroku app is unresponsive or has lot of errors"
+        },
+        "action_group" : {
+            "template": {
+                "id": "",
+                "category": "db",
+                "name": "diagnose_postgres_issues.json"
+            },
+            "action": [
+                {
+                    "type": "CLI Action",
+                    "data": {
+                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Diagnose_postgres_issues.sh",
+                        "steps": [
+                            "Diagnose postgres issues"
+                        ]
+                    }
+                }
+            ]
+        }
     }
 ]
