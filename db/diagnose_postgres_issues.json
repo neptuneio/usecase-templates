@@ -22,6 +22,7 @@
                         "Content": null,
                         "RunbookId": null,
                         "RunbookName": "runbooks/cli/heroku/postgres/Diagnose_postgres_issues.sh",
+                        "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/9594981e4c08705723882ec9e5902e2231ed1338",
                         "Timeout": 2,
                         "Visibility": "PUBLIC"
                     },
