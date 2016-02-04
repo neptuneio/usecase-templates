@@ -1224,7 +1224,7 @@
     },
 
     {
-        "tags": [ "MySQL" ],
+        "tags": [ "MySQL", "Database" ],
         "trigger": {
             "description": "Whenever #connections is too high for MySQL db"
         },
@@ -1258,7 +1258,7 @@
     },
 
     {
-        "tags": [ "MySQL" ],
+        "tags": [ "MySQL", "Database" ],
         "trigger": {
             "description": "Whenever #slow queries is too high for MySQL db"
         },
