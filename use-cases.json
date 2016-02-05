@@ -1320,14 +1320,14 @@
 
     {
         "tags": [ "Heroku", "Postgres", "Database" ],
-        "tagline" : "Diagnose Postgres slowness or issues",
+        "tagline" : "Restart when heroku postgres #waiting_connections is too high",
         "trigger": {
             "description": "Whenever heroku postgres #waiting_connections is too high"
         },
         "action_group" : {
             "template": {
                 "id": "",
-                "category": "db",
+                "category": "heroku",
                 "name": "restart_heroku_app_when_postgres_waiting_connection_too_high.json"
             },
             "action": [
