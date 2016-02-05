@@ -1296,7 +1296,7 @@
         "tags": [ "Heroku", "Postgres", "Database" ],
         "tagline" : "Diagnose Postgres slowness or issues",
         "trigger": {
-            "description": "Whenever heroku app is unresponsive or has lot of errors"
+            "description": "Whenever heroku postgres has slowness issues"
         },
         "action_group" : {
             "template": {
@@ -1311,6 +1311,32 @@
                         "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Diagnose_postgres_issues.sh",
                         "steps": [
                             "Diagnose postgres issues"
+                        ]
+                    }
+                }
+            ]
+        }
+    }, 
+
+    {
+        "tags": [ "Heroku", "Postgres", "Database" ],
+        "tagline" : "Diagnose Postgres slowness or issues",
+        "trigger": {
+            "description": "Whenever heroku postgres #waiting_connections is too high"
+        },
+        "action_group" : {
+            "template": {
+                "id": "",
+                "category": "db",
+                "name": "restart_heroku_app_when_postgres_waiting_connection_too_high.json"
+            },
+            "action": [
+                {
+                    "type": "CLI Action",
+                    "data": {
+                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_restart_app.sh",
+                        "steps": [
+                            "Restart Heroku App"
                         ]
                     }
                 }
