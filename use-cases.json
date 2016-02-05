@@ -1320,7 +1320,7 @@
 
     {
         "tags": [ "Heroku", "Postgres", "Database" ],
-        "tagline" : "Restart when heroku postgres #waiting_connections is too high",
+        "tagline" : "Restart Heroku app when postgres #waiting_connections is too high",
         "trigger": {
             "description": "Whenever heroku postgres #waiting_connections is too high"
         },
