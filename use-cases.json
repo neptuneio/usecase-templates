@@ -787,6 +787,60 @@
         },
 	"video" : "https://www.youtube.com/v/c07Gn5iraeM"
     },
+    
+    {
+        "tags": [ "Heroku", "Postgres", "Database" ],
+        "tagline" : "Diagnose Postgres slowness or issues",
+        "trigger": {
+            "description": "Whenever heroku postgres has slowness issues"
+        },
+        "action_group" : {
+            "template": {
+                "id": "",
+                "category": "db",
+                "name": "diagnose_postgres_issues.json"
+            },
+            "action": [
+                {
+                    "type": "CLI Action",
+                    "data": {
+                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Diagnose_postgres_issues.sh",
+                        "steps": [
+                            "Diagnose postgres issues"
+                        ]
+                    }
+                }
+            ]
+        }
+        "video" : "https://www.youtube.com/v/OrXZXzalQRk"
+    }, 
+
+    {
+        "tags": [ "Heroku", "Postgres", "Database" ],
+        "tagline" : "Kill and restart postgres SQL when #waiting_connections is way too high",
+        "trigger": {
+            "description": "Whenever heroku postgres #waiting_connections is too high"
+        },
+        "action_group" : {
+            "template": {
+                "id": "",
+                "category": "heroku",
+                "name": "kill_and_restart_when_fatal_postgres_locking.json"
+            },
+            "action": [
+                {
+                    "type": "CLI Action",
+                    "data": {
+                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/kill_and_restart_when_fatal_postgres_locking.sh",
+                        "steps": [
+                            "Kill and restart postgres"
+                        ]
+                    }
+                }
+            ]
+        },
+        "video" : "https://www.youtube.com/v/jARt8BjBl7Q"
+    },
 
     {
         "tags": [ "AmazonRDS" ],
@@ -1298,57 +1352,6 @@
                 }
             ]
         }
-    },
-
-    {
-        "tags": [ "Heroku", "Postgres", "Database" ],
-        "tagline" : "Diagnose Postgres slowness or issues",
-        "trigger": {
-            "description": "Whenever heroku postgres has slowness issues"
-        },
-        "action_group" : {
-            "template": {
-                "id": "",
-                "category": "db",
-                "name": "diagnose_postgres_issues.json"
-            },
-            "action": [
-                {
-                    "type": "CLI Action",
-                    "data": {
-                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Diagnose_postgres_issues.sh",
-                        "steps": [
-                            "Diagnose postgres issues"
-                        ]
-                    }
-                }
-            ]
-        }
-    }, 
-
-    {
-        "tags": [ "Heroku", "Postgres", "Database" ],
-        "tagline" : "Kill and restart postgres SQL when #waiting_connections is way too high",
-        "trigger": {
-            "description": "Whenever heroku postgres #waiting_connections is too high"
-        },
-        "action_group" : {
-            "template": {
-                "id": "",
-                "category": "heroku",
-                "name": "kill_and_restart_when_fatal_postgres_locking.json"
-            },
-            "action": [
-                {
-                    "type": "CLI Action",
-                    "data": {
-                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/kill_and_restart_when_fatal_postgres_locking.sh",
-                        "steps": [
-                            "Kill and restart postgres"
-                        ]
-                    }
-                }
-            ]
-        }
     }
+
 ]
