@@ -530,22 +530,22 @@
     },
 
     {
-        "tags": [ "Heroku", "Popular", "Papertrail", "Logentries", "Librato" ],
-        "tagline" : "Restart Heroku app when it throws memory or app crashed errors",
+        "tags": [ "Heroku", "Librato" ],
+        "tagline" : "Restart Heroku dyno based on Librato memory alert",
         "trigger": {
-            "description": "Whenever heroku app is unresponsive or has R14(memory) or H10(app crashed) issues"
+            "description": "Whenever Librato alerts that the Dyno memory crossed the threshold, restart that Dyno"
         },
         "action_group" : {
             "template": {
                 "id": "",
                 "category": "heroku",
-                "name": "restart_heroku_app_when_it_throws_memory_or_app_crahsed_errors.json"
+                "name": "restart_heroku_dyno_on_librato_memory_error.json"
             },
             "action": [
                 {
                     "type": "CLI Action",
                     "data": {
-                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_restart_app.sh",
+                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_restart_dyno_for_librato_alert.sh",
                         "steps": [
                             "Restart heroku app",
                             "Send me last 200 lines of heroku app log"
@@ -553,12 +553,11 @@
                     }
                 }
             ]
-        },
-	"video" : "https://www.youtube.com/v/w-1pz6oXFgc"
+        }
     },
 
     {
-        "tags": [ "Heroku", "Papertrail", "Logentries", "Librato" ],
+        "tags": [ "Heroku", "Popular", "Papertrail", "Logentries" ],
         "tagline" : "Restart only one Heroku Dyno when it reports memory exceeded error",
         "trigger": {
             "description": "Whenever heroku dyno reports memory quota exceeded error (R14 error), restart only that particular dyno instead of restarting entire app."

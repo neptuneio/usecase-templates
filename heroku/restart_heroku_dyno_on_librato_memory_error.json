@@ -1,0 +1,58 @@
+{
+    "ActionGroup": {
+        "Actions": [
+            {
+                "ActionTarget": "HEROKU",
+                "ActionTargetType": null,
+                "ActionType": "CLI_ACTION",
+                "Active": true,
+                "Data": {
+                    "AlarmNames": [],
+                    "AwsRegion": null,
+                    "CloudAPIAction": null,
+                    "Hostname": [],
+                    "LogProvider": null,
+                    "MetricDefinitions": [],
+                    "MetricNames": [],
+                    "MetricSource": null,
+                    "PingSource": null,
+                    "Retries": 0,
+                    "RuleRunbook": {
+                        "Category": "GITHUB",
+                        "Content": null,
+                        "RunbookId": null,
+                        "RunbookName": "runbooks/cli/heroku/Heroku_restart_dyno_for_librato_alert.sh",
+                        "Timeout": 2,
+                        "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/d49114cb4e06c815a12bb538ac196f2e0a29e407",
+                        "Visibility": "PUBLIC"
+                    },
+                    "ServiceCheckAction": null,
+                    "Tags": []
+                }
+            }
+        ]
+    },
+    "CapDuration": 10,
+    "CapLimit": 1,
+    "CompositeTrigger": {
+        "Data": {
+            "Regex": null
+        },
+        "TriggerSource": null,
+        "CompositeTriggerType": "EXISTING_ALARM",
+        "Triggers": [
+            {
+                "Data": {
+                    "AlarmName": null,
+                    "AwsRegion": null,
+                    "Port": null,
+                    "SearchString": null,
+                    "Url": null
+                },
+                "TriggerSource": "LIBRATO",
+                "TriggerType": "EXISTING_ALARM"
+            }
+        ]
+    },
+    "RuleName": "Restart heroku dyno based on Librato memory alert"
+}
