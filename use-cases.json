@@ -657,7 +657,7 @@
     },
 
     {
-        "tags": [ "Heroku" ],
+        "tags": [ "Heroku", "NewRelic", "Librato" ],
         "tagline" : "Scale up dynos whenever request throughput is high",
         "trigger": {
             "description": "Whenever request throughput is less than a threshold"
@@ -719,7 +719,7 @@
 	"video" : "https://www.youtube.com/v/p41vcCoY1JA"
     },
     {
-        "tags": [ "Heroku" ],
+        "tags": [ "Heroku", "Database", "Postgres" ],
         "tagline" : "Automatically backup postgres database every week",
         "trigger": {
             "description": "Every week on sunday night"
@@ -787,7 +787,7 @@
     },
     
     {
-        "tags": [ "Heroku", "Postgres", "Database" ],
+        "tags": [ "Heroku", "Postgres", "Database", "Librato" ],
         "tagline" : "Diagnose Postgres slowness or issues",
         "trigger": {
             "description": "Whenever heroku postgres has slowness issues"
@@ -814,7 +814,7 @@
     }, 
 
     {
-        "tags": [ "Heroku", "Postgres", "Database" ],
+        "tags": [ "Heroku", "Postgres", "Database", "Librato" ],
         "tagline" : "Kill and restart postgres SQL when #waiting_connections is way too high",
         "trigger": {
             "description": "Whenever heroku postgres #waiting_connections is too high"
