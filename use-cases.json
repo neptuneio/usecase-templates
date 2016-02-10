@@ -547,7 +547,7 @@
                     "data": {
                         "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_restart_dyno_for_librato_alert.sh",
                         "steps": [
-                            "Restart heroku app",
+                            "Restart heroku dyno which is suffering memory issues",
                             "Send me last 200 lines of heroku app log"
                         ]
                     }

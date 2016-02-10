@@ -38,7 +38,7 @@
         "Data": {
             "Regex": null
         },
-        "TriggerSource": null,
+        "TriggerSource": "LIBRATO",
         "CompositeTriggerType": "EXISTING_ALARM",
         "Triggers": [
             {
