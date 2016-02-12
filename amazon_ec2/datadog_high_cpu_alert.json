@@ -43,7 +43,7 @@
                     "Hostname": [],
                     "LogProvider": null,
                     "MetricDefinitions": [],
-                    "MetricNames": [system.cpu.idle, system.cpu.system, system.cpu.iowait, system.cpu.user, aws.ec2.cpuutilization],
+                    "MetricNames": ["system.cpu.idle", "system.cpu.system", "system.cpu.iowait", "system.cpu.user", "aws.ec2.cpuutilization"],
                     "MetricSource": "DATADOG",
                     "PingSource": null,
                     "Retries": 0,
