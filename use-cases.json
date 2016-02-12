@@ -29,6 +29,35 @@
             ]
         }
     },
+    
+    {
+        "tags" : [ "AmazonEC2", "Popular" ],
+        "trigger" : {
+            "description" : "Whenever cpu is high (DataDog Alert)"
+        },
+        "action_group" :  {
+            "action": [
+                {
+                    "type": "Graph Snapshot",
+                    "data": {
+                        "steps": [
+                            "capture system.cpu.idle, system.cpu.system, system.cpu.iowait, system.cpu.user, aws.ec2.cpuutilization graphs",
+                            "capture system load metrics"
+                        ]
+                    }
+                },
+                {
+                    "type": "Execute Diagnostics Runbook",
+                    "data": {
+                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                        "steps": [
+                            "capture top-10 cpu hogs"
+                        ]
+                    }
+                }
+            ]
+        }
+    },
 
     {
         "tags" : [ "AmazonEC2" , "Popular"],
