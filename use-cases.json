@@ -658,7 +658,7 @@
 
     {
         "tags": [ "Heroku", "NewRelic", "Librato" ],
-        "tagline" : "Scale up dynos whenever request throughput is high",
+        "tagline" : "Scale down dynos whenever request throughput is low",
         "trigger": {
             "description": "Whenever request throughput is less than a threshold"
         },
@@ -672,7 +672,7 @@
                 {
                     "type": "CLI Action",
                     "data": {
-                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_auto_scale_dynos_and_workers.sh",
+                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_scale_down_dynos.sh",
                         "steps": [
                             "Scale down heroku dynos",
                             "Don't scale down below certain lower limit"
