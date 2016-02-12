@@ -39,7 +39,7 @@
             "template": {
                    "id": "",
                    "category": "amazon_ec2",
-                   "name": ""
+                   "name": "datadog_high_cpu_alert.json"
             },
             "action": [
                 {

@@ -4,7 +4,7 @@
             {
                 "ActionTarget": "AWS",
                 "ActionTargetType": null,
-                "ActionType": "CLI_ACTION",
+                "ActionType": "EXECUTE_SCRIPT",
                 "Active": true,
                 "Data": {
                     "AlarmNames": [],
@@ -21,7 +21,7 @@
                         "Category": "GITHUB",
                         "Content": null,
                         "RunbookId": null,
-                        "RunbookName": "runbooks/cli/heroku/Heroku_scale_up_dynos.sh",
+                        "RunbookName": "runbooks/host-level-alerts/High_cpu_utilization.sh",
                         "Timeout": 2,
                         "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/7f248abb5b5cb3da5a92ca576c216eb33df8d79b",
                         "Visibility": "PUBLIC"
@@ -33,7 +33,7 @@
             {
                 "ActionTarget": null,
                 "ActionTargetType": null,
-                "ActionType": "WEBPAGE_SNAPSHOT",
+                "ActionType": "GRAPH_SNAPSHOT",
                 "Active": false,
                 "Data": {
                     "AlarmNames": [],
@@ -43,14 +43,14 @@
                     "Hostname": [],
                     "LogProvider": null,
                     "MetricDefinitions": [],
-                    "MetricNames": [],
-                    "MetricSource": null,
+                    "MetricNames": [system.cpu.idle, system.cpu.system, system.cpu.iowait, system.cpu.user, aws.ec2.cpuutilization],
+                    "MetricSource": "DATADOG",
                     "PingSource": null,
                     "Retries": 0,
                     "RuleRunbook": null,
                     "ServiceCheckAction": null,
                     "Tags": [],
-                    "Uri": "https://staging.newrelic.com/public/charts/fAmWyK06eYB",
+                    "Uri": "",
                     "Width": 1366
                 }
             }
@@ -62,8 +62,8 @@
         "Data": {
             "Regex": null
         },
-        "TriggerSource": null,
-        "CompositeTriggerType": "CRON",
+        "TriggerSource": "DATADOG",
+        "CompositeTriggerType": "EXISTING_ALARM",
         "Triggers": [
             {
                 "Data": {
@@ -73,8 +73,8 @@
                     "SearchString": null,
                     "Url": null
                 },
-                "TriggerSource": null,
-                "TriggerType": "CRON_TRIGGER"
+                "TriggerSource": "DATADOG",
+                "TriggerType": "EXISTING_ALARM"
             }
         ]
     },
