@@ -21,9 +21,9 @@
                         "Category": "GITHUB",
                         "Content": null,
                         "RunbookId": null,
-                        "RunbookName": "runbooks/cli/heroku/Heroku_auto_scale_dynos_and_workers.sh",
+                        "RunbookName": "runbooks/cli/heroku/Heroku_scale_up_dynos.sh",
                         "Timeout": 2,
-                        "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/1fe8f692e238a392f430ac070248e6c06b0c74e4",
+                        "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/7f248abb5b5cb3da5a92ca576c216eb33df8d79b",
                         "Visibility": "PUBLIC"
                     },
                     "ServiceCheckAction": null,

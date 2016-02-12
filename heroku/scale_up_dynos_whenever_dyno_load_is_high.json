@@ -21,37 +21,13 @@
                         "Category": "GITHUB",
                         "Content": null,
                         "RunbookId": null,
-                        "RunbookName": "runbooks/cli/heroku/Heroku_scale_down_dynos.sh",
+                        "RunbookName": "runbooks/cli/heroku/Heroku_scale_up_dynos.sh",
                         "Timeout": 2,
-                        "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/8fa1a5b2b4423cca9305b37ff28a51c1a6790e0f",
+                        "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/7f248abb5b5cb3da5a92ca576c216eb33df8d79b",
                         "Visibility": "PUBLIC"
                     },
                     "ServiceCheckAction": null,
                     "Tags": []
-                }
-            },
-            {
-                "ActionTarget": null,
-                "ActionTargetType": null,
-                "ActionType": "WEBPAGE_SNAPSHOT",
-                "Active": false,
-                "Data": {
-                    "AlarmNames": [],
-                    "AwsRegion": null,
-                    "CloudAPIAction": null,
-                    "Height": 768,
-                    "Hostname": [],
-                    "LogProvider": null,
-                    "MetricDefinitions": [],
-                    "MetricNames": [],
-                    "MetricSource": null,
-                    "PingSource": null,
-                    "Retries": 0,
-                    "RuleRunbook": null,
-                    "ServiceCheckAction": null,
-                    "Tags": [],
-                    "Uri": "https://staging.newrelic.com/public/charts/fAmWyK06eYB",
-                    "Width": 1366
                 }
             }
         ]
@@ -78,5 +54,5 @@
             }
         ]
     },
-    "RuleName": "Scale up dynos whenever request throughput is high"
+    "RuleName": "Scale up dynos whever average dyno load is high"
 }

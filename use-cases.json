@@ -599,7 +599,7 @@
                 {
                     "type": "CLI Action",
                     "data": {
-                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_auto_scale_dynos_and_workers.sh",
+                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_scale_up_dynos.sh",
                         "steps": [
                             "Scale up heroku worker dynos",
                             "Don't scale above a certain upper limit"
@@ -611,6 +611,34 @@
                     "data": {
                         "steps": [
                             "Capture sidekiq queue_size graph snapshot for the last 3 hours"
+                        ]
+                    }
+                }
+            ]
+        },
+	"video" : "https://www.youtube.com/v/uiLZzclu15U"
+    },
+
+    {
+        "tags": [ "Heroku", "Librato" ],
+        "tagline" : "Scale up dynos whenever average dyno load is high",
+        "trigger": {
+            "description": "When Librato alerts that average dyno load is high"
+        },
+        "action_group" : {
+            "template": {
+                "id": "",
+                "category": "heroku",
+                "name": "scale_up_dynos_whenever_dyno_load_is_high.json"
+            },
+            "action": [
+                {
+                    "type": "CLI Action",
+                    "data": {
+                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_scale_up_dynos.sh",
+                        "steps": [
+                            "Scale up heroku worker dynos",
+                            "Don't scale above a certain upper limit"
                         ]
                     }
                 }
@@ -635,7 +663,7 @@
                 {
                     "type": "CLI Action",
                     "data": {
-                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_auto_scale_dynos_and_workers.sh",
+                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_scale_up_dynos.sh",
                         "steps": [
                             "Scale down heroku dynos",
                             "Don't scale down below certain lower limit"
