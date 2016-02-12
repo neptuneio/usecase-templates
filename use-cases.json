@@ -36,6 +36,11 @@
             "description" : "Whenever cpu is high (DataDog Alert)"
         },
         "action_group" :  {
+            "template": {
+                   "id": "",
+                   "category": "amazon_ec2",
+                   "name": ""
+            },
             "action": [
                 {
                     "type": "Graph Snapshot",
