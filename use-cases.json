@@ -666,7 +666,7 @@
             "template": {
                 "id": "",
                 "category": "heroku",
-                "name": "scale_up_dynos_whenever_request_throughput_is_high.json"
+                "name": "scale_down_dynos_whenever_request_throughput_is_low.json"
             },
             "action": [
                 {
