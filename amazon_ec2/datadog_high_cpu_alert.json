@@ -1,83 +1,129 @@
 {
-    "ActionGroup": {
-        "Actions": [
+  "ActionGroup": {
+    "Actions": [
+      {
+        "ActionTarget": "AWS",
+        "ActionTargetType": "TRIGGER_HOST",
+        "ActionType": "EXECUTE_SCRIPT",
+        "Active": true,
+        "Data": {
+          "AlarmNames": [
+            
+          ],
+          "AwsRegion": null,
+          "CloudAPIAction": null,
+          "Hostname": [
+            
+          ],
+          "LogProvider": null,
+          "MetricDefinitions": [
+            
+          ],
+          "MetricNames": [
+            
+          ],
+          "MetricSource": null,
+          "PingSource": null,
+          "Retries": 0,
+          "RuleRunbook": {
+            "Category": "GITHUB",
+            "Content": null,
+            "RunbookId": null,
+            "RunbookName": "runbooks/host-level-alerts/High_cpu_utilization.sh",
+            "Timeout": 2,
+            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/7f248abb5b5cb3da5a92ca576c216eb33df8d79b",
+            "Visibility": "PUBLIC"
+          },
+          "ServiceCheckAction": null,
+          "Tags": [
+            
+          ]
+        }
+      },
+      {
+        "ActionTarget": null,
+        "ActionTargetType": "TRIGGER_HOST",
+        "ActionType": "GRAPH_SNAPSHOT",
+        "Active": false,
+        "Data": {
+          "AlarmNames": [
+            
+          ],
+          "AwsRegion": null,
+          "CloudAPIAction": null,
+          "Height": 768,
+          "Hostname": [
+            
+          ],
+          "LogProvider": null,
+          "MetricDefinitions": [
             {
-                "ActionTarget": "AWS",
-                "ActionTargetType": null,
-                "ActionType": "EXECUTE_SCRIPT",
-                "Active": true,
-                "Data": {
-                    "AlarmNames": [],
-                    "AwsRegion": null,
-                    "CloudAPIAction": null,
-                    "Hostname": [],
-                    "LogProvider": null,
-                    "MetricDefinitions": [],
-                    "MetricNames": [],
-                    "MetricSource": null,
-                    "PingSource": null,
-                    "Retries": 0,
-                    "RuleRunbook": {
-                        "Category": "GITHUB",
-                        "Content": null,
-                        "RunbookId": null,
-                        "RunbookName": "runbooks/host-level-alerts/High_cpu_utilization.sh",
-                        "Timeout": 2,
-                        "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/7f248abb5b5cb3da5a92ca576c216eb33df8d79b",
-                        "Visibility": "PUBLIC"
-                    },
-                    "ServiceCheckAction": null,
-                    "Tags": []
-                }
+              "metricName": "system.linux.disk_space_available",
+              "alias": null,
+              "type": null,
+              "metricExpression": null,
+              "namespace": null,
+              "data": null
             },
             {
-                "ActionTarget": null,
-                "ActionTargetType": "TRIGGER_HOST",
-                "ActionType": "GRAPH_SNAPSHOT",
-                "Active": false,
-                "Data": {
-                    "AlarmNames": [],
-                    "AwsRegion": null,
-                    "CloudAPIAction": null,
-                    "Height": 768,
-                    "Hostname": [],
-                    "LogProvider": null,
-                    "MetricDefinitions": ["BY_HOST_AND_NAME"],
-                    "MetricNames": ["system.cpu.idle", "system.cpu.system", "system.cpu.iowait", "system.cpu.user", "aws.ec2.cpuutilization"],
-                    "MetricSource": "DATADOG",
-                    "PingSource": null,
-                    "Retries": 0,
-                    "RuleRunbook": null,
-                    "ServiceCheckAction": null,
-                    "MetricPeriod": "6hrs",
-                    "Tags": [],
-                    "Uri": "",
-                    "Width": 1366
-                }
+              "metricName": "system.cpu.system",
+              "alias": null,
+              "type": null,
+              "metricExpression": null,
+              "namespace": null,
+              "data": null
             }
-        ]
+          ],
+          "MetricNames": [
+            "system.cpu.idle",
+            "system.cpu.system",
+            "system.cpu.iowait",
+            "system.cpu.user",
+            "aws.ec2.cpuutilization"
+          ],
+          "MetricSource": "DATADOG",
+          "PingSource": null,
+          "Retries": 0,
+          "RuleRunbook": null,
+          "ServiceCheckAction": null,
+          "MetricPeriod": "6hrs",
+          "Tags": [
+            
+          ],
+          "Uri": "",
+          "Width": 1366,
+          "MetricDefinitionType": "BY_HOST_AND_NAME",
+          "MetricsPeriod": {
+            "name": "3hrs",
+            "hours": 3,
+            "resolution": 60
+          }
+        }
+      }
+    ]
+  },
+  "CapDuration": 30,
+  "CapLimit": 3,
+  "CompositeTrigger": {
+    "Data": {
+      "Regex": ""
     },
-    "CapDuration": 30,
-    "CapLimit": 3,
-    "CompositeTrigger": {
+    "TriggerSource": "DATADOG",
+    "CompositeTriggerType": "EXISTING_ALARM",
+    "Triggers": [
+      {
         "Data": {
-            "Regex": null
+          "AlarmName": "",
+          "AwsRegion": "",
+          "Port": null,
+          "SearchString": null,
+          "Url": null,
+          "CronExpression": ""
         },
         "TriggerSource": "DATADOG",
-        "CompositeTriggerType": "EXISTING_ALARM",
-        "Triggers": [
-            {
-                "Data": {
-                    "AlarmName": null,
-                    "AwsRegion": null,
-                    "Port": null,
-                    "SearchString": null,
-                    "Url": null
-                },
-                "TriggerSource": "DATADOG",
-                "TriggerType": "EXISTING_ALARM"
-            }
-        ]
-    },
-    "RuleName": "When CPU is high (DataDog Alarm)"
+        "TriggerType": "EXISTING_ALARM"
+      }
+    ]
+  },
+  "RuleName": "When CPU is high (DataDog Alarm)"
 }
