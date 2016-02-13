@@ -1,39 +1,91 @@
 {
-    "action_group": {
-        "action": [
-            {
-                "data": {
-                    "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
-                    "steps": [
-                        "send me tail of application logfile (last 1000 lines)",
-                        "grep for specific exception in logs",
-                        "optionally restart process"
-                    ]
-                },
-                "type": "Execute Diagnostics Runbook"
-            },
-            {
-                "data": {
-                    "steps": [
-                        "capture process liveness graph for last 3 hrs",
-                        "capture impact on application error rate graph for last 3 hrs"
-                    ]
-                },
-                "type": "Graph Snapshot"
-            }
-        ],
-        "template": {
-            "category": "amazon_ec2",
-            "id": "",
-            "name": "diagnose_process_when_it_is_hung.json"
-        }
-    },
-    "rule_template": {},
-    "tags": [
-        "AmazonEC2",
-        "Popular"
+  "action_group": {
+    "action": [
+      {
+        "data": {
+          "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+          "steps": [
+            "send me tail of application logfile (last 1000 lines)",
+            "grep for specific exception in logs",
+            "optionally restart process"
+          ]
+        },
+        "type": "Execute Diagnostics Runbook"
+      },
+      {
+        "data": {
+          "steps": [
+            "capture process liveness graph for last 3 hrs",
+            "capture impact on application error rate graph for last 3 hrs"
+          ]
+        },
+        "type": "Graph Snapshot"
+      }
     ],
-    "trigger": {
-        "description": "Whenever a process is hung"
+    "template": {
+      "category": "amazon_ec2",
+      "id": "",
+      "name": "diagnose_process_when_it_is_hung.json"
     }
+  },
+  "rule_template": {
+    "RuleName": null,
+    "CapLimit": 3,
+    "CapDuration": 30,
+    "CompositeTrigger": {
+      "CompositeTriggerType": "EXISTING_ALARM",
+      "TriggerSource": "NEWRELIC",
+      "Data": {
+        "Regex": null
+      },
+      "Triggers": [
+        {
+          "TriggerSource": "NEWRELIC",
+          "TriggerType": "EXISTNG_ALARM",
+          "Data": {
+            "AlarmName": null,
+            "AwsRegion": null,
+            "Url": null,
+            "Port": null,
+            "SearchString": null
+          }
+        }
+      ]
+    },
+    "ActionGroup": {
+      "Actions": [
+        {
+          "ActionTarget": null,
+          "ActionType": null,
+          "ActionTargetType": null,
+          "Data": {
+            "Hostname": [],
+            "Retries": 0,
+            "AwsRegion": null,
+            "AlarmNames": [],
+            "Tags": [],
+            "MetricNames": [],
+            "MetricSource": null,
+            "MetricDefinitions": [],
+            "CloudAPIAction": null,
+            "RuleRunbook": {
+              "RunbookId": null,
+              "RunbookName": "src/add_publishing_script_to_crontab.sh",
+              "Category": "GITHUB",
+              "Url": "https://api.github.com/repos/neptuneio/aws-monitoring/git/blobs/924de953ef7624eefdf08d4f609c88912229277e",
+              "Visibility": "PUBLIC",
+              "Content": null
+            }
+          }
+        }
+      ]
+    }
+  },
+  "tags": [
+    "AmazonEC2",
+    "Popular"
+  ],
+  "trigger": {
+    "description": "Whenever a process is hung"
+  }
 }
