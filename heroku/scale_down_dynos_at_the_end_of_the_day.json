@@ -28,200 +28,87 @@
         }
     },
     "rule_template": {
-        "action_group": {
-            "action": [
+        "ActionGroup": {
+            "Actions": [
                 {
-                    "data": {
-                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_scale_up_dynos.sh",
-                        "steps": [
-                            "Scale down heroku dynos",
-                            "Don't scale down below certain lower limit"
-                        ]
-                    },
-                    "type": "CLI Action"
-                },
-                {
-                    "data": {
-                        "steps": [
-                            "Get daily summary snapshot of NewRelic appdex",
-                            "Get daily summary snapshot of NewRelic latency graph"
-                        ]
-                    },
-                    "type": "Graph Snapshot"
-                }
-            ],
-            "template": {
-                "category": "heroku",
-                "id": "",
-                "name": "scale_down_dynos_at_the_end_of_the_day.json"
-            }
-        },
-        "rule_template": {
-            "action_group": {
-                "action": [
-                    {
-                        "data": {
-                            "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_scale_up_dynos.sh",
-                            "steps": [
-                                "Scale down heroku dynos",
-                                "Don't scale down below certain lower limit"
-                            ]
+                    "ActionTarget": "HEROKU",
+                    "ActionTargetType": null,
+                    "ActionType": "CLI_ACTION",
+                    "Active": true,
+                    "Data": {
+                        "AlarmNames": [],
+                        "AwsRegion": null,
+                        "CloudAPIAction": null,
+                        "Hostname": [],
+                        "LogProvider": null,
+                        "MetricDefinitions": [],
+                        "MetricNames": [],
+                        "MetricSource": null,
+                        "PingSource": null,
+                        "Retries": 0,
+                        "RuleRunbook": {
+                            "Category": "GITHUB",
+                            "Content": null,
+                            "RunbookId": null,
+                            "RunbookName": "runbooks/cli/heroku/Heroku_scale_up_dynos.sh",
+                            "Timeout": 2,
+                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/7f248abb5b5cb3da5a92ca576c216eb33df8d79b",
+                            "Visibility": "PUBLIC"
                         },
-                        "type": "CLI Action"
-                    },
-                    {
-                        "data": {
-                            "steps": [
-                                "Get daily summary snapshot of NewRelic appdex",
-                                "Get daily summary snapshot of NewRelic latency graph"
-                            ]
-                        },
-                        "type": "Graph Snapshot"
-                    }
-                ],
-                "template": {
-                    "category": "heroku",
-                    "id": "",
-                    "name": "scale_down_dynos_at_the_end_of_the_day.json"
-                }
-            },
-            "rule_template": {
-                "action_group": {
-                    "action": [
-                        {
-                            "data": {
-                                "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_scale_up_dynos.sh",
-                                "steps": [
-                                    "Scale down heroku dynos",
-                                    "Don't scale down below certain lower limit"
-                                ]
-                            },
-                            "type": "CLI Action"
-                        },
-                        {
-                            "data": {
-                                "steps": [
-                                    "Get daily summary snapshot of NewRelic appdex",
-                                    "Get daily summary snapshot of NewRelic latency graph"
-                                ]
-                            },
-                            "type": "Graph Snapshot"
-                        }
-                    ],
-                    "template": {
-                        "category": "heroku",
-                        "id": "",
-                        "name": "scale_down_dynos_at_the_end_of_the_day.json"
+                        "ServiceCheckAction": null,
+                        "Tags": []
                     }
                 },
-                "rule_template": {
-                    "ActionGroup": {
-                        "Actions": [
-                            {
-                                "ActionTarget": "HEROKU",
-                                "ActionTargetType": null,
-                                "ActionType": "CLI_ACTION",
-                                "Active": true,
-                                "Data": {
-                                    "AlarmNames": [],
-                                    "AwsRegion": null,
-                                    "CloudAPIAction": null,
-                                    "Hostname": [],
-                                    "LogProvider": null,
-                                    "MetricDefinitions": [],
-                                    "MetricNames": [],
-                                    "MetricSource": null,
-                                    "PingSource": null,
-                                    "Retries": 0,
-                                    "RuleRunbook": {
-                                        "Category": "GITHUB",
-                                        "Content": null,
-                                        "RunbookId": null,
-                                        "RunbookName": "runbooks/cli/heroku/Heroku_scale_up_dynos.sh",
-                                        "Timeout": 2,
-                                        "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/7f248abb5b5cb3da5a92ca576c216eb33df8d79b",
-                                        "Visibility": "PUBLIC"
-                                    },
-                                    "ServiceCheckAction": null,
-                                    "Tags": []
-                                }
-                            },
-                            {
-                                "ActionTarget": null,
-                                "ActionTargetType": null,
-                                "ActionType": "WEBPAGE_SNAPSHOT",
-                                "Active": false,
-                                "Data": {
-                                    "AlarmNames": [],
-                                    "AwsRegion": null,
-                                    "CloudAPIAction": null,
-                                    "Height": 768,
-                                    "Hostname": [],
-                                    "LogProvider": null,
-                                    "MetricDefinitions": [],
-                                    "MetricNames": [],
-                                    "MetricSource": null,
-                                    "PingSource": null,
-                                    "Retries": 0,
-                                    "RuleRunbook": null,
-                                    "ServiceCheckAction": null,
-                                    "Tags": [],
-                                    "Uri": "https://staging.newrelic.com/public/charts/fAmWyK06eYB",
-                                    "Width": 1366
-                                }
-                            }
-                        ]
-                    },
-                    "CapDuration": 30,
-                    "CapLimit": 3,
-                    "CompositeTrigger": {
-                        "CompositeTriggerType": "CRON",
-                        "Data": {
-                            "Regex": ""
-                        },
-                        "TriggerSource": "CRON",
-                        "Triggers": [
-                            {
-                                "Data": {
-                                    "AlarmName": "",
-                                    "AwsRegion": "",
-                                    "CronExpression": "0 20 * * *",
-                                    "Port": null,
-                                    "SearchString": null,
-                                    "Url": null
-                                },
-                                "TriggerSource": "CRON",
-                                "TriggerType": "CRON_TRIGGER"
-                            }
-                        ]
-                    },
-                    "RuleName": "Scale down dynos at the end of the day"
-                },
-                "tagline": "Scale down dynos at the end of the day",
-                "tags": [
-                    "Heroku"
-                ],
-                "trigger": {
-                    "description": "Every day at 8pm"
-                },
-                "video": "https://www.youtube.com/v/ogeMtDEo0tk"
-            },
-            "tagline": "Scale down dynos at the end of the day",
-            "tags": [
-                "Heroku"
-            ],
-            "trigger": {
-                "description": "Every day at 8pm"
-            },
-            "video": "https://www.youtube.com/v/ogeMtDEo0tk"
+                {
+                    "ActionTarget": null,
+                    "ActionTargetType": null,
+                    "ActionType": "WEBPAGE_SNAPSHOT",
+                    "Active": false,
+                    "Data": {
+                        "AlarmNames": [],
+                        "AwsRegion": null,
+                        "CloudAPIAction": null,
+                        "Height": 768,
+                        "Hostname": [],
+                        "LogProvider": null,
+                        "MetricDefinitions": [],
+                        "MetricNames": [],
+                        "MetricSource": null,
+                        "PingSource": null,
+                        "Retries": 0,
+                        "RuleRunbook": null,
+                        "ServiceCheckAction": null,
+                        "Tags": [],
+                        "Uri": "https://staging.newrelic.com/public/charts/fAmWyK06eYB",
+                        "Width": 1366
+                    }
+                }
+            ]
         },
-        "tagline": "Scale down dynos at the end of the day",
-        "tags": [
-            "Heroku"
-        ],
-        "trigger": {
-            "description": "Every day at 8pm"
-        }
+        "CapDuration": 30,
+        "CapLimit": 3,
+        "CompositeTrigger": {
+            "CompositeTriggerType": "CRON",
+            "Data": {
+                "Regex": ""
+            },
+            "TriggerSource": "CRON",
+            "Triggers": [
+                {
+                    "Data": {
+                        "AlarmName": "",
+                        "AwsRegion": "",
+                        "CronExpression": "0 20 * * *",
+                        "Port": null,
+                        "SearchString": null,
+                        "Url": null
+                    },
+                    "TriggerSource": "CRON",
+                    "TriggerType": "CRON_TRIGGER"
+                }
+            ]
+        },
+        "RuleName": "Scale down dynos at the end of the day"
     },
     "tagline": "Scale down dynos at the end of the day",
     "tags": [

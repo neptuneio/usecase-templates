@@ -30,211 +30,86 @@
         }
     },
     "rule_template": {
-        "action_group": {
-            "action": [
+        "ActionGroup": {
+            "Actions": [
                 {
-                    "data": {
-                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_app_diagnostics.sh",
-                        "steps": [
-                            "Ping check app url",
-                            "Collect last 200 lines of app logs and grep for exceptions",
-                            "Look for recent releases",
-                            "Check # of dynos running, Scale up if necessary",
-                            "Rollback if necessary"
-                        ]
-                    },
-                    "type": "CLI Action"
-                },
-                {
-                    "data": {
-                        "steps": [
-                            "Capture snapshot of error rate graph for the last 3 hours"
-                        ]
-                    },
-                    "type": "Graph Snapshot"
-                }
-            ],
-            "template": {
-                "category": "heroku",
-                "id": "",
-                "name": "send_me_diagnostics_whenever_app_error_rate_is_high.json"
-            }
-        },
-        "rule_template": {
-            "action_group": {
-                "action": [
-                    {
-                        "data": {
-                            "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_app_diagnostics.sh",
-                            "steps": [
-                                "Ping check app url",
-                                "Collect last 200 lines of app logs and grep for exceptions",
-                                "Look for recent releases",
-                                "Check # of dynos running, Scale up if necessary",
-                                "Rollback if necessary"
-                            ]
+                    "ActionTarget": "HEROKU",
+                    "ActionTargetType": null,
+                    "ActionType": "CLI_ACTION",
+                    "Active": true,
+                    "Data": {
+                        "AlarmNames": [],
+                        "AwsRegion": null,
+                        "CloudAPIAction": null,
+                        "Hostname": [],
+                        "LogProvider": null,
+                        "MetricDefinitions": [],
+                        "MetricNames": [],
+                        "MetricSource": null,
+                        "PingSource": null,
+                        "Retries": 0,
+                        "RuleRunbook": {
+                            "Category": "GITHUB",
+                            "Content": null,
+                            "RunbookId": null,
+                            "RunbookName": "runbooks/cli/heroku/Heroku_app_diagnostics.sh",
+                            "Timeout": 2,
+                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/e0bbef11e99fba131bff24953ed5f825a7f74905",
+                            "Visibility": "PUBLIC"
                         },
-                        "type": "CLI Action"
-                    },
-                    {
-                        "data": {
-                            "steps": [
-                                "Capture snapshot of error rate graph for the last 3 hours"
-                            ]
-                        },
-                        "type": "Graph Snapshot"
-                    }
-                ],
-                "template": {
-                    "category": "heroku",
-                    "id": "",
-                    "name": "send_me_diagnostics_whenever_app_error_rate_is_high.json"
-                }
-            },
-            "rule_template": {
-                "action_group": {
-                    "action": [
-                        {
-                            "data": {
-                                "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_app_diagnostics.sh",
-                                "steps": [
-                                    "Ping check app url",
-                                    "Collect last 200 lines of app logs and grep for exceptions",
-                                    "Look for recent releases",
-                                    "Check # of dynos running, Scale up if necessary",
-                                    "Rollback if necessary"
-                                ]
-                            },
-                            "type": "CLI Action"
-                        },
-                        {
-                            "data": {
-                                "steps": [
-                                    "Capture snapshot of error rate graph for the last 3 hours"
-                                ]
-                            },
-                            "type": "Graph Snapshot"
-                        }
-                    ],
-                    "template": {
-                        "category": "heroku",
-                        "id": "",
-                        "name": "send_me_diagnostics_whenever_app_error_rate_is_high.json"
+                        "ServiceCheckAction": null,
+                        "Tags": []
                     }
                 },
-                "rule_template": {
-                    "ActionGroup": {
-                        "Actions": [
-                            {
-                                "ActionTarget": "HEROKU",
-                                "ActionTargetType": null,
-                                "ActionType": "CLI_ACTION",
-                                "Active": true,
-                                "Data": {
-                                    "AlarmNames": [],
-                                    "AwsRegion": null,
-                                    "CloudAPIAction": null,
-                                    "Hostname": [],
-                                    "LogProvider": null,
-                                    "MetricDefinitions": [],
-                                    "MetricNames": [],
-                                    "MetricSource": null,
-                                    "PingSource": null,
-                                    "Retries": 0,
-                                    "RuleRunbook": {
-                                        "Category": "GITHUB",
-                                        "Content": null,
-                                        "RunbookId": null,
-                                        "RunbookName": "runbooks/cli/heroku/Heroku_app_diagnostics.sh",
-                                        "Timeout": 2,
-                                        "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/e0bbef11e99fba131bff24953ed5f825a7f74905",
-                                        "Visibility": "PUBLIC"
-                                    },
-                                    "ServiceCheckAction": null,
-                                    "Tags": []
-                                }
-                            },
-                            {
-                                "ActionTarget": null,
-                                "ActionTargetType": null,
-                                "ActionType": "WEBPAGE_SNAPSHOT",
-                                "Active": false,
-                                "Data": {
-                                    "AlarmNames": [],
-                                    "AwsRegion": null,
-                                    "CloudAPIAction": null,
-                                    "Height": 768,
-                                    "Hostname": [],
-                                    "LogProvider": null,
-                                    "MetricDefinitions": [],
-                                    "MetricNames": [],
-                                    "MetricSource": null,
-                                    "PingSource": null,
-                                    "Retries": 0,
-                                    "RuleRunbook": null,
-                                    "ServiceCheckAction": null,
-                                    "Tags": [],
-                                    "Uri": "https://staging.newrelic.com/public/charts/fAmWyK06eYB",
-                                    "Width": 1366
-                                }
-                            }
-                        ]
-                    },
-                    "CapDuration": 30,
-                    "CapLimit": 3,
-                    "CompositeTrigger": {
-                        "CompositeTriggerType": "CRON",
-                        "Data": {
-                            "Regex": null
-                        },
-                        "TriggerSource": null,
-                        "Triggers": [
-                            {
-                                "Data": {
-                                    "AlarmName": null,
-                                    "AwsRegion": null,
-                                    "Port": null,
-                                    "SearchString": null,
-                                    "Url": null
-                                },
-                                "TriggerSource": null,
-                                "TriggerType": "CRON_TRIGGER"
-                            }
-                        ]
-                    },
-                    "RuleName": "Send me diagnostics whenever app error rate is high"
-                },
-                "tagline": "Send me diagnostics whenever app error rate is high",
-                "tags": [
-                    "Heroku",
-                    "NewRelic",
-                    "Popular"
-                ],
-                "trigger": {
-                    "description": "Whenever heroku app error rate is > 2%"
-                },
-                "video": "https://www.youtube.com/v/c07Gn5iraeM"
-            },
-            "tagline": "Send me diagnostics whenever app error rate is high",
-            "tags": [
-                "Heroku",
-                "NewRelic",
-                "Popular"
-            ],
-            "trigger": {
-                "description": "Whenever heroku app error rate is > 2%"
-            },
-            "video": "https://www.youtube.com/v/c07Gn5iraeM"
+                {
+                    "ActionTarget": null,
+                    "ActionTargetType": null,
+                    "ActionType": "WEBPAGE_SNAPSHOT",
+                    "Active": false,
+                    "Data": {
+                        "AlarmNames": [],
+                        "AwsRegion": null,
+                        "CloudAPIAction": null,
+                        "Height": 768,
+                        "Hostname": [],
+                        "LogProvider": null,
+                        "MetricDefinitions": [],
+                        "MetricNames": [],
+                        "MetricSource": null,
+                        "PingSource": null,
+                        "Retries": 0,
+                        "RuleRunbook": null,
+                        "ServiceCheckAction": null,
+                        "Tags": [],
+                        "Uri": "https://staging.newrelic.com/public/charts/fAmWyK06eYB",
+                        "Width": 1366
+                    }
+                }
+            ]
         },
-        "tagline": "Send me diagnostics whenever app error rate is high",
-        "tags": [
-            "Heroku",
-            "NewRelic",
-            "Popular"
-        ],
-        "trigger": {
-            "description": "Whenever heroku app error rate is > 2%"
-        }
+        "CapDuration": 30,
+        "CapLimit": 3,
+        "CompositeTrigger": {
+            "CompositeTriggerType": "CRON",
+            "Data": {
+                "Regex": null
+            },
+            "TriggerSource": null,
+            "Triggers": [
+                {
+                    "Data": {
+                        "AlarmName": null,
+                        "AwsRegion": null,
+                        "Port": null,
+                        "SearchString": null,
+                        "Url": null
+                    },
+                    "TriggerSource": null,
+                    "TriggerType": "CRON_TRIGGER"
+                }
+            ]
+        },
+        "RuleName": "Send me diagnostics whenever app error rate is high"
     },
     "tagline": "Send me diagnostics whenever app error rate is high",
     "tags": [

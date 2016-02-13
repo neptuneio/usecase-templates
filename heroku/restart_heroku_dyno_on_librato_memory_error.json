@@ -19,149 +19,62 @@
         }
     },
     "rule_template": {
-        "action_group": {
-            "action": [
+        "ActionGroup": {
+            "Actions": [
                 {
-                    "data": {
-                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_restart_dyno_for_librato_alert.sh",
-                        "steps": [
-                            "Restart heroku dyno which is suffering memory issues",
-                            "Send me last 200 lines of heroku app log"
-                        ]
-                    },
-                    "type": "CLI Action"
-                }
-            ],
-            "template": {
-                "category": "heroku",
-                "id": "",
-                "name": "restart_heroku_dyno_on_librato_memory_error.json"
-            }
-        },
-        "rule_template": {
-            "action_group": {
-                "action": [
-                    {
-                        "data": {
-                            "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_restart_dyno_for_librato_alert.sh",
-                            "steps": [
-                                "Restart heroku dyno which is suffering memory issues",
-                                "Send me last 200 lines of heroku app log"
-                            ]
+                    "ActionTarget": "HEROKU",
+                    "ActionTargetType": null,
+                    "ActionType": "CLI_ACTION",
+                    "Active": true,
+                    "Data": {
+                        "AlarmNames": [],
+                        "AwsRegion": null,
+                        "CloudAPIAction": null,
+                        "Hostname": [],
+                        "LogProvider": null,
+                        "MetricDefinitions": [],
+                        "MetricNames": [],
+                        "MetricSource": null,
+                        "PingSource": null,
+                        "Retries": 0,
+                        "RuleRunbook": {
+                            "Category": "GITHUB",
+                            "Content": null,
+                            "RunbookId": null,
+                            "RunbookName": "runbooks/cli/heroku/Heroku_restart_dyno_for_librato_alert.sh",
+                            "Timeout": 2,
+                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/d49114cb4e06c815a12bb538ac196f2e0a29e407",
+                            "Visibility": "PUBLIC"
                         },
-                        "type": "CLI Action"
+                        "ServiceCheckAction": null,
+                        "Tags": []
                     }
-                ],
-                "template": {
-                    "category": "heroku",
-                    "id": "",
-                    "name": "restart_heroku_dyno_on_librato_memory_error.json"
                 }
-            },
-            "rule_template": {
-                "action_group": {
-                    "action": [
-                        {
-                            "data": {
-                                "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_restart_dyno_for_librato_alert.sh",
-                                "steps": [
-                                    "Restart heroku dyno which is suffering memory issues",
-                                    "Send me last 200 lines of heroku app log"
-                                ]
-                            },
-                            "type": "CLI Action"
-                        }
-                    ],
-                    "template": {
-                        "category": "heroku",
-                        "id": "",
-                        "name": "restart_heroku_dyno_on_librato_memory_error.json"
-                    }
-                },
-                "rule_template": {
-                    "ActionGroup": {
-                        "Actions": [
-                            {
-                                "ActionTarget": "HEROKU",
-                                "ActionTargetType": null,
-                                "ActionType": "CLI_ACTION",
-                                "Active": true,
-                                "Data": {
-                                    "AlarmNames": [],
-                                    "AwsRegion": null,
-                                    "CloudAPIAction": null,
-                                    "Hostname": [],
-                                    "LogProvider": null,
-                                    "MetricDefinitions": [],
-                                    "MetricNames": [],
-                                    "MetricSource": null,
-                                    "PingSource": null,
-                                    "Retries": 0,
-                                    "RuleRunbook": {
-                                        "Category": "GITHUB",
-                                        "Content": null,
-                                        "RunbookId": null,
-                                        "RunbookName": "runbooks/cli/heroku/Heroku_restart_dyno_for_librato_alert.sh",
-                                        "Timeout": 2,
-                                        "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/d49114cb4e06c815a12bb538ac196f2e0a29e407",
-                                        "Visibility": "PUBLIC"
-                                    },
-                                    "ServiceCheckAction": null,
-                                    "Tags": []
-                                }
-                            }
-                        ]
-                    },
-                    "CapDuration": 10,
-                    "CapLimit": 1,
-                    "CompositeTrigger": {
-                        "CompositeTriggerType": "EXISTING_ALARM",
-                        "Data": {
-                            "Regex": null
-                        },
-                        "TriggerSource": "LIBRATO",
-                        "Triggers": [
-                            {
-                                "Data": {
-                                    "AlarmName": null,
-                                    "AwsRegion": null,
-                                    "Port": null,
-                                    "SearchString": null,
-                                    "Url": null
-                                },
-                                "TriggerSource": "LIBRATO",
-                                "TriggerType": "EXISTING_ALARM"
-                            }
-                        ]
-                    },
-                    "RuleName": "Restart heroku dyno based on Librato memory alert"
-                },
-                "tagline": "Restart Heroku dyno based on Librato memory alert",
-                "tags": [
-                    "Heroku",
-                    "Librato"
-                ],
-                "trigger": {
-                    "description": "Whenever Librato alerts that the Dyno memory crossed the threshold, restart that Dyno"
-                }
-            },
-            "tagline": "Restart Heroku dyno based on Librato memory alert",
-            "tags": [
-                "Heroku",
-                "Librato"
-            ],
-            "trigger": {
-                "description": "Whenever Librato alerts that the Dyno memory crossed the threshold, restart that Dyno"
-            }
+            ]
         },
-        "tagline": "Restart Heroku dyno based on Librato memory alert",
-        "tags": [
-            "Heroku",
-            "Librato"
-        ],
-        "trigger": {
-            "description": "Whenever Librato alerts that the Dyno memory crossed the threshold, restart that Dyno"
-        }
+        "CapDuration": 10,
+        "CapLimit": 1,
+        "CompositeTrigger": {
+            "CompositeTriggerType": "EXISTING_ALARM",
+            "Data": {
+                "Regex": null
+            },
+            "TriggerSource": "LIBRATO",
+            "Triggers": [
+                {
+                    "Data": {
+                        "AlarmName": null,
+                        "AwsRegion": null,
+                        "Port": null,
+                        "SearchString": null,
+                        "Url": null
+                    },
+                    "TriggerSource": "LIBRATO",
+                    "TriggerType": "EXISTING_ALARM"
+                }
+            ]
+        },
+        "RuleName": "Restart heroku dyno based on Librato memory alert"
     },
     "tagline": "Restart Heroku dyno based on Librato memory alert",
     "tags": [
