@@ -1,0 +1,28 @@
+{
+    "action_group": {
+        "action": [
+            {
+                "data": {
+                    "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                    "steps": [
+                        "find out the top-10 disk hogs",
+                        "execute disk cleanup script"
+                    ]
+                },
+                "type": "Execute Auto-fix-it Runbook"
+            }
+        ],
+        "template": {
+            "category": "amazon_redshift",
+            "id": "",
+            "name": ""
+        }
+    },
+    "rule_template": {},
+    "tags": [
+        "AmazonRedShift"
+    ],
+    "trigger": {
+        "description": "Whenever aggregate PercentDiskSpaceUsed is > threshold for a Redshift cluster"
+    }
+}

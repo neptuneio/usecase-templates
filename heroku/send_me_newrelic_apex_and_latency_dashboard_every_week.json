@@ -1,78 +1,193 @@
 {
-    "ActionGroup": {
-        "Actions": [
+    "action_group": {
+        "action": [
             {
-                "ActionTarget": null,
-                "ActionTargetType": null,
-                "ActionType": "WEBPAGE_SNAPSHOT",
-                "Active": true,
-                "Data": {
-                    "AlarmNames": [],
-                    "AwsRegion": null,
-                    "CloudAPIAction": null,
-                    "Height": 768,
-                    "Hostname": [],
-                    "LogProvider": null,
-                    "MetricDefinitions": [],
-                    "MetricNames": [],
-                    "MetricSource": null,
-                    "PingSource": null,
-                    "Retries": 0,
-                    "RuleRunbook": null,
-                    "ServiceCheckAction": null,
-                    "Tags": [],
-                    "Uri": "https://staging.newrelic.com/public/charts/fAmWyK06eYB",
-                    "Width": 1366
+                "data": {
+                    "steps": [
+                        "Get weekly summary snapshot of NewRelic appdex",
+                        "Get weekly summary snapshot of NewRelic latency graph"
+                    ]
+                },
+                "type": "Graph Snapshot"
+            }
+        ],
+        "template": {
+            "category": "heroku",
+            "id": "",
+            "name": "send_me_newrelic_apex_and_latency_dashboard_every_week.json"
+        }
+    },
+    "rule_template": {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "steps": [
+                            "Get weekly summary snapshot of NewRelic appdex",
+                            "Get weekly summary snapshot of NewRelic latency graph"
+                        ]
+                    },
+                    "type": "Graph Snapshot"
+                }
+            ],
+            "template": {
+                "category": "heroku",
+                "id": "",
+                "name": "send_me_newrelic_apex_and_latency_dashboard_every_week.json"
+            }
+        },
+        "rule_template": {
+            "action_group": {
+                "action": [
+                    {
+                        "data": {
+                            "steps": [
+                                "Get weekly summary snapshot of NewRelic appdex",
+                                "Get weekly summary snapshot of NewRelic latency graph"
+                            ]
+                        },
+                        "type": "Graph Snapshot"
+                    }
+                ],
+                "template": {
+                    "category": "heroku",
+                    "id": "",
+                    "name": "send_me_newrelic_apex_and_latency_dashboard_every_week.json"
                 }
             },
-            {
-                "ActionTarget": null,
-                "ActionTargetType": null,
-                "ActionType": "WEBPAGE_SNAPSHOT",
-                "Active": false,
-                "Data": {
-                    "AlarmNames": [],
-                    "AwsRegion": null,
-                    "CloudAPIAction": null,
-                    "Height": 768,
-                    "Hostname": [],
-                    "LogProvider": null,
-                    "MetricDefinitions": [],
-                    "MetricNames": [],
-                    "MetricSource": null,
-                    "PingSource": null,
-                    "Retries": 0,
-                    "RuleRunbook": null,
-                    "ServiceCheckAction": null,
-                    "Tags": [],
-                    "Uri": "https://staging.newrelic.com/public/charts/fAmWyK06eYB",
-                    "Width": 1366
-		}
-            }
-        ]
-    },
-    "CapDuration": 30,
-    "CapLimit": 3,
-    "CompositeTrigger": {
-        "Data": {
-            "Regex": null
-        },
-        "TriggerSource": "CRON",
-        "CompositeTriggerType": "CRON",
-        "Triggers": [
-            {
-                "Data": {
-                    "AlarmName": null,
-                    "AwsRegion": null,
-                    "CronExpression": "0 20 * * 0",
-                    "Port": null,
-                    "SearchString": null,
-                    "Url": null
+            "rule_template": {
+                "action_group": {
+                    "action": [
+                        {
+                            "data": {
+                                "steps": [
+                                    "Get weekly summary snapshot of NewRelic appdex",
+                                    "Get weekly summary snapshot of NewRelic latency graph"
+                                ]
+                            },
+                            "type": "Graph Snapshot"
+                        }
+                    ],
+                    "template": {
+                        "category": "heroku",
+                        "id": "",
+                        "name": "send_me_newrelic_apex_and_latency_dashboard_every_week.json"
+                    }
                 },
-                "TriggerSource": null,
-                "TriggerType": "CRON_TRIGGER"
-            }
-        ]
+                "rule_template": {
+                    "ActionGroup": {
+                        "Actions": [
+                            {
+                                "ActionTarget": null,
+                                "ActionTargetType": null,
+                                "ActionType": "WEBPAGE_SNAPSHOT",
+                                "Active": true,
+                                "Data": {
+                                    "AlarmNames": [],
+                                    "AwsRegion": null,
+                                    "CloudAPIAction": null,
+                                    "Height": 768,
+                                    "Hostname": [],
+                                    "LogProvider": null,
+                                    "MetricDefinitions": [],
+                                    "MetricNames": [],
+                                    "MetricSource": null,
+                                    "PingSource": null,
+                                    "Retries": 0,
+                                    "RuleRunbook": null,
+                                    "ServiceCheckAction": null,
+                                    "Tags": [],
+                                    "Uri": "https://staging.newrelic.com/public/charts/fAmWyK06eYB",
+                                    "Width": 1366
+                                }
+                            },
+                            {
+                                "ActionTarget": null,
+                                "ActionTargetType": null,
+                                "ActionType": "WEBPAGE_SNAPSHOT",
+                                "Active": false,
+                                "Data": {
+                                    "AlarmNames": [],
+                                    "AwsRegion": null,
+                                    "CloudAPIAction": null,
+                                    "Height": 768,
+                                    "Hostname": [],
+                                    "LogProvider": null,
+                                    "MetricDefinitions": [],
+                                    "MetricNames": [],
+                                    "MetricSource": null,
+                                    "PingSource": null,
+                                    "Retries": 0,
+                                    "RuleRunbook": null,
+                                    "ServiceCheckAction": null,
+                                    "Tags": [],
+                                    "Uri": "https://staging.newrelic.com/public/charts/fAmWyK06eYB",
+                                    "Width": 1366
+                                }
+                            }
+                        ]
+                    },
+                    "CapDuration": 30,
+                    "CapLimit": 3,
+                    "CompositeTrigger": {
+                        "CompositeTriggerType": "CRON",
+                        "Data": {
+                            "Regex": null
+                        },
+                        "TriggerSource": "CRON",
+                        "Triggers": [
+                            {
+                                "Data": {
+                                    "AlarmName": null,
+                                    "AwsRegion": null,
+                                    "CronExpression": "0 20 * * 0",
+                                    "Port": null,
+                                    "SearchString": null,
+                                    "Url": null
+                                },
+                                "TriggerSource": null,
+                                "TriggerType": "CRON_TRIGGER"
+                            }
+                        ]
+                    },
+                    "RuleName": "Send me newrelic apex and latency dashboard every week"
+                },
+                "tagline": "Send me newrelic apdex and latency dashboard every week",
+                "tags": [
+                    "Heroku",
+                    "NewRelic"
+                ],
+                "trigger": {
+                    "description": "Every week on sunday night"
+                },
+                "video": "https://www.youtube.com/v/p41vcCoY1JA"
+            },
+            "tagline": "Send me newrelic apdex and latency dashboard every week",
+            "tags": [
+                "Heroku",
+                "NewRelic"
+            ],
+            "trigger": {
+                "description": "Every week on sunday night"
+            },
+            "video": "https://www.youtube.com/v/p41vcCoY1JA"
+        },
+        "tagline": "Send me newrelic apdex and latency dashboard every week",
+        "tags": [
+            "Heroku",
+            "NewRelic"
+        ],
+        "trigger": {
+            "description": "Every week on sunday night"
+        }
     },
-    "RuleName": "Send me newrelic apex and latency dashboard every week"
+    "tagline": "Send me newrelic apdex and latency dashboard every week",
+    "tags": [
+        "Heroku",
+        "NewRelic"
+    ],
+    "trigger": {
+        "description": "Every week on sunday night"
+    },
+    "video": "https://www.youtube.com/v/p41vcCoY1JA"
 }

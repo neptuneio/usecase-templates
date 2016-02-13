@@ -1,0 +1,39 @@
+{
+    "action_group": {
+        "action": [
+            {
+                "data": {
+                    "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                    "steps": [
+                        "find out the top-10 CPU hogs",
+                        "consider beefing up EC2 instance or increase the #ec2 instances in the cluster"
+                    ]
+                },
+                "type": "Email Runbook"
+            },
+            {
+                "data": {
+                    "steps": [
+                        "send me health status graph for the last few hours",
+                        "send me read/write iops trends for the last few hours",
+                        "send me #database connections for the last few hours",
+                        "send me network receive and transmit throughput trends for the last few hours"
+                    ]
+                },
+                "type": "Graph Snapshot"
+            }
+        ],
+        "template": {
+            "category": "amazon_redshift",
+            "id": "",
+            "name": ""
+        }
+    },
+    "rule_template": {},
+    "tags": [
+        "AmazonRedShift"
+    ],
+    "trigger": {
+        "description": "Whenever HealthStatus is UNHEALTHY for a Redshift cluster"
+    }
+}

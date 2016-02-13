@@ -1,0 +1,34 @@
+{
+    "action_group": {
+        "action": [
+            {
+                "data": {
+                    "steps": [
+                        "notify me via email and send me steps to resolve manually"
+                    ]
+                },
+                "type": "Email Runbook"
+            },
+            {
+                "data": {
+                    "steps": [
+                        "capture the trend of ELB_request_count and send graph by email"
+                    ]
+                },
+                "type": "Graph Snapshot"
+            }
+        ],
+        "template": {
+            "category": "amazon_elb",
+            "id": "",
+            "name": ""
+        }
+    },
+    "rule_template": {},
+    "tags": [
+        "ELB"
+    ],
+    "trigger": {
+        "description": "Whenever ELB request_count is > threshold"
+    }
+}

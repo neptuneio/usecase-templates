@@ -1,55 +1,178 @@
 {
-    "ActionGroup": {
-        "Actions": [
+    "action_group": {
+        "action": [
             {
-                "ActionTarget": "HEROKU",
-                "ActionTargetType": null,
-                "ActionType": "CLI_ACTION",
-                "Active": true,
-                "Data": {
-                    "AlarmNames": [],
-                    "AwsRegion": null,
-                    "CloudAPIAction": null,
-                    "Hostname": [],
-                    "LogProvider": null,
-                    "MetricDefinitions": [],
-                    "MetricNames": [],
-                    "MetricSource": null,
-                    "PingSource": null,
-                    "Retries": 0,
-                    "RuleRunbook": {
-                        "Category": "GITHUB",
-                        "Content": null,
-                        "RunbookId": null,
-                        "RunbookName": "runbooks/cli/heroku/postgres/Diagnose_postgres_issues.sh",
-                        "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/9594981e4c08705723882ec9e5902e2231ed1338",
-                        "Timeout": 2,
-                        "Visibility": "PUBLIC"
-                    },
-                    "ServiceCheckAction": null,
-                    "Tags": []
-                }
-            }
-        ]
-    },
-    "CapDuration": 30,
-    "CapLimit": 3,
-    "CompositeTrigger": {
-        "Data": {
-            "Regex": ""
-        },
-        "TriggerSource": "NEWRELIC",
-        "CompositeTriggerType": "EXISTING_ALARM",
-        "Triggers": [
-            {
-                "Data": {
-                    "AlarmName": "",
-                    "AwsRegion": ""
+                "data": {
+                    "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Diagnose_postgres_issues.sh",
+                    "steps": [
+                        "Diagnose postgres issues"
+                    ]
                 },
-                "TriggerSource": "NEWRELIC",
-                "TriggerType": "EXISTING_ALARM"
+                "type": "CLI Action"
             }
-        ]
+        ],
+        "template": {
+            "category": "db",
+            "id": "",
+            "name": "diagnose_postgres_issues.json"
+        }
     },
-    "RuleName": "Diagnose Postgres issues"
+    "rule_template": {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Diagnose_postgres_issues.sh",
+                        "steps": [
+                            "Diagnose postgres issues"
+                        ]
+                    },
+                    "type": "CLI Action"
+                }
+            ],
+            "template": {
+                "category": "db",
+                "id": "",
+                "name": "diagnose_postgres_issues.json"
+            }
+        },
+        "rule_template": {
+            "action_group": {
+                "action": [
+                    {
+                        "data": {
+                            "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Diagnose_postgres_issues.sh",
+                            "steps": [
+                                "Diagnose postgres issues"
+                            ]
+                        },
+                        "type": "CLI Action"
+                    }
+                ],
+                "template": {
+                    "category": "db",
+                    "id": "",
+                    "name": "diagnose_postgres_issues.json"
+                }
+            },
+            "rule_template": {
+                "action_group": {
+                    "action": [
+                        {
+                            "data": {
+                                "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Diagnose_postgres_issues.sh",
+                                "steps": [
+                                    "Diagnose postgres issues"
+                                ]
+                            },
+                            "type": "CLI Action"
+                        }
+                    ],
+                    "template": {
+                        "category": "db",
+                        "id": "",
+                        "name": "diagnose_postgres_issues.json"
+                    }
+                },
+                "rule_template": {
+                    "ActionGroup": {
+                        "Actions": [
+                            {
+                                "ActionTarget": "HEROKU",
+                                "ActionTargetType": null,
+                                "ActionType": "CLI_ACTION",
+                                "Active": true,
+                                "Data": {
+                                    "AlarmNames": [],
+                                    "AwsRegion": null,
+                                    "CloudAPIAction": null,
+                                    "Hostname": [],
+                                    "LogProvider": null,
+                                    "MetricDefinitions": [],
+                                    "MetricNames": [],
+                                    "MetricSource": null,
+                                    "PingSource": null,
+                                    "Retries": 0,
+                                    "RuleRunbook": {
+                                        "Category": "GITHUB",
+                                        "Content": null,
+                                        "RunbookId": null,
+                                        "RunbookName": "runbooks/cli/heroku/postgres/Diagnose_postgres_issues.sh",
+                                        "Timeout": 2,
+                                        "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/9594981e4c08705723882ec9e5902e2231ed1338",
+                                        "Visibility": "PUBLIC"
+                                    },
+                                    "ServiceCheckAction": null,
+                                    "Tags": []
+                                }
+                            }
+                        ]
+                    },
+                    "CapDuration": 30,
+                    "CapLimit": 3,
+                    "CompositeTrigger": {
+                        "CompositeTriggerType": "EXISTING_ALARM",
+                        "Data": {
+                            "Regex": ""
+                        },
+                        "TriggerSource": "NEWRELIC",
+                        "Triggers": [
+                            {
+                                "Data": {
+                                    "AlarmName": "",
+                                    "AwsRegion": ""
+                                },
+                                "TriggerSource": "NEWRELIC",
+                                "TriggerType": "EXISTING_ALARM"
+                            }
+                        ]
+                    },
+                    "RuleName": "Diagnose Postgres issues"
+                },
+                "tagline": "Diagnose Postgres slowness or issues",
+                "tags": [
+                    "Heroku",
+                    "Postgres",
+                    "Database",
+                    "Librato"
+                ],
+                "trigger": {
+                    "description": "Whenever heroku postgres has slowness issues"
+                },
+                "video": "https://www.youtube.com/v/OrXZXzalQRk"
+            },
+            "tagline": "Diagnose Postgres slowness or issues",
+            "tags": [
+                "Heroku",
+                "Postgres",
+                "Database",
+                "Librato"
+            ],
+            "trigger": {
+                "description": "Whenever heroku postgres has slowness issues"
+            },
+            "video": "https://www.youtube.com/v/OrXZXzalQRk"
+        },
+        "tagline": "Diagnose Postgres slowness or issues",
+        "tags": [
+            "Heroku",
+            "Postgres",
+            "Database",
+            "Librato"
+        ],
+        "trigger": {
+            "description": "Whenever heroku postgres has slowness issues"
+        }
+    },
+    "tagline": "Diagnose Postgres slowness or issues",
+    "tags": [
+        "Heroku",
+        "Postgres",
+        "Database",
+        "Librato"
+    ],
+    "trigger": {
+        "description": "Whenever heroku postgres has slowness issues"
+    },
+    "video": "https://www.youtube.com/v/OrXZXzalQRk"
 }

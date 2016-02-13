@@ -1,0 +1,36 @@
+{
+    "action_group": {
+        "action": [
+            {
+                "data": {
+                    "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                    "steps": [
+                        "add provisioned iops if both queue_depth and write_latency are shooting up"
+                    ]
+                },
+                "type": "Email Runbook"
+            },
+            {
+                "data": {
+                    "steps": [
+                        "send me the trend of write latency over the last few hours",
+                        "send me the trend of QueueDepth graph over the last few hours"
+                    ]
+                },
+                "type": "Graph Snapshot"
+            }
+        ],
+        "template": {
+            "category": "amazon_rds",
+            "id": "",
+            "name": ""
+        }
+    },
+    "rule_template": {},
+    "tags": [
+        "AmazonRDS"
+    ],
+    "trigger": {
+        "description": "Whenever write latency > threshold for an RDS DB Instance"
+    }
+}

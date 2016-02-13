@@ -1,0 +1,35 @@
+{
+    "action_group": {
+        "action": [
+            {
+                "data": {
+                    "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                    "steps": [
+                        "restart the node"
+                    ]
+                },
+                "type": "Execute Auto-fix-it Runbook"
+            },
+            {
+                "data": {
+                    "steps": [
+                        "capture the trend of #blacklisted nodes in the cluster for the last few hours"
+                    ]
+                },
+                "type": "Graph Snapshot"
+            }
+        ],
+        "template": {
+            "category": "hadoop_hbase",
+            "id": "",
+            "name": ""
+        }
+    },
+    "rule_template": {},
+    "tags": [
+        "HadoopHbase"
+    ],
+    "trigger": {
+        "description": "Whenever a node is blacklisted in hadoop cluster"
+    }
+}

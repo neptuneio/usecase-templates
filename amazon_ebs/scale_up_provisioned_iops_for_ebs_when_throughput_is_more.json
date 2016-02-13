@@ -1,0 +1,36 @@
+{
+    "action_group": {
+        "action": [
+            {
+                "data": {
+                    "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                    "steps": [
+                        "scale up provisioned iops by 2x",
+                        "don't scale up beyond certain upper limit"
+                    ]
+                },
+                "type": "CLI Action"
+            },
+            {
+                "data": {
+                    "steps": [
+                        "capture how VolumeThroughputPercentage is trending for the last few hours"
+                    ]
+                },
+                "type": "Graph Snapshot"
+            }
+        ],
+        "template": {
+            "category": "amazon_ebs",
+            "id": "",
+            "name": ""
+        }
+    },
+    "rule_template": {},
+    "tags": [
+        "EBS"
+    ],
+    "trigger": {
+        "description": "Whenever VolumeThroughputPercentage > 80% for an EBS volume"
+    }
+}

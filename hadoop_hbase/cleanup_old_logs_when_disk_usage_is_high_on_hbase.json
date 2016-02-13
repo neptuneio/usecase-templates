@@ -1,0 +1,28 @@
+{
+    "action_group": {
+        "action": [
+            {
+                "data": {
+                    "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                    "steps": [
+                        "archive logs and /tmp directories",
+                        "delete old logs"
+                    ]
+                },
+                "type": "Execute Auto-fix-it Runbook"
+            }
+        ],
+        "template": {
+            "category": "hadoop_hbase",
+            "id": "",
+            "name": ""
+        }
+    },
+    "rule_template": {},
+    "tags": [
+        "HadoopHbase"
+    ],
+    "trigger": {
+        "description": "Whenever percent_used_diskspace is > threshold on a hbase node"
+    }
+}

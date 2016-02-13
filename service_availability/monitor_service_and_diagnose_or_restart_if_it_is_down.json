@@ -1,0 +1,37 @@
+{
+    "action_group": {
+        "action": [
+            {
+                "data": {
+                    "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                    "steps": [
+                        "notify me via email",
+                        "send me the steps to resolve to the issue manually"
+                    ]
+                },
+                "type": "Email Runbook"
+            },
+            {
+                "data": {
+                    "steps": [
+                        "capture URL availability graph for last 3 hrs"
+                    ]
+                },
+                "type": "Graph Snapshot"
+            }
+        ],
+        "template": {
+            "category": "service_availability",
+            "id": "",
+            "name": ""
+        }
+    },
+    "rule_template": {},
+    "tags": [
+        "ServiceAvailability",
+        "URLMonitoring"
+    ],
+    "trigger": {
+        "description": "Whenever URL is not pingable"
+    }
+}

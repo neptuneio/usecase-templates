@@ -1,0 +1,28 @@
+{
+    "action_group": {
+        "action": [
+            {
+                "data": {
+                    "steps": [
+                        "scale up read/write iops by 2x",
+                        "don't scale up above a certain upper limit"
+                    ]
+                },
+                "type": "API Action"
+            }
+        ],
+        "template": {
+            "category": "amazon_dynamodb",
+            "id": "",
+            "name": ""
+        }
+    },
+    "rule_template": {},
+    "tags": [
+        "AmazonDynamoDB",
+        "Popular"
+    ],
+    "trigger": {
+        "description": "Whenever consumed read/write capacity > 80% of provisioned capacity for a DynamoDB table"
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "action_group": {
+        "action": [
+            {
+                "data": {
+                    "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                    "steps": [
+                        "scale up storage space",
+                        "don't scale up above certain upper limit"
+                    ]
+                },
+                "type": "CLI Action"
+            }
+        ],
+        "template": {
+            "category": "amazon_rds",
+            "id": "",
+            "name": ""
+        }
+    },
+    "rule_template": {},
+    "tags": [
+        "AmazonRDS"
+    ],
+    "trigger": {
+        "description": "Whenever FreeableSpace is > threshold for an RDS DB Instance"
+    }
+}

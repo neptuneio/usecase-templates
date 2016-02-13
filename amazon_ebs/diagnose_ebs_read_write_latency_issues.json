@@ -1,0 +1,34 @@
+{
+    "action_group": {
+        "action": [
+            {
+                "data": {
+                    "steps": [
+                        "notify me via email, and send me runbook to resolve the alert manually"
+                    ]
+                },
+                "type": "Email Runbook"
+            },
+            {
+                "data": {
+                    "steps": [
+                        "capture the trend of avg read latency for the last few hours"
+                    ]
+                },
+                "type": "Graph Snapshot"
+            }
+        ],
+        "template": {
+            "category": "amazon_ebs",
+            "id": "",
+            "name": ""
+        }
+    },
+    "rule_template": {},
+    "tags": [
+        "EBS"
+    ],
+    "trigger": {
+        "description": "Whenever avg read/write latency (ms/op) is > threshold for an EBS volume"
+    }
+}

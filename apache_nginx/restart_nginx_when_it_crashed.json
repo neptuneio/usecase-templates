@@ -1,0 +1,28 @@
+{
+    "action_group": {
+        "action": [
+            {
+                "data": {
+                    "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                    "steps": [
+                        "collect tail of log file (last 500 lines)",
+                        "restart nginx"
+                    ]
+                },
+                "type": "Execute Auto-fix-it Runbook"
+            }
+        ],
+        "template": {
+            "category": "apache_nginx",
+            "id": "",
+            "name": ""
+        }
+    },
+    "rule_template": {},
+    "tags": [
+        "ApacheNginx"
+    ],
+    "trigger": {
+        "description": "Whenever nginx has crashed"
+    }
+}

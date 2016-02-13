@@ -1,0 +1,28 @@
+{
+    "action_group": {
+        "action": [
+            {
+                "data": {
+                    "steps": [
+                        "scale down read/write iops by 2x",
+                        "don't scale up below a certain lower limit"
+                    ]
+                },
+                "type": "API Action"
+            }
+        ],
+        "template": {
+            "category": "amazon_dynamodb",
+            "id": "",
+            "name": ""
+        }
+    },
+    "rule_template": {},
+    "tags": [
+        "AmazonDynamoDB",
+        "Popular"
+    ],
+    "trigger": {
+        "description": "Whenever consumed read/write capacity < 20% of provisioned capacity for a DynamoDB table"
+    }
+}

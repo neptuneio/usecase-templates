@@ -1,0 +1,28 @@
+{
+    "action_group": {
+        "action": [
+            {
+                "data": {
+                    "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                    "steps": [
+                        "find out the top-10 CPU hogs",
+                        "consider beefing up EC2 instance or increase the #ec2 instances in the cluster"
+                    ]
+                },
+                "type": "Email Runbook"
+            }
+        ],
+        "template": {
+            "category": "amazon_redshift",
+            "id": "",
+            "name": ""
+        }
+    },
+    "rule_template": {},
+    "tags": [
+        "AmazonRedShift"
+    ],
+    "trigger": {
+        "description": "Whenever aggregate CPUUtilization is > threshold for a Redshift cluster"
+    }
+}

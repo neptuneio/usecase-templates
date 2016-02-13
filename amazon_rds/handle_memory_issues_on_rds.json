@@ -1,0 +1,39 @@
+{
+    "action_group": {
+        "action": [
+            {
+                "data": {
+                    "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                    "steps": [
+                        "monitor if both swap_usage and freeablememory are both shooting up at the same time",
+                        "consider scaling compute: beef up instance type or consider having read replicas"
+                    ]
+                },
+                "type": "Email Runbook"
+            },
+            {
+                "data": {
+                    "steps": [
+                        "send me the trend of swap usage graph over the last few hours",
+                        "send me the trend of connection count graph over the last few hours",
+                        "send me the trend of read/write latency over the last few hours",
+                        "send me the trend of consumed read/write iops used over the last few hours"
+                    ]
+                },
+                "type": "Graph Snapshot"
+            }
+        ],
+        "template": {
+            "category": "amazon_rds",
+            "id": "",
+            "name": ""
+        }
+    },
+    "rule_template": {},
+    "tags": [
+        "AmazonRDS"
+    ],
+    "trigger": {
+        "description": "Whenever FreeableMemory is > threshold for an RDS DB Instance"
+    }
+}

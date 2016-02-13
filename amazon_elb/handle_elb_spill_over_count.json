@@ -1,0 +1,27 @@
+{
+    "action_group": {
+        "action": [
+            {
+                "data": {
+                    "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                    "steps": [
+                        "capture cpu, mem, request_counts, health_check_status for all the nodes under the ELB"
+                    ]
+                },
+                "type": "Execute Diagnostics Runbook"
+            }
+        ],
+        "template": {
+            "category": "amazon_elb",
+            "id": "",
+            "name": ""
+        }
+    },
+    "rule_template": {},
+    "tags": [
+        "ELB"
+    ],
+    "trigger": {
+        "description": "Whenever ELB spill_over_count is > threshold"
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "action_group": {
+        "action": [
+            {
+                "data": {
+                    "steps": [
+                        "capture the trend of #database connections over the last few hours"
+                    ]
+                },
+                "type": "Graph Snapshot"
+            }
+        ],
+        "template": {
+            "category": "amazon_redshift",
+            "id": "",
+            "name": ""
+        }
+    },
+    "rule_template": {},
+    "tags": [
+        "AmazonRedShift"
+    ],
+    "trigger": {
+        "description": "Whenever #DataBaseConnections is > threshold for a Redshift cluster"
+    }
+}

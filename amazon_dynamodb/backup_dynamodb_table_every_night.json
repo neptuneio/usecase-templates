@@ -1,0 +1,29 @@
+{
+    "action_group": {
+        "action": [
+            {
+                "data": {
+                    "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                    "steps": [
+                        "take backup of the dynamodb table and store it in S3"
+                    ]
+                },
+                "type": "CLI Action"
+            }
+        ],
+        "template": {
+            "category": "amazon_dynamodb",
+            "id": "",
+            "name": ""
+        }
+    },
+    "rule_template": {},
+    "tags": [
+        "AmazonDynamoDB"
+    ],
+    "trigger": {
+        "description": "Everyday at midnight",
+        "tags": [],
+        "type": "Cron"
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "action_group": {
+        "action": [
+            {
+                "data": {
+                    "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                    "steps": [
+                        "log disk usage summary, and log top-10 disk-hog directories",
+                        "cleanup /tmp directory",
+                        "archive /app/logs to Amazon S3 bucket"
+                    ]
+                },
+                "type": "Execute Auto-fix-it Runbook"
+            }
+        ],
+        "template": {
+            "category": "amazon_ec2",
+            "id": "",
+            "name": ""
+        }
+    },
+    "rule_template": {},
+    "tags": [
+        "AmazonEC2"
+    ],
+    "trigger": {
+        "description": "Whenever disk is 95% full"
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "action_group": {
+        "action": [
+            {
+                "data": {
+                    "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                    "steps": [
+                        "capture the EBS volume snapshot and store it in S3 bucket"
+                    ]
+                },
+                "type": "CLI Action"
+            }
+        ],
+        "template": {
+            "category": "amazon_ebs",
+            "id": "",
+            "name": ""
+        }
+    },
+    "rule_template": {},
+    "tags": [
+        "EBS"
+    ],
+    "trigger": {
+        "description": "Everyday at midnight"
+    }
+}

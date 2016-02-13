@@ -1,0 +1,27 @@
+{
+    "action_group": {
+        "action": [
+            {
+                "data": {
+                    "steps": [
+                        "capture how throttled requests are trending over last 3 hrs",
+                        "capture read and write throttle events graph for that table for last 3 hrs"
+                    ]
+                },
+                "type": "Graph Snapshot"
+            }
+        ],
+        "template": {
+            "category": "amazon_dynamodb",
+            "id": "",
+            "name": ""
+        }
+    },
+    "rule_template": {},
+    "tags": [
+        "AmazonDynamoDB"
+    ],
+    "trigger": {
+        "description": "Whenever #throttled requests for a DynamoDB table is > threshold"
+    }
+}

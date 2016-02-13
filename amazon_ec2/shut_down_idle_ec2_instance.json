@@ -1,0 +1,28 @@
+{
+    "action_group": {
+        "action": [
+            {
+                "data": {
+                    "steps": [
+                        "shutdown the idle ec2 instance in the Amazon EC2 tag"
+                    ]
+                },
+                "type": "API Action"
+            }
+        ],
+        "template": {
+            "category": "amazon_ec2",
+            "id": "",
+            "name": ""
+        }
+    },
+    "rule_template": {},
+    "tags": [
+        "AmazonEC2",
+        "Popular"
+    ],
+    "trigger": {
+        "description": "Whenever any instance under EC2 tag is idle for 2 hours",
+        "type": "Alarm"
+    }
+}

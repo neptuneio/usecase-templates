@@ -1,58 +1,177 @@
 {
-    "ActionGroup": {
-        "Actions": [
+    "action_group": {
+        "action": [
             {
-                "ActionTarget": "HEROKU",
-                "ActionTargetType": null,
-                "ActionType": "CLI_ACTION",
-                "Active": true,
-                "Data": {
-                    "AlarmNames": [],
-                    "AwsRegion": null,
-                    "CloudAPIAction": null,
-                    "Hostname": [],
-                    "LogProvider": null,
-                    "MetricDefinitions": [],
-                    "MetricNames": [],
-                    "MetricSource": null,
-                    "PingSource": null,
-                    "Retries": 0,
-                    "RuleRunbook": {
-                        "Category": "GITHUB",
-                        "Content": null,
-                        "RunbookId": null,
-                        "RunbookName": "runbooks/cli/heroku/Heroku_scale_up_dynos.sh",
-                        "Timeout": 2,
-                        "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/7f248abb5b5cb3da5a92ca576c216eb33df8d79b",
-                        "Visibility": "PUBLIC"
-                    },
-                    "ServiceCheckAction": null,
-                    "Tags": []
-                }
-            }
-        ]
-    },
-    "CapDuration": 30,
-    "CapLimit": 3,
-    "CompositeTrigger": {
-        "Data": {
-            "Regex": null
-        },
-        "TriggerSource": "LIBRATO",
-        "CompositeTriggerType": "EXISTING_ALARM",
-        "Triggers": [
-            {
-                "Data": {
-                    "AlarmName": null,
-                    "AwsRegion": null,
-                    "Port": null,
-                    "SearchString": null,
-                    "Url": null
+                "data": {
+                    "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_scale_up_dynos.sh",
+                    "steps": [
+                        "Scale up heroku worker dynos",
+                        "Don't scale above a certain upper limit"
+                    ]
                 },
-                "TriggerSource": "LIBRATO",
-                "TriggerType": "EXISTING_ALARM"
+                "type": "CLI Action"
             }
-        ]
+        ],
+        "template": {
+            "category": "heroku",
+            "id": "",
+            "name": "scale_up_dynos_whenever_dyno_load_is_high.json"
+        }
     },
-    "RuleName": "Scale up dynos whever average dyno load is high"
+    "rule_template": {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_scale_up_dynos.sh",
+                        "steps": [
+                            "Scale up heroku worker dynos",
+                            "Don't scale above a certain upper limit"
+                        ]
+                    },
+                    "type": "CLI Action"
+                }
+            ],
+            "template": {
+                "category": "heroku",
+                "id": "",
+                "name": "scale_up_dynos_whenever_dyno_load_is_high.json"
+            }
+        },
+        "rule_template": {
+            "action_group": {
+                "action": [
+                    {
+                        "data": {
+                            "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_scale_up_dynos.sh",
+                            "steps": [
+                                "Scale up heroku worker dynos",
+                                "Don't scale above a certain upper limit"
+                            ]
+                        },
+                        "type": "CLI Action"
+                    }
+                ],
+                "template": {
+                    "category": "heroku",
+                    "id": "",
+                    "name": "scale_up_dynos_whenever_dyno_load_is_high.json"
+                }
+            },
+            "rule_template": {
+                "action_group": {
+                    "action": [
+                        {
+                            "data": {
+                                "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_scale_up_dynos.sh",
+                                "steps": [
+                                    "Scale up heroku worker dynos",
+                                    "Don't scale above a certain upper limit"
+                                ]
+                            },
+                            "type": "CLI Action"
+                        }
+                    ],
+                    "template": {
+                        "category": "heroku",
+                        "id": "",
+                        "name": "scale_up_dynos_whenever_dyno_load_is_high.json"
+                    }
+                },
+                "rule_template": {
+                    "ActionGroup": {
+                        "Actions": [
+                            {
+                                "ActionTarget": "HEROKU",
+                                "ActionTargetType": null,
+                                "ActionType": "CLI_ACTION",
+                                "Active": true,
+                                "Data": {
+                                    "AlarmNames": [],
+                                    "AwsRegion": null,
+                                    "CloudAPIAction": null,
+                                    "Hostname": [],
+                                    "LogProvider": null,
+                                    "MetricDefinitions": [],
+                                    "MetricNames": [],
+                                    "MetricSource": null,
+                                    "PingSource": null,
+                                    "Retries": 0,
+                                    "RuleRunbook": {
+                                        "Category": "GITHUB",
+                                        "Content": null,
+                                        "RunbookId": null,
+                                        "RunbookName": "runbooks/cli/heroku/Heroku_scale_up_dynos.sh",
+                                        "Timeout": 2,
+                                        "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/7f248abb5b5cb3da5a92ca576c216eb33df8d79b",
+                                        "Visibility": "PUBLIC"
+                                    },
+                                    "ServiceCheckAction": null,
+                                    "Tags": []
+                                }
+                            }
+                        ]
+                    },
+                    "CapDuration": 30,
+                    "CapLimit": 3,
+                    "CompositeTrigger": {
+                        "CompositeTriggerType": "EXISTING_ALARM",
+                        "Data": {
+                            "Regex": null
+                        },
+                        "TriggerSource": "LIBRATO",
+                        "Triggers": [
+                            {
+                                "Data": {
+                                    "AlarmName": null,
+                                    "AwsRegion": null,
+                                    "Port": null,
+                                    "SearchString": null,
+                                    "Url": null
+                                },
+                                "TriggerSource": "LIBRATO",
+                                "TriggerType": "EXISTING_ALARM"
+                            }
+                        ]
+                    },
+                    "RuleName": "Scale up dynos whever average dyno load is high"
+                },
+                "tagline": "Scale up dynos whenever average dyno load is high",
+                "tags": [
+                    "Heroku",
+                    "Librato"
+                ],
+                "trigger": {
+                    "description": "When Librato alerts that average dyno load is high"
+                },
+                "video": "https://www.youtube.com/v/uiLZzclu15U"
+            },
+            "tagline": "Scale up dynos whenever average dyno load is high",
+            "tags": [
+                "Heroku",
+                "Librato"
+            ],
+            "trigger": {
+                "description": "When Librato alerts that average dyno load is high"
+            },
+            "video": "https://www.youtube.com/v/uiLZzclu15U"
+        },
+        "tagline": "Scale up dynos whenever average dyno load is high",
+        "tags": [
+            "Heroku",
+            "Librato"
+        ],
+        "trigger": {
+            "description": "When Librato alerts that average dyno load is high"
+        }
+    },
+    "tagline": "Scale up dynos whenever average dyno load is high",
+    "tags": [
+        "Heroku",
+        "Librato"
+    ],
+    "trigger": {
+        "description": "When Librato alerts that average dyno load is high"
+    },
+    "video": "https://www.youtube.com/v/uiLZzclu15U"
 }

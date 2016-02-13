@@ -1,0 +1,28 @@
+{
+    "action_group": {
+        "action": [
+            {
+                "data": {
+                    "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                    "steps": [
+                        "scale down read/write iops for that instance",
+                        "don't scale down below certain lower limit"
+                    ]
+                },
+                "type": "CLI Action"
+            }
+        ],
+        "template": {
+            "category": "amazon_rds",
+            "id": "",
+            "name": ""
+        }
+    },
+    "rule_template": {},
+    "tags": [
+        "AmazonRDS"
+    ],
+    "trigger": {
+        "description": "Whenever read/write IOPS is < 20% of provisioned capacity for an RDS DB Instance"
+    }
+}

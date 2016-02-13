@@ -1,58 +1,181 @@
 {
-    "ActionGroup": {
-        "Actions": [
+    "action_group": {
+        "action": [
             {
-                "ActionTarget": "HEROKU",
-                "ActionTargetType": null,
-                "ActionType": "CLI_ACTION",
-                "Active": true,
-                "Data": {
-                    "AlarmNames": [],
-                    "AwsRegion": null,
-                    "CloudAPIAction": null,
-                    "Hostname": [],
-                    "LogProvider": null,
-                    "MetricDefinitions": [],
-                    "MetricNames": [],
-                    "MetricSource": null,
-                    "PingSource": null,
-                    "Retries": 0,
-                    "RuleRunbook": {
-                        "Category": "GITHUB",
-                        "Content": null,
-                        "RunbookId": null,
-                        "RunbookName": "runbooks/cli/heroku/Heroku_restart_dyno.sh",
-                        "Timeout": 2,
-                        "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/00c4238e8bc2a48ccfb9e726217ba44839e8fc48",
-                        "Visibility": "PUBLIC"
-                    },
-                    "ServiceCheckAction": null,
-                    "Tags": []
-                }
-            }
-        ]
-    },
-    "CapDuration": 30,
-    "CapLimit": 3,
-    "CompositeTrigger": {
-        "Data": {
-            "Regex": null
-        },
-        "TriggerSource": null,
-        "CompositeTriggerType": "CRON",
-        "Triggers": [
-            {
-                "Data": {
-                    "AlarmName": null,
-                    "AwsRegion": null,
-                    "Port": null,
-                    "SearchString": null,
-                    "Url": null
+                "data": {
+                    "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_restart_dyno.sh",
+                    "steps": [
+                        "Restart heroku dyno"
+                    ]
                 },
-                "TriggerSource": null,
-                "TriggerType": "CRON_TRIGGER"
+                "type": "CLI Action"
             }
-        ]
+        ],
+        "template": {
+            "category": "heroku",
+            "id": "",
+            "name": "restart_heroku_dyno_when_it_throws_memory_error.json"
+        }
     },
-    "RuleName": "Restart heroku dyno when it throws memory quota exceeded errors"
+    "rule_template": {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_restart_dyno.sh",
+                        "steps": [
+                            "Restart heroku dyno"
+                        ]
+                    },
+                    "type": "CLI Action"
+                }
+            ],
+            "template": {
+                "category": "heroku",
+                "id": "",
+                "name": "restart_heroku_dyno_when_it_throws_memory_error.json"
+            }
+        },
+        "rule_template": {
+            "action_group": {
+                "action": [
+                    {
+                        "data": {
+                            "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_restart_dyno.sh",
+                            "steps": [
+                                "Restart heroku dyno"
+                            ]
+                        },
+                        "type": "CLI Action"
+                    }
+                ],
+                "template": {
+                    "category": "heroku",
+                    "id": "",
+                    "name": "restart_heroku_dyno_when_it_throws_memory_error.json"
+                }
+            },
+            "rule_template": {
+                "action_group": {
+                    "action": [
+                        {
+                            "data": {
+                                "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_restart_dyno.sh",
+                                "steps": [
+                                    "Restart heroku dyno"
+                                ]
+                            },
+                            "type": "CLI Action"
+                        }
+                    ],
+                    "template": {
+                        "category": "heroku",
+                        "id": "",
+                        "name": "restart_heroku_dyno_when_it_throws_memory_error.json"
+                    }
+                },
+                "rule_template": {
+                    "ActionGroup": {
+                        "Actions": [
+                            {
+                                "ActionTarget": "HEROKU",
+                                "ActionTargetType": null,
+                                "ActionType": "CLI_ACTION",
+                                "Active": true,
+                                "Data": {
+                                    "AlarmNames": [],
+                                    "AwsRegion": null,
+                                    "CloudAPIAction": null,
+                                    "Hostname": [],
+                                    "LogProvider": null,
+                                    "MetricDefinitions": [],
+                                    "MetricNames": [],
+                                    "MetricSource": null,
+                                    "PingSource": null,
+                                    "Retries": 0,
+                                    "RuleRunbook": {
+                                        "Category": "GITHUB",
+                                        "Content": null,
+                                        "RunbookId": null,
+                                        "RunbookName": "runbooks/cli/heroku/Heroku_restart_dyno.sh",
+                                        "Timeout": 2,
+                                        "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/00c4238e8bc2a48ccfb9e726217ba44839e8fc48",
+                                        "Visibility": "PUBLIC"
+                                    },
+                                    "ServiceCheckAction": null,
+                                    "Tags": []
+                                }
+                            }
+                        ]
+                    },
+                    "CapDuration": 30,
+                    "CapLimit": 3,
+                    "CompositeTrigger": {
+                        "CompositeTriggerType": "CRON",
+                        "Data": {
+                            "Regex": null
+                        },
+                        "TriggerSource": null,
+                        "Triggers": [
+                            {
+                                "Data": {
+                                    "AlarmName": null,
+                                    "AwsRegion": null,
+                                    "Port": null,
+                                    "SearchString": null,
+                                    "Url": null
+                                },
+                                "TriggerSource": null,
+                                "TriggerType": "CRON_TRIGGER"
+                            }
+                        ]
+                    },
+                    "RuleName": "Restart heroku dyno when it throws memory quota exceeded errors"
+                },
+                "tagline": "Restart only one Heroku Dyno when it reports memory exceeded error",
+                "tags": [
+                    "Heroku",
+                    "Popular",
+                    "Papertrail",
+                    "Logentries"
+                ],
+                "trigger": {
+                    "description": "Whenever heroku dyno reports memory quota exceeded error (R14 error), restart only that particular dyno instead of restarting entire app."
+                },
+                "video": "https://www.youtube.com/v/7Td84osPKS4"
+            },
+            "tagline": "Restart only one Heroku Dyno when it reports memory exceeded error",
+            "tags": [
+                "Heroku",
+                "Popular",
+                "Papertrail",
+                "Logentries"
+            ],
+            "trigger": {
+                "description": "Whenever heroku dyno reports memory quota exceeded error (R14 error), restart only that particular dyno instead of restarting entire app."
+            },
+            "video": "https://www.youtube.com/v/7Td84osPKS4"
+        },
+        "tagline": "Restart only one Heroku Dyno when it reports memory exceeded error",
+        "tags": [
+            "Heroku",
+            "Popular",
+            "Papertrail",
+            "Logentries"
+        ],
+        "trigger": {
+            "description": "Whenever heroku dyno reports memory quota exceeded error (R14 error), restart only that particular dyno instead of restarting entire app."
+        }
+    },
+    "tagline": "Restart only one Heroku Dyno when it reports memory exceeded error",
+    "tags": [
+        "Heroku",
+        "Popular",
+        "Papertrail",
+        "Logentries"
+    ],
+    "trigger": {
+        "description": "Whenever heroku dyno reports memory quota exceeded error (R14 error), restart only that particular dyno instead of restarting entire app."
+    },
+    "video": "https://www.youtube.com/v/7Td84osPKS4"
 }

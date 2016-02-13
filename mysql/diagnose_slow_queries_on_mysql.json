@@ -1,0 +1,37 @@
+{
+    "action_group": {
+        "action": [
+            {
+                "data": {
+                    "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                    "steps": [
+                        "list all active slow queries running against the db"
+                    ]
+                },
+                "type": "Execute Diagnostics Runbook"
+            },
+            {
+                "data": {
+                    "steps": [
+                        "capture the trend #slow queries for the the last few hours",
+                        "capture the trend of #connections for the last few hours"
+                    ]
+                },
+                "type": "Graph Snapshot"
+            }
+        ],
+        "template": {
+            "category": "mysql",
+            "id": "",
+            "name": ""
+        }
+    },
+    "rule_template": {},
+    "tags": [
+        "MySQL",
+        "Database"
+    ],
+    "trigger": {
+        "description": "Whenever #slow queries is too high for MySQL db"
+    }
+}
