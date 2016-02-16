@@ -1,47 +1,59 @@
 {
+  "rule_template": {
     "ActionGroup": {
-        "Actions": [
-            {
-                "ActionTarget": null,
-                "ActionTargetType": "SPECIFIC_HOST",
-                "ActionType": "EXECUTE_SCRIPT",
-                "Data": {
-                    "AlarmNames": [],
-                    "AwsRegion": null,
-                    "CloudAPIAction": null,
-                    "Hostname": [],
-                    "MetricDefinitions": [],
-                    "MetricNames": [],
-                    "MetricSource": null,
-                    "Retries": 0,
-                    "RuleRunbook": null,
-                    "Tags": []
-                }
-            }
-        ]
+      "Actions": [
+        {
+          "ActionTarget": null,
+          "ActionTargetType": "SPECIFIC_HOST",
+          "ActionType": "EXECUTE_SCRIPT",
+          "Data": {
+            "AlarmNames": [
+              
+            ],
+            "AwsRegion": null,
+            "CloudAPIAction": null,
+            "Hostname": [
+              
+            ],
+            "MetricDefinitions": [
+              
+            ],
+            "MetricNames": [
+              
+            ],
+            "MetricSource": null,
+            "Retries": 0,
+            "RuleRunbook": null,
+            "Tags": [
+              
+            ]
+          }
+        }
+      ]
     },
     "CapDuration": 30,
     "CapLimit": 3,
     "CompositeTrigger": {
-        "Data": {
-            "Regex": ""
-        },
-        "TriggerSource": "CRON",
-        "CompositeTriggerType": "CRON",
-        "Triggers": [
-            {
-                "Data": {
-                    "AlarmName": "",
-                    "AwsRegion": "",
-                    "CronExpression": "0 * * * *",
-                    "Port": null,
-                    "SearchString": null,
-                    "Url": null
-                },
-                "TriggerSource": "CRON",
-                "TriggerType": "CRON_TRIGGER"
-            }
-        ]
+      "Data": {
+        "Regex": ""
+      },
+      "TriggerSource": "CRON",
+      "CompositeTriggerType": "CRON",
+      "Triggers": [
+        {
+          "Data": {
+            "AlarmName": "",
+            "AwsRegion": "",
+            "CronExpression": "0 * * * *",
+            "Port": null,
+            "SearchString": null,
+            "Url": null
+          },
+          "TriggerSource": "CRON",
+          "TriggerType": "CRON_TRIGGER"
+        }
+      ]
     },
     "RuleName": "My cron rule"
+  }
 }
