@@ -1,58 +1,70 @@
 {
+  "rule_template": {
     "ActionGroup": {
-        "Actions": [
-            {
-                "ActionTarget": "HEROKU",
-                "ActionTargetType": null,
-                "ActionType": "CLI_ACTION",
-                "Active": true,
-                "Data": {
-                    "AlarmNames": [],
-                    "AwsRegion": null,
-                    "CloudAPIAction": null,
-                    "Hostname": [],
-                    "LogProvider": null,
-                    "MetricDefinitions": [],
-                    "MetricNames": [],
-                    "MetricSource": null,
-                    "PingSource": null,
-                    "Retries": 0,
-                    "RuleRunbook": {
-                        "Category": "GITHUB",
-                        "Content": null,
-                        "RunbookId": null,
-                        "RunbookName": "runbooks/cli/heroku/Heroku_restart_app.sh",
-                        "Timeout": 2,
-                        "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/7ffebd23cb0ed9321aa2e9f03fde54e5cb8d79bf",
-                        "Visibility": "PUBLIC"
-                    },
-                    "ServiceCheckAction": null,
-                    "Tags": []
-                }
-            }
-        ]
+      "Actions": [
+        {
+          "ActionTarget": "HEROKU",
+          "ActionTargetType": null,
+          "ActionType": "CLI_ACTION",
+          "Active": true,
+          "Data": {
+            "AlarmNames": [
+              
+            ],
+            "AwsRegion": null,
+            "CloudAPIAction": null,
+            "Hostname": [
+              
+            ],
+            "LogProvider": null,
+            "MetricDefinitions": [
+              
+            ],
+            "MetricNames": [
+              
+            ],
+            "MetricSource": null,
+            "PingSource": null,
+            "Retries": 0,
+            "RuleRunbook": {
+              "Category": "GITHUB",
+              "Content": null,
+              "RunbookId": null,
+              "RunbookName": "runbooks/cli/heroku/Heroku_restart_app.sh",
+              "Timeout": 2,
+              "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/7ffebd23cb0ed9321aa2e9f03fde54e5cb8d79bf",
+              "Visibility": "PUBLIC"
+            },
+            "ServiceCheckAction": null,
+            "Tags": [
+              
+            ]
+          }
+        }
+      ]
     },
     "CapDuration": 30,
     "CapLimit": 3,
     "CompositeTrigger": {
-        "Data": {
-            "Regex": null
-        },
-        "TriggerSource": null,
-        "CompositeTriggerType": "CRON",
-        "Triggers": [
-            {
-                "Data": {
-                    "AlarmName": null,
-                    "AwsRegion": null,
-                    "Port": null,
-                    "SearchString": null,
-                    "Url": null
-                },
-                "TriggerSource": null,
-                "TriggerType": "CRON_TRIGGER"
-            }
-        ]
+      "Data": {
+        "Regex": null
+      },
+      "TriggerSource": null,
+      "CompositeTriggerType": "CRON",
+      "Triggers": [
+        {
+          "Data": {
+            "AlarmName": null,
+            "AwsRegion": null,
+            "Port": null,
+            "SearchString": null,
+            "Url": null
+          },
+          "TriggerSource": null,
+          "TriggerType": "CRON_TRIGGER"
+        }
+      ]
     },
     "RuleName": "Restart heroku app when it throws memory or app crashed errors"
+  }
 }

@@ -1,53 +1,65 @@
 {
+  "rule_template": {
     "RuleName": null,
     "CapLimit": 3,
     "CapDuration": 30,
     "CompositeTrigger": {
-        "CompositeTriggerType": "AVAILABILITY_CHECK",
-        "TriggerSource": "AVAILABILITY_CHECK",
-        "Data": {
-            "Regex": null
-        },
-        "Triggers": [
-            {
-                "TriggerSource": "AVAILABILITY_CHECK",
-                "TriggerType": "AVAILABILITY_TRIGGER",
-                "Data": {
-                    "AlarmName": null,
-                    "AwsRegion": null,
-                    "Url" : null,
-                    "Port" : 443,
-                    "SearchString" : null
-                }
-            }
-        ]
+      "CompositeTriggerType": "AVAILABILITY_CHECK",
+      "TriggerSource": "AVAILABILITY_CHECK",
+      "Data": {
+        "Regex": null
+      },
+      "Triggers": [
+        {
+          "TriggerSource": "AVAILABILITY_CHECK",
+          "TriggerType": "AVAILABILITY_TRIGGER",
+          "Data": {
+            "AlarmName": null,
+            "AwsRegion": null,
+            "Url": null,
+            "Port": 443,
+            "SearchString": null
+          }
+        }
+      ]
     },
     "ActionGroup": {
-        "Actions": [
-            {
-                "ActionTarget": null,
-                "ActionType": "EXECUTE_SCRIPT",
-                "ActionTargetType": "SPECIFIC_HOST",
-                "Data": {
-                    "Hostname": [],
-                    "Retries": 0,
-                    "AwsRegion": null,
-                    "AlarmNames": [],
-                    "Tags": [],
-                    "MetricNames": [],
-                    "MetricSource": null,
-                    "MetricDefinitions" : [],
-                    "CloudAPIAction" : null,
-                    "RuleRunbook": {
-                        "RunbookId" : null,
-                        "RunbookName" : "src/add_publishing_script_to_crontab.sh",
-                        "Category" : "GITHUB",
-                        "Url" : "https://api.github.com/repos/neptuneio/aws-monitoring/git/blobs/924de953ef7624eefdf08d4f609c88912229277e",
-                        "Visibility" : "PUBLIC",
-                        "Content" : null
-                    }
-                }
+      "Actions": [
+        {
+          "ActionTarget": null,
+          "ActionType": "EXECUTE_SCRIPT",
+          "ActionTargetType": "SPECIFIC_HOST",
+          "Data": {
+            "Hostname": [
+              
+            ],
+            "Retries": 0,
+            "AwsRegion": null,
+            "AlarmNames": [
+              
+            ],
+            "Tags": [
+              
+            ],
+            "MetricNames": [
+              
+            ],
+            "MetricSource": null,
+            "MetricDefinitions": [
+              
+            ],
+            "CloudAPIAction": null,
+            "RuleRunbook": {
+              "RunbookId": null,
+              "RunbookName": "src/add_publishing_script_to_crontab.sh",
+              "Category": "GITHUB",
+              "Url": "https://api.github.com/repos/neptuneio/aws-monitoring/git/blobs/924de953ef7624eefdf08d4f609c88912229277e",
+              "Visibility": "PUBLIC",
+              "Content": null
             }
-        ]
+          }
+        }
+      ]
     }
+  }
 }
