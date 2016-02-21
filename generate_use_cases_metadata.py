@@ -40,6 +40,8 @@ for f in files:
             usecase['action_group'] = data['action_group']
             template_details = {'id': "", 'category': category, 'name': name}
             usecase['action_group']['template'] = template_details
+        if 'video' in data:
+            usecase['video'] = data['video']
         final_json.append(usecase)
 
 # Remove the existing use-cases.json file
