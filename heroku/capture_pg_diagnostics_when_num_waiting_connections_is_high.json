@@ -9,7 +9,7 @@
     "trigger": {
         "description": "Whenever postgres #waiting_connections is too high"
     },
-    "video": "https://www.youtube.com/v/OrXZXzalQRk"
+    "video": "https://www.youtube.com/v/OrXZXzalQRk",
     "action_group": {
         "action": [
             {

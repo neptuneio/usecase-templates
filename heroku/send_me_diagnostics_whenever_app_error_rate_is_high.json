@@ -20,7 +20,7 @@
                         "Check # of dynos running",
                         "Collect last 200 lines of app logs and grep for exceptions",
                         "Look for recent releases",
-                        "Restart app or roll back if necessary",
+                        "Restart app or roll back if necessary"
                     ]
                 },
                 "type": "CLI Action"

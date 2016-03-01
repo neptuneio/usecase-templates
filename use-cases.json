@@ -4,1105 +4,6 @@
             "action": [
                 {
                     "data": {
-                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
-                        "steps": [
-                            "take backup of the dynamodb table and store it in S3"
-                        ]
-                    },
-                    "type": "CLI Action"
-                }
-            ],
-            "template": {
-                "category": "amazon_dynamodb",
-                "id": "",
-                "name": "backup_dynamodb_table_every_night.json"
-            }
-        },
-        "tags": [
-            "AmazonDynamoDB"
-        ],
-        "trigger": {
-            "description": "Everyday at midnight",
-            "tags": [],
-            "type": "Cron"
-        }
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "steps": [
-                            "capture how throttled requests are trending over last 3 hrs",
-                            "capture read and write throttle events graph for that table for last 3 hrs"
-                        ]
-                    },
-                    "type": "Graph Snapshot"
-                }
-            ],
-            "template": {
-                "category": "amazon_dynamodb",
-                "id": "",
-                "name": "get_diagnostics_around_dynamodb_throttled_requests.json"
-            }
-        },
-        "tags": [
-            "AmazonDynamoDB"
-        ],
-        "trigger": {
-            "description": "Whenever #throttled requests for a DynamoDB table is > threshold"
-        }
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "steps": [
-                            "scale down read/write iops by 2x",
-                            "don't scale up below a certain lower limit"
-                        ]
-                    },
-                    "type": "API Action"
-                }
-            ],
-            "template": {
-                "category": "amazon_dynamodb",
-                "id": "",
-                "name": "scale_down_dynamodb_throughput_when_consumed_capacity_is_less.json"
-            }
-        },
-        "tags": [
-            "AmazonDynamoDB",
-            "Popular"
-        ],
-        "trigger": {
-            "description": "Whenever consumed read/write capacity < 20% of provisioned capacity for a DynamoDB table"
-        }
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "steps": [
-                            "scale up read/write iops by 2x",
-                            "don't scale up above a certain upper limit"
-                        ]
-                    },
-                    "type": "API Action"
-                }
-            ],
-            "template": {
-                "category": "amazon_dynamodb",
-                "id": "",
-                "name": "scale_up_dynamodb_throughput_when_consumed_capacity_is_more.json"
-            }
-        },
-        "tags": [
-            "AmazonDynamoDB",
-            "Popular"
-        ],
-        "trigger": {
-            "description": "Whenever consumed read/write capacity > 80% of provisioned capacity for a DynamoDB table"
-        }
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
-                        "steps": [
-                            "capture the EBS volume snapshot and store it in S3 bucket"
-                        ]
-                    },
-                    "type": "CLI Action"
-                }
-            ],
-            "template": {
-                "category": "amazon_ebs",
-                "id": "",
-                "name": "backup_ebs_volume_snapshot_to_s3_every_night.json"
-            }
-        },
-        "tags": [
-            "EBS"
-        ],
-        "trigger": {
-            "description": "Everyday at midnight"
-        }
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "steps": [
-                            "notify me via email, and send me runbook to resolve the alert manually"
-                        ]
-                    },
-                    "type": "Email Runbook"
-                },
-                {
-                    "data": {
-                        "steps": [
-                            "capture the trend of avg read latency for the last few hours"
-                        ]
-                    },
-                    "type": "Graph Snapshot"
-                }
-            ],
-            "template": {
-                "category": "amazon_ebs",
-                "id": "",
-                "name": "diagnose_ebs_read_write_latency_issues.json"
-            }
-        },
-        "tags": [
-            "EBS"
-        ],
-        "trigger": {
-            "description": "Whenever avg read/write latency (ms/op) is > threshold for an EBS volume"
-        }
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
-                        "steps": [
-                            "scale down provisioned iops by 2x",
-                            "don't scale down beyond certain lower limit"
-                        ]
-                    },
-                    "type": "CLI Action"
-                },
-                {
-                    "data": {
-                        "steps": [
-                            "capture how consumed read/write iops/second are trending for last few hours"
-                        ]
-                    },
-                    "type": "Graph Snapshot"
-                }
-            ],
-            "template": {
-                "category": "amazon_ebs",
-                "id": "",
-                "name": "scale_down_provisioned_iops_for_ebs_when_throughput_is_less.json"
-            }
-        },
-        "tags": [
-            "EBS"
-        ],
-        "trigger": {
-            "description": "Whenever VolumeThroughputPercentage < 20% for an EBS volume"
-        }
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
-                        "steps": [
-                            "scale up provisioned iops by 2x",
-                            "don't scale up beyond certain upper limit"
-                        ]
-                    },
-                    "type": "CLI Action"
-                },
-                {
-                    "data": {
-                        "steps": [
-                            "capture how VolumeThroughputPercentage is trending for the last few hours"
-                        ]
-                    },
-                    "type": "Graph Snapshot"
-                }
-            ],
-            "template": {
-                "category": "amazon_ebs",
-                "id": "",
-                "name": "scale_up_provisioned_iops_for_ebs_when_throughput_is_more.json"
-            }
-        },
-        "tags": [
-            "EBS"
-        ],
-        "trigger": {
-            "description": "Whenever VolumeThroughputPercentage > 80% for an EBS volume"
-        }
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "steps": [
-                            "capture system.cpu.idle, system.cpu.system, system.cpu.iowait, system.cpu.user, aws.ec2.cpuutilization graphs",
-                            "capture system load metrics"
-                        ]
-                    },
-                    "type": "Graph Snapshot"
-                },
-                {
-                    "data": {
-                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
-                        "steps": [
-                            "capture top-10 cpu hogs"
-                        ]
-                    },
-                    "type": "Execute Diagnostics Runbook"
-                }
-            ],
-            "template": {
-                "category": "amazon_ec2",
-                "id": "",
-                "name": "datadog_high_cpu_alert.json"
-            }
-        },
-        "tags": [
-            "AmazonEC2",
-            "Popular"
-        ],
-        "trigger": {
-            "description": "Whenever cpu is high (DataDog Alert)"
-        }
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
-                        "steps": [
-                            "send me tail of application logfile (last 1000 lines)",
-                            "grep for specific exception in logs",
-                            "optionally restart process"
-                        ]
-                    },
-                    "type": "Execute Diagnostics Runbook"
-                },
-                {
-                    "data": {
-                        "steps": [
-                            "capture process liveness graph for last 3 hrs",
-                            "capture impact on application error rate graph for last 3 hrs"
-                        ]
-                    },
-                    "type": "Graph Snapshot"
-                }
-            ],
-            "template": {
-                "category": "amazon_ec2",
-                "id": "",
-                "name": "diagnose_process_when_it_is_hung.json"
-            }
-        },
-        "tags": [
-            "AmazonEC2",
-            "Popular"
-        ],
-        "trigger": {
-            "description": "Whenever a process is hung"
-        }
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
-                        "steps": [
-                            "log disk usage summary, and log top-10 disk-hog directories",
-                            "cleanup /tmp directory",
-                            "archive /app/logs to Amazon S3 bucket"
-                        ]
-                    },
-                    "type": "Execute Auto-fix-it Runbook"
-                }
-            ],
-            "template": {
-                "category": "amazon_ec2",
-                "id": "",
-                "name": "run_disk_cleanup_runbook_when_disk_is_full.json"
-            }
-        },
-        "tags": [
-            "AmazonEC2"
-        ],
-        "trigger": {
-            "description": "Whenever disk is 95% full"
-        }
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
-                        "steps": [
-                            "shutdown all the ec2 instances in given Amazon EC2 tag"
-                        ]
-                    },
-                    "type": "CLI Action"
-                }
-            ],
-            "template": {
-                "category": "amazon_ec2",
-                "id": "",
-                "name": "shut_down_all_ec2_instances_in_a_tag_on_schedule.json"
-            }
-        },
-        "tags": [
-            "AmazonEC2",
-            "Popular"
-        ],
-        "trigger": {
-            "description": "Everyday at 6pm",
-            "type": "Cron"
-        }
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "steps": [
-                            "shutdown the idle ec2 instance in the Amazon EC2 tag"
-                        ]
-                    },
-                    "type": "API Action"
-                }
-            ],
-            "template": {
-                "category": "amazon_ec2",
-                "id": "",
-                "name": "shut_down_idle_ec2_instance.json"
-            }
-        },
-        "tags": [
-            "AmazonEC2",
-            "Popular"
-        ],
-        "trigger": {
-            "description": "Whenever any instance under EC2 tag is idle for 2 hours",
-            "type": "Alarm"
-        }
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
-                        "steps": [
-                            "capture cpu, mem, request_counts, health_check_status for all the nodes under the ELB"
-                        ]
-                    },
-                    "type": "Execute Diagnostics Runbook"
-                },
-                {
-                    "data": {
-                        "steps": [
-                            "capture the trend of http_500 errors generated by ELB only (not from registered instances)"
-                        ]
-                    },
-                    "type": "Graph Snapshot"
-                }
-            ],
-            "template": {
-                "category": "amazon_elb",
-                "id": "",
-                "name": "diagnose_5xx_backend_errors.json"
-            }
-        },
-        "tags": [
-            "ELB"
-        ],
-        "trigger": {
-            "description": "Whenever HTTPCode_Backend_5XX is > threshold (HTTP response codes generated by registered instances only)"
-        }
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "steps": [
-                            "notify me via email, and send me runbook to resolve the alert manually"
-                        ]
-                    },
-                    "type": "Email Runbook"
-                },
-                {
-                    "data": {
-                        "steps": [
-                            "capture the trend of http_500 errors generated by ELB only (not from registered instances)",
-                            "capture the CPUUtilization of ELB"
-                        ]
-                    },
-                    "type": "Graph Snapshot"
-                }
-            ],
-            "template": {
-                "category": "amazon_elb",
-                "id": "",
-                "name": "diagnose_5xx_elb_errors.json"
-            }
-        },
-        "tags": [
-            "ELB"
-        ],
-        "trigger": {
-            "description": "Whenever HTTPCode_ELB_5XX is > threshold (ELB errors only, not from registered instances)"
-        }
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
-                        "steps": [
-                            "capture cpu, mem, request_counts, health_check_status for all the nodes under the ELB"
-                        ]
-                    },
-                    "type": "Execute Diagnostics Runbook"
-                }
-            ],
-            "template": {
-                "category": "amazon_elb",
-                "id": "",
-                "name": "handle_elb_spill_over_count.json"
-            }
-        },
-        "tags": [
-            "ELB"
-        ],
-        "trigger": {
-            "description": "Whenever ELB spill_over_count is > threshold"
-        }
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "steps": [
-                            "notify me via email and send me steps to resolve manually"
-                        ]
-                    },
-                    "type": "Email Runbook"
-                },
-                {
-                    "data": {
-                        "steps": [
-                            "capture the trend of ELB_request_count and send graph by email"
-                        ]
-                    },
-                    "type": "Graph Snapshot"
-                }
-            ],
-            "template": {
-                "category": "amazon_elb",
-                "id": "",
-                "name": "handle_high_throughput_on_elb.json"
-            }
-        },
-        "tags": [
-            "ELB"
-        ],
-        "trigger": {
-            "description": "Whenever ELB request_count is > threshold"
-        }
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
-                        "steps": [
-                            "get stats about db connection pooling"
-                        ]
-                    },
-                    "type": "Email Runbook"
-                },
-                {
-                    "data": {
-                        "steps": [
-                            "send me the trend of ConnectionCount graph over the last few hours",
-                            "send me the trend of read/write latency over the last few hours",
-                            "send me the trend of consumed read/write iops used over the last few hours"
-                        ]
-                    },
-                    "type": "Graph Snapshot"
-                }
-            ],
-            "template": {
-                "category": "amazon_rds",
-                "id": "",
-                "name": "diagnose_rds_issues_when_connection_count_is_high.json"
-            }
-        },
-        "tags": [
-            "AmazonRDS"
-        ],
-        "trigger": {
-            "description": "Whenever DBConnectionCount is > threshold for an RDS DB Instance"
-        }
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
-                        "steps": [
-                            "notify me via email",
-                            "send me steps to reduce RDS instance size or storage size manually"
-                        ]
-                    },
-                    "type": "Email Runbook"
-                },
-                {
-                    "data": {
-                        "steps": [
-                            "send me the trend of FreeableSpace graph over the last few hours"
-                        ]
-                    },
-                    "type": "Graph Snapshot"
-                }
-            ],
-            "template": {
-                "category": "amazon_rds",
-                "id": "",
-                "name": "handle_high_free_disk_space_issue_on_rds.json"
-            }
-        },
-        "tags": [
-            "AmazonRDS"
-        ],
-        "trigger": {
-            "description": "Whenever FreeableSpace is < threshold for an RDS DB Instance"
-        }
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
-                        "steps": [
-                            "scale up storage space",
-                            "don't scale up above certain upper limit"
-                        ]
-                    },
-                    "type": "CLI Action"
-                }
-            ],
-            "template": {
-                "category": "amazon_rds",
-                "id": "",
-                "name": "handle_low_disk_space_issue_on_rds.json"
-            }
-        },
-        "tags": [
-            "AmazonRDS"
-        ],
-        "trigger": {
-            "description": "Whenever FreeableSpace is > threshold for an RDS DB Instance"
-        }
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
-                        "steps": [
-                            "monitor if both swap_usage and freeablememory are both shooting up at the same time",
-                            "consider scaling compute: beef up instance type or consider having read replicas"
-                        ]
-                    },
-                    "type": "Email Runbook"
-                },
-                {
-                    "data": {
-                        "steps": [
-                            "send me the trend of swap usage graph over the last few hours",
-                            "send me the trend of connection count graph over the last few hours",
-                            "send me the trend of read/write latency over the last few hours",
-                            "send me the trend of consumed read/write iops used over the last few hours"
-                        ]
-                    },
-                    "type": "Graph Snapshot"
-                }
-            ],
-            "template": {
-                "category": "amazon_rds",
-                "id": "",
-                "name": "handle_memory_issues_on_rds.json"
-            }
-        },
-        "tags": [
-            "AmazonRDS"
-        ],
-        "trigger": {
-            "description": "Whenever FreeableMemory is > threshold for an RDS DB Instance"
-        }
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
-                        "steps": [
-                            "scale down read/write iops for that instance",
-                            "don't scale down below certain lower limit"
-                        ]
-                    },
-                    "type": "CLI Action"
-                }
-            ],
-            "template": {
-                "category": "amazon_rds",
-                "id": "",
-                "name": "scale_down_iops_for_low_usage_on_rds.json"
-            }
-        },
-        "tags": [
-            "AmazonRDS"
-        ],
-        "trigger": {
-            "description": "Whenever read/write IOPS is < 20% of provisioned capacity for an RDS DB Instance"
-        }
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
-                        "steps": [
-                            "add provisioned iops if both queue_depth and write_latency are shooting up"
-                        ]
-                    },
-                    "type": "Email Runbook"
-                },
-                {
-                    "data": {
-                        "steps": [
-                            "send me the trend of write latency over the last few hours",
-                            "send me the trend of QueueDepth graph over the last few hours"
-                        ]
-                    },
-                    "type": "Graph Snapshot"
-                }
-            ],
-            "template": {
-                "category": "amazon_rds",
-                "id": "",
-                "name": "scale_up_iops_for_high_latency_on_rds.json"
-            }
-        },
-        "tags": [
-            "AmazonRDS"
-        ],
-        "trigger": {
-            "description": "Whenever write latency > threshold for an RDS DB Instance"
-        }
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
-                        "steps": [
-                            "scale up read/write iops for that instance",
-                            "don't scale up above certain lower limit"
-                        ]
-                    },
-                    "type": "CLI Action"
-                }
-            ],
-            "template": {
-                "category": "amazon_rds",
-                "id": "",
-                "name": "scale_up_iops_for_high_throughput_on_rds.json"
-            }
-        },
-        "tags": [
-            "AmazonRDS"
-        ],
-        "trigger": {
-            "description": "Whenever read/write IOPS is > 80% of provisioned capacity for an RDS DB Instance"
-        }
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
-                        "steps": [
-                            "find out the top-10 CPU hogs",
-                            "consider beefing up EC2 instance or increase the #ec2 instances in the cluster"
-                        ]
-                    },
-                    "type": "Email Runbook"
-                }
-            ],
-            "template": {
-                "category": "amazon_redshift",
-                "id": "",
-                "name": "handle_high_cpu_utilization_issue_for_redshift.json"
-            }
-        },
-        "tags": [
-            "AmazonRedShift"
-        ],
-        "trigger": {
-            "description": "Whenever aggregate CPUUtilization is > threshold for a Redshift cluster"
-        }
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "steps": [
-                            "capture the trend of #database connections over the last few hours"
-                        ]
-                    },
-                    "type": "Graph Snapshot"
-                }
-            ],
-            "template": {
-                "category": "amazon_redshift",
-                "id": "",
-                "name": "handle_high_database_connections_on_redshift.json"
-            }
-        },
-        "tags": [
-            "AmazonRedShift"
-        ],
-        "trigger": {
-            "description": "Whenever #DataBaseConnections is > threshold for a Redshift cluster"
-        }
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
-                        "steps": [
-                            "find out the top-10 disk hogs",
-                            "execute disk cleanup script"
-                        ]
-                    },
-                    "type": "Execute Auto-fix-it Runbook"
-                }
-            ],
-            "template": {
-                "category": "amazon_redshift",
-                "id": "",
-                "name": "handle_high_disk_usage_issue_on_redshift.json"
-            }
-        },
-        "tags": [
-            "AmazonRedShift"
-        ],
-        "trigger": {
-            "description": "Whenever aggregate PercentDiskSpaceUsed is > threshold for a Redshift cluster"
-        }
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
-                        "steps": [
-                            "find out the top-10 CPU hogs",
-                            "consider beefing up EC2 instance or increase the #ec2 instances in the cluster"
-                        ]
-                    },
-                    "type": "Email Runbook"
-                },
-                {
-                    "data": {
-                        "steps": [
-                            "send me health status graph for the last few hours",
-                            "send me read/write iops trends for the last few hours",
-                            "send me #database connections for the last few hours",
-                            "send me network receive and transmit throughput trends for the last few hours"
-                        ]
-                    },
-                    "type": "Graph Snapshot"
-                }
-            ],
-            "template": {
-                "category": "amazon_redshift",
-                "id": "",
-                "name": "handle_unhealthy_status_of_redshift_cluster.json"
-            }
-        },
-        "tags": [
-            "AmazonRedShift"
-        ],
-        "trigger": {
-            "description": "Whenever HealthStatus is UNHEALTHY for a Redshift cluster"
-        }
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
-                        "steps": [
-                            "collect tail of log file (last 500 lines)",
-                            "restart apache"
-                        ]
-                    },
-                    "type": "Execute Auto-fix-it Runbook"
-                }
-            ],
-            "template": {
-                "category": "apache_nginx",
-                "id": "",
-                "name": "restart_apache_when_it_crashed.json"
-            }
-        },
-        "tags": [
-            "ApacheNginx"
-        ],
-        "trigger": {
-            "description": "Whenever apache has crashed"
-        }
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
-                        "steps": [
-                            "collect tail of log file (last 500 lines)",
-                            "restart nginx"
-                        ]
-                    },
-                    "type": "Execute Auto-fix-it Runbook"
-                }
-            ],
-            "template": {
-                "category": "apache_nginx",
-                "id": "",
-                "name": "restart_nginx_when_it_crashed.json"
-            }
-        },
-        "tags": [
-            "ApacheNginx"
-        ],
-        "trigger": {
-            "description": "Whenever nginx has crashed"
-        }
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Diagnose_postgres_issues.sh",
-                        "steps": [
-                            "Diagnose postgres issues"
-                        ]
-                    },
-                    "type": "CLI Action"
-                }
-            ],
-            "template": {
-                "category": "db",
-                "id": "",
-                "name": "diagnose_postgres_issues.json"
-            }
-        },
-        "tagline": "Diagnose Postgres slowness or issues",
-        "tags": [
-            "Heroku",
-            "Postgres",
-            "Database",
-            "Librato"
-        ],
-        "trigger": {
-            "description": "Whenever heroku postgres has slowness issues"
-        },
-        "video": "https://www.youtube.com/v/OrXZXzalQRk"
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
-                        "steps": [
-                            "archive logs and /tmp directories",
-                            "delete old logs"
-                        ]
-                    },
-                    "type": "Execute Auto-fix-it Runbook"
-                }
-            ],
-            "template": {
-                "category": "hadoop_hbase",
-                "id": "",
-                "name": "cleanup_old_logs_when_disk_usage_is_high_on_hbase.json"
-            }
-        },
-        "tags": [
-            "HadoopHbase"
-        ],
-        "trigger": {
-            "description": "Whenever percent_used_diskspace is > threshold on a hbase node"
-        }
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
-                        "steps": [
-                            "restart the node"
-                        ]
-                    },
-                    "type": "Execute Auto-fix-it Runbook"
-                },
-                {
-                    "data": {
-                        "steps": [
-                            "capture the trend of #blacklisted nodes in the cluster for the last few hours"
-                        ]
-                    },
-                    "type": "Graph Snapshot"
-                }
-            ],
-            "template": {
-                "category": "hadoop_hbase",
-                "id": "",
-                "name": "restart_the_blacklisted_node_in_hadoop.json"
-            }
-        },
-        "tags": [
-            "HadoopHbase"
-        ],
-        "trigger": {
-            "description": "Whenever a node is blacklisted in hadoop cluster"
-        }
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_pg_db_backup.sh",
-                        "steps": [
-                            "Take a backup of postgres db"
-                        ]
-                    },
-                    "type": "CLI Action"
-                }
-            ],
-            "template": {
-                "category": "heroku",
-                "id": "",
-                "name": "automatically_backup_postgres_database_every_week.json"
-            }
-        },
-        "tagline": "Automatically backup postgres database every week",
-        "tags": [
-            "Heroku",
-            "Database",
-            "Postgres"
-        ],
-        "trigger": {
-            "description": "Every week on sunday night"
-        },
-        "video": "https://www.youtube.com/v/ogeMtDEo0tk"
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/kill_and_restart_when_fatal_postgres_locking.sh",
-                        "steps": [
-                            "Kill and restart postgres"
-                        ]
-                    },
-                    "type": "CLI Action"
-                }
-            ],
-            "template": {
-                "category": "heroku",
-                "id": "",
-                "name": "kill_and_restart_when_fatal_postgres_locking.json"
-            }
-        },
-        "tagline": "Kill and restart postgres SQL when #waiting_connections is way too high",
-        "tags": [
-            "Heroku",
-            "Postgres",
-            "Database",
-            "Librato"
-        ],
-        "trigger": {
-            "description": "Whenever heroku postgres #waiting_connections is too high"
-        },
-        "video": "https://www.youtube.com/v/jARt8BjBl7Q"
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_restart_dyno_for_librato_alert.sh",
-                        "steps": [
-                            "Restart heroku dyno which is suffering memory issues",
-                            "Send me last 200 lines of heroku app log"
-                        ]
-                    },
-                    "type": "CLI Action"
-                }
-            ],
-            "template": {
-                "category": "heroku",
-                "id": "",
-                "name": "restart_heroku_dyno_on_librato_memory_error.json"
-            }
-        },
-        "tagline": "Restart Heroku dyno based on Librato memory alert",
-        "tags": [
-            "Heroku",
-            "Librato"
-        ],
-        "trigger": {
-            "description": "Whenever Librato alerts that the Dyno memory crossed the threshold, restart that Dyno"
-        }
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
                         "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_restart_dyno.sh",
                         "steps": [
                             "Restart heroku dyno"
@@ -1117,7 +18,8 @@
                 "name": "restart_heroku_dyno_when_it_throws_memory_error.json"
             }
         },
-        "tagline": "Restart only one Heroku Dyno when it reports memory exceeded error",
+        "index": 1,
+        "tagline": "Restart the specific heroku dyno when it has R14 memory exceeded error",
         "tags": [
             "Heroku",
             "Popular",
@@ -1125,7 +27,7 @@
             "Logentries"
         ],
         "trigger": {
-            "description": "Whenever heroku dyno reports memory quota exceeded error (R14 error), restart only that particular dyno instead of restarting entire app."
+            "description": "A particular heroku dyno reports R14 memory quota exceeded erorr"
         },
         "video": "https://www.youtube.com/v/7Td84osPKS4"
     },
@@ -1134,77 +36,65 @@
             "action": [
                 {
                     "data": {
-                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_scale_up_dynos.sh",
+                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_PG_diagnostics.sh",
                         "steps": [
-                            "Scale down heroku dynos",
-                            "Don't scale down below certain lower limit"
+                            "Get list of blocking connections and locks",
+                            "Get list of long running queries",
+                            "Get PG diagnostics report",
+                            "Optionally kill all connections and restart app"
                         ]
                     },
                     "type": "CLI Action"
-                },
-                {
-                    "data": {
-                        "steps": [
-                            "Get daily summary snapshot of NewRelic appdex",
-                            "Get daily summary snapshot of NewRelic latency graph"
-                        ]
-                    },
-                    "type": "Graph Snapshot"
                 }
             ],
             "template": {
                 "category": "heroku",
                 "id": "",
-                "name": "scale_down_dynos_at_the_end_of_the_day.json"
+                "name": "capture_pg_diagnostics_when_num_waiting_connections_is_high.json"
             }
         },
-        "tagline": "Scale down dynos at the end of the day",
+        "index": 2,
+        "tagline": "Diagnose Postgres slowness or issues",
         "tags": [
-            "Heroku"
+            "Heroku",
+            "Postgres",
+            "Database",
+            "Librato"
         ],
         "trigger": {
-            "description": "Every day at 8pm"
+            "description": "Whenever postgres #waiting_connections is too high"
         },
-        "video": "https://www.youtube.com/v/ogeMtDEo0tk"
+        "video": "https://www.youtube.com/v/OrXZXzalQRk"
     },
     {
         "action_group": {
             "action": [
                 {
                     "data": {
-                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_scale_down_dynos.sh",
+                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_restart_dyno_for_librato_alert.sh",
                         "steps": [
-                            "Scale down heroku dynos",
-                            "Don't scale down below certain lower limit"
+                            "Restart specific dyno with memory alert",
+                            "Send me last 200 lines of heroku app log"
                         ]
                     },
                     "type": "CLI Action"
-                },
-                {
-                    "data": {
-                        "steps": [
-                            "Capture snapshot of request throughput graph for the last 3 hours"
-                        ]
-                    },
-                    "type": "Graph Snapshot"
                 }
             ],
             "template": {
                 "category": "heroku",
                 "id": "",
-                "name": "scale_down_dynos_whenever_request_throughput_is_low.json"
+                "name": "restart_heroku_dyno_on_librato_memory_error.json"
             }
         },
-        "tagline": "Scale down dynos whenever request throughput is low",
+        "index": 3,
+        "tagline": "Restart heroku dyno based on Librato memory alert",
         "tags": [
             "Heroku",
-            "NewRelic",
             "Librato"
         ],
         "trigger": {
-            "description": "Whenever request throughput is less than a threshold"
-        },
-        "video": "https://www.youtube.com/v/eA42RFJhy2A"
+            "description": "Whenever memory used on a dyno exceeds a threshold"
+        }
     },
     {
         "action_group": {
@@ -1214,7 +104,7 @@
                         "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_scale_up_dynos.sh",
                         "steps": [
                             "Scale up heroku worker dynos",
-                            "Don't scale above a certain upper limit"
+                            "Don't scale up beyond an upper limit"
                         ]
                     },
                     "type": "CLI Action"
@@ -1226,6 +116,7 @@
                 "name": "scale_up_dynos_whenever_dyno_load_is_high.json"
             }
         },
+        "index": 4,
         "tagline": "Scale up dynos whenever average dyno load is high",
         "tags": [
             "Heroku",
@@ -1264,6 +155,7 @@
                 "name": "scale_up_dynos_whenever_sidekiq_queue_size_is_high.json"
             }
         },
+        "index": 5,
         "tagline": "Scale up dynos whenever sidekiq queue size is high",
         "tags": [
             "Heroku",
@@ -1280,13 +172,10 @@
             "action": [
                 {
                     "data": {
-                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_app_diagnostics.sh",
+                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_scale_down_dynos.sh",
                         "steps": [
-                            "Ping check app url",
-                            "Collect last 200 lines of app logs and grep for exceptions",
-                            "Look for recent releases",
-                            "Check # of dynos running, Scale up if necessary",
-                            "Rollback if necessary"
+                            "Scale down heroku dynos",
+                            "Don't scale down below a lower limit"
                         ]
                     },
                     "type": "CLI Action"
@@ -1294,7 +183,89 @@
                 {
                     "data": {
                         "steps": [
-                            "Capture snapshot of error rate graph for the last 3 hours"
+                            "Capture graph snapshot of request throughput for the last 3 hours"
+                        ]
+                    },
+                    "type": "Graph Snapshot"
+                }
+            ],
+            "template": {
+                "category": "heroku",
+                "id": "",
+                "name": "scale_down_dynos_whenever_request_throughput_is_low.json"
+            }
+        },
+        "index": 6,
+        "tagline": "Scale down dynos whenever request throughput is low",
+        "tags": [
+            "Heroku",
+            "NewRelic",
+            "Librato"
+        ],
+        "trigger": {
+            "description": "Whenever web request throughput is less than a threshold"
+        },
+        "video": "https://www.youtube.com/v/eA42RFJhy2A"
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_end_of_day_scale_down.sh",
+                        "steps": [
+                            "Scale down web and worker dynos"
+                        ]
+                    },
+                    "type": "CLI Action"
+                },
+                {
+                    "data": {
+                        "steps": [
+                            "Get daily summary snapshot of NewRelic appdex",
+                            "Get daily summary snapshot of NewRelic latency graph"
+                        ]
+                    },
+                    "type": "Graph Snapshot"
+                }
+            ],
+            "template": {
+                "category": "heroku",
+                "id": "",
+                "name": "scale_down_dynos_at_the_end_of_the_day.json"
+            }
+        },
+        "index": 7,
+        "tagline": "Scale down dynos at the end of the day",
+        "tags": [
+            "Heroku"
+        ],
+        "trigger": {
+            "description": "Every day at 8pm"
+        },
+        "video": "https://www.youtube.com/v/ogeMtDEo0tk"
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_app_diagnostics.sh",
+                        "steps": [
+                            "Ping check app url",
+                            "Check status of heroku",
+                            "Check # of dynos running",
+                            "Collect last 200 lines of app logs and grep for exceptions",
+                            "Look for recent releases",
+                            "Restart app or roll back if necessary"
+                        ]
+                    },
+                    "type": "CLI Action"
+                },
+                {
+                    "data": {
+                        "steps": [
+                            "Capture snapshot of throughput, latency and error rate graphs for the last 3 hours"
                         ]
                     },
                     "type": "Graph Snapshot"
@@ -1306,7 +277,8 @@
                 "name": "send_me_diagnostics_whenever_app_error_rate_is_high.json"
             }
         },
-        "tagline": "Send me diagnostics whenever app error rate is high",
+        "index": 8,
+        "tagline": "Send me full diagnostics whenever app error rate is high",
         "tags": [
             "Heroku",
             "NewRelic",
@@ -1323,8 +295,7 @@
                 {
                     "data": {
                         "steps": [
-                            "Get weekly summary snapshot of NewRelic appdex",
-                            "Get weekly summary snapshot of NewRelic latency graph"
+                            "Get weekly summary snapshot of NewRelic throughput, latency, error rate and apdex"
                         ]
                     },
                     "type": "Graph Snapshot"
@@ -1336,7 +307,8 @@
                 "name": "send_me_newrelic_apex_and_latency_dashboard_every_week.json"
             }
         },
-        "tagline": "Send me newrelic apdex and latency dashboard every week",
+        "index": 9,
+        "tagline": "Send me full performance report of app every week",
         "tags": [
             "Heroku",
             "NewRelic"
@@ -1345,6 +317,1048 @@
             "description": "Every week on sunday night"
         },
         "video": "https://www.youtube.com/v/p41vcCoY1JA"
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                        "steps": [
+                            "take backup of the dynamodb table and store it in S3"
+                        ]
+                    },
+                    "type": "CLI Action"
+                }
+            ],
+            "template": {
+                "category": "amazon_dynamodb",
+                "id": "",
+                "name": "backup_dynamodb_table_every_night.json"
+            }
+        },
+        "index": 999,
+        "tags": [
+            "AmazonDynamoDB"
+        ],
+        "trigger": {
+            "description": "Everyday at midnight",
+            "tags": [],
+            "type": "Cron"
+        }
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "steps": [
+                            "capture how throttled requests are trending over last 3 hrs",
+                            "capture read and write throttle events graph for that table for last 3 hrs"
+                        ]
+                    },
+                    "type": "Graph Snapshot"
+                }
+            ],
+            "template": {
+                "category": "amazon_dynamodb",
+                "id": "",
+                "name": "get_diagnostics_around_dynamodb_throttled_requests.json"
+            }
+        },
+        "index": 999,
+        "tags": [
+            "AmazonDynamoDB"
+        ],
+        "trigger": {
+            "description": "Whenever #throttled requests for a DynamoDB table is > threshold"
+        }
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "steps": [
+                            "scale down read/write iops by 2x",
+                            "don't scale up below a certain lower limit"
+                        ]
+                    },
+                    "type": "API Action"
+                }
+            ],
+            "template": {
+                "category": "amazon_dynamodb",
+                "id": "",
+                "name": "scale_down_dynamodb_throughput_when_consumed_capacity_is_less.json"
+            }
+        },
+        "index": 999,
+        "tags": [
+            "AmazonDynamoDB",
+            "Popular"
+        ],
+        "trigger": {
+            "description": "Whenever consumed read/write capacity < 20% of provisioned capacity for a DynamoDB table"
+        }
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "steps": [
+                            "scale up read/write iops by 2x",
+                            "don't scale up above a certain upper limit"
+                        ]
+                    },
+                    "type": "API Action"
+                }
+            ],
+            "template": {
+                "category": "amazon_dynamodb",
+                "id": "",
+                "name": "scale_up_dynamodb_throughput_when_consumed_capacity_is_more.json"
+            }
+        },
+        "index": 999,
+        "tags": [
+            "AmazonDynamoDB",
+            "Popular"
+        ],
+        "trigger": {
+            "description": "Whenever consumed read/write capacity > 80% of provisioned capacity for a DynamoDB table"
+        }
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                        "steps": [
+                            "capture the EBS volume snapshot and store it in S3 bucket"
+                        ]
+                    },
+                    "type": "CLI Action"
+                }
+            ],
+            "template": {
+                "category": "amazon_ebs",
+                "id": "",
+                "name": "backup_ebs_volume_snapshot_to_s3_every_night.json"
+            }
+        },
+        "index": 999,
+        "tags": [
+            "EBS"
+        ],
+        "trigger": {
+            "description": "Everyday at midnight"
+        }
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "steps": [
+                            "notify me via email, and send me runbook to resolve the alert manually"
+                        ]
+                    },
+                    "type": "Email Runbook"
+                },
+                {
+                    "data": {
+                        "steps": [
+                            "capture the trend of avg read latency for the last few hours"
+                        ]
+                    },
+                    "type": "Graph Snapshot"
+                }
+            ],
+            "template": {
+                "category": "amazon_ebs",
+                "id": "",
+                "name": "diagnose_ebs_read_write_latency_issues.json"
+            }
+        },
+        "index": 999,
+        "tags": [
+            "EBS"
+        ],
+        "trigger": {
+            "description": "Whenever avg read/write latency (ms/op) is > threshold for an EBS volume"
+        }
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                        "steps": [
+                            "scale down provisioned iops by 2x",
+                            "don't scale down beyond certain lower limit"
+                        ]
+                    },
+                    "type": "CLI Action"
+                },
+                {
+                    "data": {
+                        "steps": [
+                            "capture how consumed read/write iops/second are trending for last few hours"
+                        ]
+                    },
+                    "type": "Graph Snapshot"
+                }
+            ],
+            "template": {
+                "category": "amazon_ebs",
+                "id": "",
+                "name": "scale_down_provisioned_iops_for_ebs_when_throughput_is_less.json"
+            }
+        },
+        "index": 999,
+        "tags": [
+            "EBS"
+        ],
+        "trigger": {
+            "description": "Whenever VolumeThroughputPercentage < 20% for an EBS volume"
+        }
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                        "steps": [
+                            "scale up provisioned iops by 2x",
+                            "don't scale up beyond certain upper limit"
+                        ]
+                    },
+                    "type": "CLI Action"
+                },
+                {
+                    "data": {
+                        "steps": [
+                            "capture how VolumeThroughputPercentage is trending for the last few hours"
+                        ]
+                    },
+                    "type": "Graph Snapshot"
+                }
+            ],
+            "template": {
+                "category": "amazon_ebs",
+                "id": "",
+                "name": "scale_up_provisioned_iops_for_ebs_when_throughput_is_more.json"
+            }
+        },
+        "index": 999,
+        "tags": [
+            "EBS"
+        ],
+        "trigger": {
+            "description": "Whenever VolumeThroughputPercentage > 80% for an EBS volume"
+        }
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "steps": [
+                            "capture system.cpu.idle, system.cpu.system, system.cpu.iowait, system.cpu.user, aws.ec2.cpuutilization graphs",
+                            "capture system load metrics"
+                        ]
+                    },
+                    "type": "Graph Snapshot"
+                },
+                {
+                    "data": {
+                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                        "steps": [
+                            "capture top-10 cpu hogs"
+                        ]
+                    },
+                    "type": "Execute Diagnostics Runbook"
+                }
+            ],
+            "template": {
+                "category": "amazon_ec2",
+                "id": "",
+                "name": "datadog_high_cpu_alert.json"
+            }
+        },
+        "index": 999,
+        "tags": [
+            "AmazonEC2",
+            "Popular"
+        ],
+        "trigger": {
+            "description": "Whenever cpu is high (DataDog Alert)"
+        }
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                        "steps": [
+                            "send me tail of application logfile (last 1000 lines)",
+                            "grep for specific exception in logs",
+                            "optionally restart process"
+                        ]
+                    },
+                    "type": "Execute Diagnostics Runbook"
+                },
+                {
+                    "data": {
+                        "steps": [
+                            "capture process liveness graph for last 3 hrs",
+                            "capture impact on application error rate graph for last 3 hrs"
+                        ]
+                    },
+                    "type": "Graph Snapshot"
+                }
+            ],
+            "template": {
+                "category": "amazon_ec2",
+                "id": "",
+                "name": "diagnose_process_when_it_is_hung.json"
+            }
+        },
+        "index": 999,
+        "tags": [
+            "AmazonEC2",
+            "Popular"
+        ],
+        "trigger": {
+            "description": "Whenever a process is hung"
+        }
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                        "steps": [
+                            "log disk usage summary, and log top-10 disk-hog directories",
+                            "cleanup /tmp directory",
+                            "archive /app/logs to Amazon S3 bucket"
+                        ]
+                    },
+                    "type": "Execute Auto-fix-it Runbook"
+                }
+            ],
+            "template": {
+                "category": "amazon_ec2",
+                "id": "",
+                "name": "run_disk_cleanup_runbook_when_disk_is_full.json"
+            }
+        },
+        "index": 999,
+        "tags": [
+            "AmazonEC2"
+        ],
+        "trigger": {
+            "description": "Whenever disk is 95% full"
+        }
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                        "steps": [
+                            "shutdown all the ec2 instances in given Amazon EC2 tag"
+                        ]
+                    },
+                    "type": "CLI Action"
+                }
+            ],
+            "template": {
+                "category": "amazon_ec2",
+                "id": "",
+                "name": "shut_down_all_ec2_instances_in_a_tag_on_schedule.json"
+            }
+        },
+        "index": 999,
+        "tags": [
+            "AmazonEC2",
+            "Popular"
+        ],
+        "trigger": {
+            "description": "Everyday at 6pm",
+            "type": "Cron"
+        }
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "steps": [
+                            "shutdown the idle ec2 instance in the Amazon EC2 tag"
+                        ]
+                    },
+                    "type": "API Action"
+                }
+            ],
+            "template": {
+                "category": "amazon_ec2",
+                "id": "",
+                "name": "shut_down_idle_ec2_instance.json"
+            }
+        },
+        "index": 999,
+        "tags": [
+            "AmazonEC2",
+            "Popular"
+        ],
+        "trigger": {
+            "description": "Whenever any instance under EC2 tag is idle for 2 hours",
+            "type": "Alarm"
+        }
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                        "steps": [
+                            "capture cpu, mem, request_counts, health_check_status for all the nodes under the ELB"
+                        ]
+                    },
+                    "type": "Execute Diagnostics Runbook"
+                },
+                {
+                    "data": {
+                        "steps": [
+                            "capture the trend of http_500 errors generated by ELB only (not from registered instances)"
+                        ]
+                    },
+                    "type": "Graph Snapshot"
+                }
+            ],
+            "template": {
+                "category": "amazon_elb",
+                "id": "",
+                "name": "diagnose_5xx_backend_errors.json"
+            }
+        },
+        "index": 999,
+        "tags": [
+            "ELB"
+        ],
+        "trigger": {
+            "description": "Whenever HTTPCode_Backend_5XX is > threshold (HTTP response codes generated by registered instances only)"
+        }
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "steps": [
+                            "notify me via email, and send me runbook to resolve the alert manually"
+                        ]
+                    },
+                    "type": "Email Runbook"
+                },
+                {
+                    "data": {
+                        "steps": [
+                            "capture the trend of http_500 errors generated by ELB only (not from registered instances)",
+                            "capture the CPUUtilization of ELB"
+                        ]
+                    },
+                    "type": "Graph Snapshot"
+                }
+            ],
+            "template": {
+                "category": "amazon_elb",
+                "id": "",
+                "name": "diagnose_5xx_elb_errors.json"
+            }
+        },
+        "index": 999,
+        "tags": [
+            "ELB"
+        ],
+        "trigger": {
+            "description": "Whenever HTTPCode_ELB_5XX is > threshold (ELB errors only, not from registered instances)"
+        }
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                        "steps": [
+                            "capture cpu, mem, request_counts, health_check_status for all the nodes under the ELB"
+                        ]
+                    },
+                    "type": "Execute Diagnostics Runbook"
+                }
+            ],
+            "template": {
+                "category": "amazon_elb",
+                "id": "",
+                "name": "handle_elb_spill_over_count.json"
+            }
+        },
+        "index": 999,
+        "tags": [
+            "ELB"
+        ],
+        "trigger": {
+            "description": "Whenever ELB spill_over_count is > threshold"
+        }
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "steps": [
+                            "notify me via email and send me steps to resolve manually"
+                        ]
+                    },
+                    "type": "Email Runbook"
+                },
+                {
+                    "data": {
+                        "steps": [
+                            "capture the trend of ELB_request_count and send graph by email"
+                        ]
+                    },
+                    "type": "Graph Snapshot"
+                }
+            ],
+            "template": {
+                "category": "amazon_elb",
+                "id": "",
+                "name": "handle_high_throughput_on_elb.json"
+            }
+        },
+        "index": 999,
+        "tags": [
+            "ELB"
+        ],
+        "trigger": {
+            "description": "Whenever ELB request_count is > threshold"
+        }
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                        "steps": [
+                            "get stats about db connection pooling"
+                        ]
+                    },
+                    "type": "Email Runbook"
+                },
+                {
+                    "data": {
+                        "steps": [
+                            "send me the trend of ConnectionCount graph over the last few hours",
+                            "send me the trend of read/write latency over the last few hours",
+                            "send me the trend of consumed read/write iops used over the last few hours"
+                        ]
+                    },
+                    "type": "Graph Snapshot"
+                }
+            ],
+            "template": {
+                "category": "amazon_rds",
+                "id": "",
+                "name": "diagnose_rds_issues_when_connection_count_is_high.json"
+            }
+        },
+        "index": 999,
+        "tags": [
+            "AmazonRDS"
+        ],
+        "trigger": {
+            "description": "Whenever DBConnectionCount is > threshold for an RDS DB Instance"
+        }
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                        "steps": [
+                            "notify me via email",
+                            "send me steps to reduce RDS instance size or storage size manually"
+                        ]
+                    },
+                    "type": "Email Runbook"
+                },
+                {
+                    "data": {
+                        "steps": [
+                            "send me the trend of FreeableSpace graph over the last few hours"
+                        ]
+                    },
+                    "type": "Graph Snapshot"
+                }
+            ],
+            "template": {
+                "category": "amazon_rds",
+                "id": "",
+                "name": "handle_high_free_disk_space_issue_on_rds.json"
+            }
+        },
+        "index": 999,
+        "tags": [
+            "AmazonRDS"
+        ],
+        "trigger": {
+            "description": "Whenever FreeableSpace is < threshold for an RDS DB Instance"
+        }
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                        "steps": [
+                            "scale up storage space",
+                            "don't scale up above certain upper limit"
+                        ]
+                    },
+                    "type": "CLI Action"
+                }
+            ],
+            "template": {
+                "category": "amazon_rds",
+                "id": "",
+                "name": "handle_low_disk_space_issue_on_rds.json"
+            }
+        },
+        "index": 999,
+        "tags": [
+            "AmazonRDS"
+        ],
+        "trigger": {
+            "description": "Whenever FreeableSpace is > threshold for an RDS DB Instance"
+        }
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                        "steps": [
+                            "monitor if both swap_usage and freeablememory are both shooting up at the same time",
+                            "consider scaling compute: beef up instance type or consider having read replicas"
+                        ]
+                    },
+                    "type": "Email Runbook"
+                },
+                {
+                    "data": {
+                        "steps": [
+                            "send me the trend of swap usage graph over the last few hours",
+                            "send me the trend of connection count graph over the last few hours",
+                            "send me the trend of read/write latency over the last few hours",
+                            "send me the trend of consumed read/write iops used over the last few hours"
+                        ]
+                    },
+                    "type": "Graph Snapshot"
+                }
+            ],
+            "template": {
+                "category": "amazon_rds",
+                "id": "",
+                "name": "handle_memory_issues_on_rds.json"
+            }
+        },
+        "index": 999,
+        "tags": [
+            "AmazonRDS"
+        ],
+        "trigger": {
+            "description": "Whenever FreeableMemory is > threshold for an RDS DB Instance"
+        }
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                        "steps": [
+                            "scale down read/write iops for that instance",
+                            "don't scale down below certain lower limit"
+                        ]
+                    },
+                    "type": "CLI Action"
+                }
+            ],
+            "template": {
+                "category": "amazon_rds",
+                "id": "",
+                "name": "scale_down_iops_for_low_usage_on_rds.json"
+            }
+        },
+        "index": 999,
+        "tags": [
+            "AmazonRDS"
+        ],
+        "trigger": {
+            "description": "Whenever read/write IOPS is < 20% of provisioned capacity for an RDS DB Instance"
+        }
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                        "steps": [
+                            "add provisioned iops if both queue_depth and write_latency are shooting up"
+                        ]
+                    },
+                    "type": "Email Runbook"
+                },
+                {
+                    "data": {
+                        "steps": [
+                            "send me the trend of write latency over the last few hours",
+                            "send me the trend of QueueDepth graph over the last few hours"
+                        ]
+                    },
+                    "type": "Graph Snapshot"
+                }
+            ],
+            "template": {
+                "category": "amazon_rds",
+                "id": "",
+                "name": "scale_up_iops_for_high_latency_on_rds.json"
+            }
+        },
+        "index": 999,
+        "tags": [
+            "AmazonRDS"
+        ],
+        "trigger": {
+            "description": "Whenever write latency > threshold for an RDS DB Instance"
+        }
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                        "steps": [
+                            "scale up read/write iops for that instance",
+                            "don't scale up above certain lower limit"
+                        ]
+                    },
+                    "type": "CLI Action"
+                }
+            ],
+            "template": {
+                "category": "amazon_rds",
+                "id": "",
+                "name": "scale_up_iops_for_high_throughput_on_rds.json"
+            }
+        },
+        "index": 999,
+        "tags": [
+            "AmazonRDS"
+        ],
+        "trigger": {
+            "description": "Whenever read/write IOPS is > 80% of provisioned capacity for an RDS DB Instance"
+        }
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                        "steps": [
+                            "find out the top-10 CPU hogs",
+                            "consider beefing up EC2 instance or increase the #ec2 instances in the cluster"
+                        ]
+                    },
+                    "type": "Email Runbook"
+                }
+            ],
+            "template": {
+                "category": "amazon_redshift",
+                "id": "",
+                "name": "handle_high_cpu_utilization_issue_for_redshift.json"
+            }
+        },
+        "index": 999,
+        "tags": [
+            "AmazonRedShift"
+        ],
+        "trigger": {
+            "description": "Whenever aggregate CPUUtilization is > threshold for a Redshift cluster"
+        }
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "steps": [
+                            "capture the trend of #database connections over the last few hours"
+                        ]
+                    },
+                    "type": "Graph Snapshot"
+                }
+            ],
+            "template": {
+                "category": "amazon_redshift",
+                "id": "",
+                "name": "handle_high_database_connections_on_redshift.json"
+            }
+        },
+        "index": 999,
+        "tags": [
+            "AmazonRedShift"
+        ],
+        "trigger": {
+            "description": "Whenever #DataBaseConnections is > threshold for a Redshift cluster"
+        }
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                        "steps": [
+                            "find out the top-10 disk hogs",
+                            "execute disk cleanup script"
+                        ]
+                    },
+                    "type": "Execute Auto-fix-it Runbook"
+                }
+            ],
+            "template": {
+                "category": "amazon_redshift",
+                "id": "",
+                "name": "handle_high_disk_usage_issue_on_redshift.json"
+            }
+        },
+        "index": 999,
+        "tags": [
+            "AmazonRedShift"
+        ],
+        "trigger": {
+            "description": "Whenever aggregate PercentDiskSpaceUsed is > threshold for a Redshift cluster"
+        }
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                        "steps": [
+                            "find out the top-10 CPU hogs",
+                            "consider beefing up EC2 instance or increase the #ec2 instances in the cluster"
+                        ]
+                    },
+                    "type": "Email Runbook"
+                },
+                {
+                    "data": {
+                        "steps": [
+                            "send me health status graph for the last few hours",
+                            "send me read/write iops trends for the last few hours",
+                            "send me #database connections for the last few hours",
+                            "send me network receive and transmit throughput trends for the last few hours"
+                        ]
+                    },
+                    "type": "Graph Snapshot"
+                }
+            ],
+            "template": {
+                "category": "amazon_redshift",
+                "id": "",
+                "name": "handle_unhealthy_status_of_redshift_cluster.json"
+            }
+        },
+        "index": 999,
+        "tags": [
+            "AmazonRedShift"
+        ],
+        "trigger": {
+            "description": "Whenever HealthStatus is UNHEALTHY for a Redshift cluster"
+        }
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                        "steps": [
+                            "collect tail of log file (last 500 lines)",
+                            "restart apache"
+                        ]
+                    },
+                    "type": "Execute Auto-fix-it Runbook"
+                }
+            ],
+            "template": {
+                "category": "apache_nginx",
+                "id": "",
+                "name": "restart_apache_when_it_crashed.json"
+            }
+        },
+        "index": 999,
+        "tags": [
+            "ApacheNginx"
+        ],
+        "trigger": {
+            "description": "Whenever apache has crashed"
+        }
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                        "steps": [
+                            "collect tail of log file (last 500 lines)",
+                            "restart nginx"
+                        ]
+                    },
+                    "type": "Execute Auto-fix-it Runbook"
+                }
+            ],
+            "template": {
+                "category": "apache_nginx",
+                "id": "",
+                "name": "restart_nginx_when_it_crashed.json"
+            }
+        },
+        "index": 999,
+        "tags": [
+            "ApacheNginx"
+        ],
+        "trigger": {
+            "description": "Whenever nginx has crashed"
+        }
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Diagnose_postgres_issues.sh",
+                        "steps": [
+                            "Diagnose postgres issues"
+                        ]
+                    },
+                    "type": "CLI Action"
+                }
+            ],
+            "template": {
+                "category": "db",
+                "id": "",
+                "name": "diagnose_postgres_issues.json"
+            }
+        },
+        "index": 999,
+        "tagline": "Diagnose Postgres slowness or issues",
+        "tags": [
+            "Heroku",
+            "Postgres",
+            "Database",
+            "Librato"
+        ],
+        "trigger": {
+            "description": "Whenever heroku postgres has slowness issues"
+        },
+        "video": "https://www.youtube.com/v/OrXZXzalQRk"
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                        "steps": [
+                            "archive logs and /tmp directories",
+                            "delete old logs"
+                        ]
+                    },
+                    "type": "Execute Auto-fix-it Runbook"
+                }
+            ],
+            "template": {
+                "category": "hadoop_hbase",
+                "id": "",
+                "name": "cleanup_old_logs_when_disk_usage_is_high_on_hbase.json"
+            }
+        },
+        "index": 999,
+        "tags": [
+            "HadoopHbase"
+        ],
+        "trigger": {
+            "description": "Whenever percent_used_diskspace is > threshold on a hbase node"
+        }
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                        "steps": [
+                            "restart the node"
+                        ]
+                    },
+                    "type": "Execute Auto-fix-it Runbook"
+                },
+                {
+                    "data": {
+                        "steps": [
+                            "capture the trend of #blacklisted nodes in the cluster for the last few hours"
+                        ]
+                    },
+                    "type": "Graph Snapshot"
+                }
+            ],
+            "template": {
+                "category": "hadoop_hbase",
+                "id": "",
+                "name": "restart_the_blacklisted_node_in_hadoop.json"
+            }
+        },
+        "index": 999,
+        "tags": [
+            "HadoopHbase"
+        ],
+        "trigger": {
+            "description": "Whenever a node is blacklisted in hadoop cluster"
+        }
     },
     {
         "action_group": {
@@ -1374,6 +1388,7 @@
                 "name": "diagnose_high_connection_count_on_mysql.json"
             }
         },
+        "index": 999,
         "tags": [
             "MySQL",
             "Database"
@@ -1410,6 +1425,7 @@
                 "name": "diagnose_slow_queries_on_mysql.json"
             }
         },
+        "index": 999,
         "tags": [
             "MySQL",
             "Database"
@@ -1446,6 +1462,7 @@
                 "name": "monitor_service_and_diagnose_or_restart_if_it_is_down.json"
             }
         },
+        "index": 999,
         "tags": [
             "ServiceAvailability",
             "URLMonitoring"
@@ -1481,6 +1498,7 @@
                 "name": "monitor_service_for_response_string.json"
             }
         },
+        "index": 999,
         "tags": [
             "ServiceAvailability",
             "URLMonitoring"

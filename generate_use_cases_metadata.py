@@ -37,12 +37,20 @@ for f in files:
         if 'trigger' in data:
             usecase['trigger'] = data['trigger']
         if 'action_group' in data:
+            if 'template' in data['action_group'] and 'index' in data['action_group']['template']:
+                usecase['index'] = data['action_group']['template']['index']
+            else:
+                usecase['index'] = 999
+
             usecase['action_group'] = data['action_group']
             template_details = {'id': "", 'category': category, 'name': name}
             usecase['action_group']['template'] = template_details
         if 'video' in data:
             usecase['video'] = data['video']
         final_json.append(usecase)
+
+# Sort the usecases based on index.
+final_json = sorted(final_json, key=lambda usecase: usecase['index'])
 
 # Remove the existing use-cases.json file
 usecases_file = "use-cases.json"
