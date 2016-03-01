@@ -1270,38 +1270,6 @@
             "action": [
                 {
                     "data": {
-                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Diagnose_postgres_issues.sh",
-                        "steps": [
-                            "Diagnose postgres issues"
-                        ]
-                    },
-                    "type": "CLI Action"
-                }
-            ],
-            "template": {
-                "category": "db",
-                "id": "",
-                "name": "diagnose_postgres_issues.json"
-            }
-        },
-        "index": 999,
-        "tagline": "Diagnose Postgres slowness or issues",
-        "tags": [
-            "Heroku",
-            "Postgres",
-            "Database",
-            "Librato"
-        ],
-        "trigger": {
-            "description": "Whenever heroku postgres has slowness issues"
-        },
-        "video": "https://www.youtube.com/v/OrXZXzalQRk"
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
                         "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
                         "steps": [
                             "archive logs and /tmp directories",
