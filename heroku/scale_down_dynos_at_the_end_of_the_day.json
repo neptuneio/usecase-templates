@@ -1,12 +1,19 @@
 {
+    "tagline": "Scale down dynos at the end of the day",
+    "tags": [
+        "Heroku"
+    ],
+    "trigger": {
+        "description": "Every day at 8pm"
+    },
+    "video": "https://www.youtube.com/v/ogeMtDEo0tk",
     "action_group": {
         "action": [
             {
                 "data": {
-                    "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_scale_up_dynos.sh",
+                    "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_end_of_day_scale_down.sh",
                     "steps": [
-                        "Scale down heroku dynos",
-                        "Don't scale down below certain lower limit"
+                        "Scale down web and worker dynos"
                     ]
                 },
                 "type": "CLI Action"
@@ -24,6 +31,7 @@
         "template": {
             "category": "heroku",
             "id": "",
+            "index": 7,
             "name": "scale_down_dynos_at_the_end_of_the_day.json"
         }
     },
@@ -39,6 +47,7 @@
                         "AlarmNames": [],
                         "AwsRegion": null,
                         "CloudAPIAction": null,
+                        "ExecutionType": "PARALLEL",
                         "Hostname": [],
                         "LogProvider": null,
                         "MetricDefinitions": [],
@@ -50,37 +59,13 @@
                             "Category": "GITHUB",
                             "Content": null,
                             "RunbookId": null,
-                            "RunbookName": "runbooks/cli/heroku/Heroku_scale_up_dynos.sh",
+                            "RunbookName": "runbooks/cli/heroku/Heroku_end_of_day_scale_down.sh",
                             "Timeout": 2,
-                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/7f248abb5b5cb3da5a92ca576c216eb33df8d79b",
+                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/ba1f1ddf43e221e683f2e2698dc6d4046e53eb75",
                             "Visibility": "PUBLIC"
                         },
                         "ServiceCheckAction": null,
                         "Tags": []
-                    }
-                },
-                {
-                    "ActionTarget": null,
-                    "ActionTargetType": null,
-                    "ActionType": "WEBPAGE_SNAPSHOT",
-                    "Active": false,
-                    "Data": {
-                        "AlarmNames": [],
-                        "AwsRegion": null,
-                        "CloudAPIAction": null,
-                        "Height": 768,
-                        "Hostname": [],
-                        "LogProvider": null,
-                        "MetricDefinitions": [],
-                        "MetricNames": [],
-                        "MetricSource": null,
-                        "PingSource": null,
-                        "Retries": 0,
-                        "RuleRunbook": null,
-                        "ServiceCheckAction": null,
-                        "Tags": [],
-                        "Uri": "https://staging.newrelic.com/public/charts/fAmWyK06eYB",
-                        "Width": 1366
                     }
                 }
             ]
@@ -98,7 +83,7 @@
                     "Data": {
                         "AlarmName": "",
                         "AwsRegion": "",
-                        "CronExpression": "0 20 * * *",
+                        "CronExpression": "0 4 * * *",
                         "Port": null,
                         "SearchString": null,
                         "Url": null
@@ -109,13 +94,5 @@
             ]
         },
         "RuleName": "Scale down dynos at the end of the day"
-    },
-    "tagline": "Scale down dynos at the end of the day",
-    "tags": [
-        "Heroku"
-    ],
-    "trigger": {
-        "description": "Every day at 8pm"
-    },
-    "video": "https://www.youtube.com/v/ogeMtDEo0tk"
+    }
 }

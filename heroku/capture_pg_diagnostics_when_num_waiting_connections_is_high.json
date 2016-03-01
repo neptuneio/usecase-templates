@@ -1,11 +1,25 @@
 {
+    "tagline": "Diagnose Postgres slowness or issues",
+    "tags": [
+        "Heroku",
+        "Postgres",
+        "Database",
+        "Librato"
+    ],
+    "trigger": {
+        "description": "Whenever postgres #waiting_connections is too high"
+    },
+    "video": "https://www.youtube.com/v/OrXZXzalQRk"
     "action_group": {
         "action": [
             {
                 "data": {
-                    "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/kill_and_restart_when_fatal_postgres_locking.sh",
+                    "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_PG_diagnostics.sh",
                     "steps": [
-                        "Kill and restart postgres"
+                        "Get list of blocking connections and locks",
+                        "Get list of long running queries",
+                        "Get PG diagnostics report",
+                        "Optionally kill all connections and restart app"
                     ]
                 },
                 "type": "CLI Action"
@@ -14,10 +28,11 @@
         "template": {
             "category": "heroku",
             "id": "",
-            "name": "kill_and_restart_when_fatal_postgres_locking.json"
+            "index" : 2,
+            "name": "capture_pg_diagnostics_when_num_waiting_connections_is_high.json"
         }
     },
-    "rule_template": {
+    "rule_template":{
         "ActionGroup": {
             "Actions": [
                 {
@@ -29,6 +44,7 @@
                         "AlarmNames": [],
                         "AwsRegion": null,
                         "CloudAPIAction": null,
+                        "ExecutionType": "PARALLEL",
                         "Hostname": [],
                         "LogProvider": null,
                         "MetricDefinitions": [],
@@ -40,9 +56,9 @@
                             "Category": "GITHUB",
                             "Content": null,
                             "RunbookId": null,
-                            "RunbookName": "runbooks/cli/heroku/postgres/kill_and_restart_when_fatal_postgres_locking.sh",
+                            "RunbookName": "runbooks/cli/heroku/Heroku_PG_diagnostics.sh",
                             "Timeout": 2,
-                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/7ffebd23cb0ed9321aa2e9f03fde54e5cb8d79bf",
+                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/4aa89d7dca0b2a61b27eab7c49c4192f175b7ed6",
                             "Visibility": "PUBLIC"
                         },
                         "ServiceCheckAction": null,
@@ -54,7 +70,7 @@
         "CapDuration": 30,
         "CapLimit": 3,
         "CompositeTrigger": {
-            "CompositeTriggerType": "CRON",
+            "CompositeTriggerType": null,
             "Data": {
                 "Regex": null
             },
@@ -69,21 +85,10 @@
                         "Url": null
                     },
                     "TriggerSource": null,
-                    "TriggerType": "CRON_TRIGGER"
+                    "TriggerType": null
                 }
             ]
         },
-        "RuleName": "Kill and restart postgres when num of waiting connections is way too high"
-    },
-    "tagline": "Kill and restart postgres SQL when #waiting_connections is way too high",
-    "tags": [
-        "Heroku",
-        "Postgres",
-        "Database",
-        "Librato"
-    ],
-    "trigger": {
-        "description": "Whenever heroku postgres #waiting_connections is too high"
-    },
-    "video": "https://www.youtube.com/v/jARt8BjBl7Q"
+        "RuleName": "Diagnose Postgres slowness or issues"
+    }
 }

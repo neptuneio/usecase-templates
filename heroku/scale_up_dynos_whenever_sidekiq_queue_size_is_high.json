@@ -1,4 +1,14 @@
 {
+    "tagline": "Scale up dynos whenever sidekiq queue size is high",
+    "tags": [
+        "Heroku",
+        "Popular",
+        "Librato"
+    ],
+    "trigger": {
+        "description": "Whenever sidekiq queue size is high"
+    },
+    "video": "https://www.youtube.com/v/uiLZzclu15U",
     "action_group": {
         "action": [
             {
@@ -23,6 +33,7 @@
         "template": {
             "category": "heroku",
             "id": "",
+            "index": 5
             "name": "scale_up_dynos_whenever_sidekiq_queue_size_is_high.json"
         }
     },
@@ -38,6 +49,7 @@
                         "AlarmNames": [],
                         "AwsRegion": null,
                         "CloudAPIAction": null,
+                        "ExecutionType": "PARALLEL",
                         "Hostname": [],
                         "LogProvider": null,
                         "MetricDefinitions": [],
@@ -51,7 +63,7 @@
                             "RunbookId": null,
                             "RunbookName": "runbooks/cli/heroku/Heroku_scale_up_dynos.sh",
                             "Timeout": 2,
-                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/7f248abb5b5cb3da5a92ca576c216eb33df8d79b",
+                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/bc85b9dd2db1391c9f9621f0dfa06d48773e5dbd",
                             "Visibility": "PUBLIC"
                         },
                         "ServiceCheckAction": null,
@@ -67,6 +79,7 @@
                         "AlarmNames": [],
                         "AwsRegion": null,
                         "CloudAPIAction": null,
+                        "ExecutionType": "PARALLEL",
                         "Height": 768,
                         "Hostname": [],
                         "LogProvider": null,
@@ -87,35 +100,26 @@
         "CapDuration": 30,
         "CapLimit": 3,
         "CompositeTrigger": {
-            "CompositeTriggerType": "CRON",
+            "CompositeTriggerType": "EXISTING_ALARM",
             "Data": {
-                "Regex": null
+                "Regex": ""
             },
-            "TriggerSource": null,
+            "TriggerSource": "LIBRATO",
             "Triggers": [
                 {
                     "Data": {
-                        "AlarmName": null,
-                        "AwsRegion": null,
+                        "AlarmName": "",
+                        "AwsRegion": "",
+                        "CronExpression": "",
                         "Port": null,
                         "SearchString": null,
                         "Url": null
                     },
-                    "TriggerSource": null,
-                    "TriggerType": "CRON_TRIGGER"
+                    "TriggerSource": "LIBRATO",
+                    "TriggerType": "EXISTING_ALARM"
                 }
             ]
         },
         "RuleName": "Scale up dynos whever sidekiq queue size is high"
-    },
-    "tagline": "Scale up dynos whenever sidekiq queue size is high",
-    "tags": [
-        "Heroku",
-        "Popular",
-        "Librato"
-    ],
-    "trigger": {
-        "description": "Whenever sidekiq queue size is high"
-    },
-    "video": "https://www.youtube.com/v/uiLZzclu15U"
+    }
 }

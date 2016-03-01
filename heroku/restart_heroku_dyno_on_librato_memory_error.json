@@ -1,11 +1,19 @@
 {
+    "tagline": "Restart heroku dyno based on Librato memory alert",
+    "tags": [
+        "Heroku",
+        "Librato"
+    ],
+    "trigger": {
+        "description": "Whenever memory used on a dyno exceeds a threshold"
+    },
     "action_group": {
         "action": [
             {
                 "data": {
                     "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_restart_dyno_for_librato_alert.sh",
                     "steps": [
-                        "Restart heroku dyno which is suffering memory issues",
+                        "Restart specific dyno with memory alert",
                         "Send me last 200 lines of heroku app log"
                     ]
                 },
@@ -15,10 +23,11 @@
         "template": {
             "category": "heroku",
             "id": "",
+            "index" : 3,
             "name": "restart_heroku_dyno_on_librato_memory_error.json"
         }
     },
-    "rule_template": {
+    "rule_template" : {
         "ActionGroup": {
             "Actions": [
                 {
@@ -30,6 +39,7 @@
                         "AlarmNames": [],
                         "AwsRegion": null,
                         "CloudAPIAction": null,
+                        "ExecutionType": "PARALLEL",
                         "Hostname": [],
                         "LogProvider": null,
                         "MetricDefinitions": [],
@@ -43,7 +53,7 @@
                             "RunbookId": null,
                             "RunbookName": "runbooks/cli/heroku/Heroku_restart_dyno_for_librato_alert.sh",
                             "Timeout": 2,
-                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/d49114cb4e06c815a12bb538ac196f2e0a29e407",
+                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/6642b33d981d4f077112e205a30b01dec5233e5e",
                             "Visibility": "PUBLIC"
                         },
                         "ServiceCheckAction": null,
@@ -52,14 +62,14 @@
                 }
             ]
         },
-        "CapDuration": 10,
-        "CapLimit": 1,
+        "CapDuration": 30,
+        "CapLimit": 3,
         "CompositeTrigger": {
-            "CompositeTriggerType": "EXISTING_ALARM",
+            "CompositeTriggerType": null,
             "Data": {
                 "Regex": null
             },
-            "TriggerSource": "LIBRATO",
+            "TriggerSource": null,
             "Triggers": [
                 {
                     "Data": {
@@ -69,19 +79,11 @@
                         "SearchString": null,
                         "Url": null
                     },
-                    "TriggerSource": "LIBRATO",
-                    "TriggerType": "EXISTING_ALARM"
+                    "TriggerSource": null,
+                    "TriggerType": null
                 }
             ]
         },
-        "RuleName": "Restart heroku dyno based on Librato memory alert"
-    },
-    "tagline": "Restart Heroku dyno based on Librato memory alert",
-    "tags": [
-        "Heroku",
-        "Librato"
-    ],
-    "trigger": {
-        "description": "Whenever Librato alerts that the Dyno memory crossed the threshold, restart that Dyno"
+        "RuleName": "Restart heroku dyno with high memory usage alert"
     }
 }

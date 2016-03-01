@@ -1,4 +1,14 @@
 {
+    "tagline": "Restart the specific heroku dyno when it has R14 memory exceeded error",
+    "tags": [
+        "Heroku",
+        "Popular",
+        "Papertrail",
+        "Logentries"
+    ],
+    "trigger": {
+        "description": "A particular heroku dyno reports R14 memory quota exceeded erorr"
+    },
     "action_group": {
         "action": [
             {
@@ -14,9 +24,11 @@
         "template": {
             "category": "heroku",
             "id": "",
+            "index" : 1,
             "name": "restart_heroku_dyno_when_it_throws_memory_error.json"
         }
     },
+    "video": "https://www.youtube.com/v/7Td84osPKS4",
     "rule_template": {
         "ActionGroup": {
             "Actions": [
@@ -29,6 +41,7 @@
                         "AlarmNames": [],
                         "AwsRegion": null,
                         "CloudAPIAction": null,
+                        "ExecutionType": "PARALLEL",
                         "Hostname": [],
                         "LogProvider": null,
                         "MetricDefinitions": [],
@@ -42,7 +55,7 @@
                             "RunbookId": null,
                             "RunbookName": "runbooks/cli/heroku/Heroku_restart_dyno.sh",
                             "Timeout": 2,
-                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/00c4238e8bc2a48ccfb9e726217ba44839e8fc48",
+                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/38c0f81cb0adae1ee7151427667587dc013287dd",
                             "Visibility": "PUBLIC"
                         },
                         "ServiceCheckAction": null,
@@ -54,7 +67,7 @@
         "CapDuration": 30,
         "CapLimit": 3,
         "CompositeTrigger": {
-            "CompositeTriggerType": "CRON",
+            "CompositeTriggerType": null,
             "Data": {
                 "Regex": null
             },
@@ -69,21 +82,10 @@
                         "Url": null
                     },
                     "TriggerSource": null,
-                    "TriggerType": "CRON_TRIGGER"
+                    "TriggerType": null
                 }
             ]
         },
         "RuleName": "Restart heroku dyno when it throws memory quota exceeded errors"
-    },
-    "tagline": "Restart only one Heroku Dyno when it reports memory exceeded error",
-    "tags": [
-        "Heroku",
-        "Popular",
-        "Papertrail",
-        "Logentries"
-    ],
-    "trigger": {
-        "description": "Whenever heroku dyno reports memory quota exceeded error (R14 error), restart only that particular dyno instead of restarting entire app."
-    },
-    "video": "https://www.youtube.com/v/7Td84osPKS4"
+    }
 }

@@ -1,4 +1,14 @@
 {
+    "tagline": "Send me full diagnostics whenever app error rate is high",
+    "tags": [
+        "Heroku",
+        "NewRelic",
+        "Popular"
+    ],
+    "trigger": {
+        "description": "Whenever heroku app error rate is > 2%"
+    },
+    "video": "https://www.youtube.com/v/c07Gn5iraeM",
     "action_group": {
         "action": [
             {
@@ -6,10 +16,11 @@
                     "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_app_diagnostics.sh",
                     "steps": [
                         "Ping check app url",
+                        "Check status of heroku",
+                        "Check # of dynos running",
                         "Collect last 200 lines of app logs and grep for exceptions",
                         "Look for recent releases",
-                        "Check # of dynos running, Scale up if necessary",
-                        "Rollback if necessary"
+                        "Restart app or roll back if necessary",
                     ]
                 },
                 "type": "CLI Action"
@@ -17,7 +28,7 @@
             {
                 "data": {
                     "steps": [
-                        "Capture snapshot of error rate graph for the last 3 hours"
+                        "Capture snapshot of throughput, latency and error rate graphs for the last 3 hours"
                     ]
                 },
                 "type": "Graph Snapshot"
@@ -26,6 +37,7 @@
         "template": {
             "category": "heroku",
             "id": "",
+            "index": 8,
             "name": "send_me_diagnostics_whenever_app_error_rate_is_high.json"
         }
     },
@@ -41,6 +53,7 @@
                         "AlarmNames": [],
                         "AwsRegion": null,
                         "CloudAPIAction": null,
+                        "ExecutionType": "PARALLEL",
                         "Hostname": [],
                         "LogProvider": null,
                         "MetricDefinitions": [],
@@ -54,7 +67,7 @@
                             "RunbookId": null,
                             "RunbookName": "runbooks/cli/heroku/Heroku_app_diagnostics.sh",
                             "Timeout": 2,
-                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/e0bbef11e99fba131bff24953ed5f825a7f74905",
+                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/b804303da79e9afe9f5cf2b055e166a423eea637",
                             "Visibility": "PUBLIC"
                         },
                         "ServiceCheckAction": null,
@@ -64,25 +77,65 @@
                 {
                     "ActionTarget": null,
                     "ActionTargetType": null,
-                    "ActionType": "WEBPAGE_SNAPSHOT",
+                    "ActionType": "GRAPH_SNAPSHOT",
                     "Active": false,
                     "Data": {
                         "AlarmNames": [],
                         "AwsRegion": null,
                         "CloudAPIAction": null,
-                        "Height": 768,
+                        "ExecutionType": "PARALLEL",
                         "Hostname": [],
                         "LogProvider": null,
-                        "MetricDefinitions": [],
+                        "MetricDefinitionType": "APPLICATION_METRIC",
+                        "MetricDefinitions": [
+                            {
+                                "alias": "Web Throughput",
+                                "data": null,
+                                "metricExpression": null,
+                                "metricName": "HttpDispatcher",
+                                "namespace": null,
+                                "type": "APPLICATION"
+                            },
+                            {
+                                "alias": "Error Rate",
+                                "data": null,
+                                "metricExpression": null,
+                                "metricName": "Errors/all",
+                                "namespace": null,
+                                "type": "APPLICATION"
+                            },
+                            {
+                                "alias": "Response Time",
+                                "data": {
+                                    "valueType": "LATENCY"
+                                },
+                                "metricExpression": null,
+                                "metricName": "Agent/MetricsReported/count",
+                                "namespace": null,
+                                "type": "APPLICATION"
+                            },
+                            {
+                                "alias": "Apdex",
+                                "data": null,
+                                "metricExpression": null,
+                                "metricName": "Apdex",
+                                "namespace": null,
+                                "type": "APPLICATION"
+                            }
+                        ],
                         "MetricNames": [],
-                        "MetricSource": null,
+                        "MetricSource": "NEWRELIC",
+                        "MetricsPeriod": {
+                            "hours": 3,
+                            "name": "3hrs",
+                            "resolution": 60
+                        },
                         "PingSource": null,
                         "Retries": 0,
                         "RuleRunbook": null,
                         "ServiceCheckAction": null,
-                        "Tags": [],
-                        "Uri": "https://staging.newrelic.com/public/charts/fAmWyK06eYB",
-                        "Width": 1366
+                        "Sources": null,
+                        "Tags": []
                     }
                 }
             ]
@@ -90,35 +143,26 @@
         "CapDuration": 30,
         "CapLimit": 3,
         "CompositeTrigger": {
-            "CompositeTriggerType": "CRON",
+            "CompositeTriggerType": "EXISTING_ALARM",
             "Data": {
-                "Regex": null
+                "Regex": ""
             },
-            "TriggerSource": null,
+            "TriggerSource": "NEWRELIC",
             "Triggers": [
                 {
                     "Data": {
-                        "AlarmName": null,
-                        "AwsRegion": null,
+                        "AlarmName": "",
+                        "AwsRegion": "",
+                        "CronExpression": "",
                         "Port": null,
                         "SearchString": null,
                         "Url": null
                     },
-                    "TriggerSource": null,
-                    "TriggerType": "CRON_TRIGGER"
+                    "TriggerSource": "NEWRELIC",
+                    "TriggerType": "EXISTING_ALARM"
                 }
             ]
         },
-        "RuleName": "Send me diagnostics whenever app error rate is high"
-    },
-    "tagline": "Send me diagnostics whenever app error rate is high",
-    "tags": [
-        "Heroku",
-        "NewRelic",
-        "Popular"
-    ],
-    "trigger": {
-        "description": "Whenever heroku app error rate is > 2%"
-    },
-    "video": "https://www.youtube.com/v/c07Gn5iraeM"
+        "RuleName": "Send me full diagnostics whenever app error rate is high"
+    }
 }

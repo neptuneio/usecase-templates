@@ -1,4 +1,13 @@
 {
+    "tagline": "Scale up dynos whenever average dyno load is high",
+    "tags": [
+        "Heroku",
+        "Librato"
+    ],
+    "trigger": {
+        "description": "When Librato alerts that average dyno load is high"
+    },
+    "video": "https://www.youtube.com/v/uiLZzclu15U",
     "action_group": {
         "action": [
             {
@@ -6,7 +15,7 @@
                     "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_scale_up_dynos.sh",
                     "steps": [
                         "Scale up heroku worker dynos",
-                        "Don't scale above a certain upper limit"
+                        "Don't scale up beyond an upper limit"
                     ]
                 },
                 "type": "CLI Action"
@@ -15,6 +24,7 @@
         "template": {
             "category": "heroku",
             "id": "",
+            "index" : 4,
             "name": "scale_up_dynos_whenever_dyno_load_is_high.json"
         }
     },
@@ -30,6 +40,7 @@
                         "AlarmNames": [],
                         "AwsRegion": null,
                         "CloudAPIAction": null,
+                        "ExecutionType": "PARALLEL",
                         "Hostname": [],
                         "LogProvider": null,
                         "MetricDefinitions": [],
@@ -43,11 +54,36 @@
                             "RunbookId": null,
                             "RunbookName": "runbooks/cli/heroku/Heroku_scale_up_dynos.sh",
                             "Timeout": 2,
-                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/7f248abb5b5cb3da5a92ca576c216eb33df8d79b",
+                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/bc85b9dd2db1391c9f9621f0dfa06d48773e5dbd",
                             "Visibility": "PUBLIC"
                         },
                         "ServiceCheckAction": null,
                         "Tags": []
+                    }
+                },
+                {
+                    "ActionTarget": null,
+                    "ActionTargetType": null,
+                    "ActionType": "WEBPAGE_SNAPSHOT",
+                    "Active": false,
+                    "Data": {
+                        "AlarmNames": [],
+                        "AwsRegion": null,
+                        "CloudAPIAction": null,
+                        "ExecutionType": "PARALLEL",
+                        "Height": 768,
+                        "Hostname": [],
+                        "LogProvider": null,
+                        "MetricDefinitions": [],
+                        "MetricNames": [],
+                        "MetricSource": null,
+                        "PingSource": null,
+                        "Retries": 0,
+                        "RuleRunbook": null,
+                        "ServiceCheckAction": null,
+                        "Tags": [],
+                        "Uri": "https://staging.newrelic.com/public/charts/fAmWyK06eYB",
+                        "Width": 1366
                     }
                 }
             ]
@@ -57,14 +93,15 @@
         "CompositeTrigger": {
             "CompositeTriggerType": "EXISTING_ALARM",
             "Data": {
-                "Regex": null
+                "Regex": ""
             },
             "TriggerSource": "LIBRATO",
             "Triggers": [
                 {
                     "Data": {
-                        "AlarmName": null,
-                        "AwsRegion": null,
+                        "AlarmName": "",
+                        "AwsRegion": "",
+                        "CronExpression": "",
                         "Port": null,
                         "SearchString": null,
                         "Url": null
@@ -74,15 +111,6 @@
                 }
             ]
         },
-        "RuleName": "Scale up dynos whever average dyno load is high"
-    },
-    "tagline": "Scale up dynos whenever average dyno load is high",
-    "tags": [
-        "Heroku",
-        "Librato"
-    ],
-    "trigger": {
-        "description": "When Librato alerts that average dyno load is high"
-    },
-    "video": "https://www.youtube.com/v/uiLZzclu15U"
+        "RuleName": "Scale up dynos whenever average dyno load is high"
+    }
 }
