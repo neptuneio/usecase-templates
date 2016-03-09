@@ -4,6 +4,35 @@
             "action": [
                 {
                     "data": {
+                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/aws/Aws_dynamodb_scaling.sh",
+                        "steps": [
+                            "Scale up provision capacity to a certain amount"
+                        ]
+                    },
+                    "type": "CLI Action"
+                }
+            ],
+            "template": {
+                "category": "amazon_dynamodb",
+                "id": "",
+                "name": "scale_up_or_down_dynamodb_throughput_on_a_time_schedule.json"
+            }
+        },
+        "index": 1,
+        "tagline": "Scale up or down a dynamodb table on a time schedule",
+        "tags": [
+            "AWSDynamoDB",
+            "AWS"
+        ],
+        "trigger": {
+            "description": "Every monday morning at 4AM"
+        }
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
                         "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_restart_dyno.sh",
                         "steps": [
                             "Restart heroku dyno"
@@ -30,6 +59,35 @@
             "description": "A particular heroku dyno reports R14 memory quota exceeded erorr"
         },
         "video": "https://www.youtube.com/v/7Td84osPKS4"
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/aws/Aws_dynamodb_scaling.sh",
+                        "steps": [
+                            "Scale up provision capacity to a certain amount"
+                        ]
+                    },
+                    "type": "CLI Action"
+                }
+            ],
+            "template": {
+                "category": "amazon_dynamodb",
+                "id": "",
+                "name": "scale_up_dynamodb_table_when_consumed_capacity_is_high.json"
+            }
+        },
+        "index": 2,
+        "tagline": "Scale up a table throughput when consumed capacity is greater than 80%",
+        "tags": [
+            "AWSDynamoDB",
+            "AWS"
+        ],
+        "trigger": {
+            "description": "When consumed capacity is greater than 80% of provisioned capacity for 5min"
+        }
     },
     {
         "action_group": {
@@ -65,6 +123,35 @@
             "description": "Whenever postgres #waiting_connections is too high"
         },
         "video": "https://www.youtube.com/v/OrXZXzalQRk"
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/aws/Aws_dynamodb_scaling.sh",
+                        "steps": [
+                            "Scale up provision capacity to a certain amount"
+                        ]
+                    },
+                    "type": "CLI Action"
+                }
+            ],
+            "template": {
+                "category": "amazon_dynamodb",
+                "id": "",
+                "name": "scale_down_dynamodb_table_when_consumed_capacity_is_low.json"
+            }
+        },
+        "index": 3,
+        "tagline": "Scale down a table throughput when consumed capacity is lower than 20%",
+        "tags": [
+            "AWSDynamoDB",
+            "AWS"
+        ],
+        "trigger": {
+            "description": "When consumed capacity is lower than 20% of provisioned capacity for 2hrs"
+        }
     },
     {
         "action_group": {
@@ -317,118 +404,6 @@
             "description": "Every week on sunday night"
         },
         "video": "https://www.youtube.com/v/p41vcCoY1JA"
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
-                        "steps": [
-                            "take backup of the dynamodb table and store it in S3"
-                        ]
-                    },
-                    "type": "CLI Action"
-                }
-            ],
-            "template": {
-                "category": "amazon_dynamodb",
-                "id": "",
-                "name": "backup_dynamodb_table_every_night.json"
-            }
-        },
-        "index": 999,
-        "tags": [
-            "AmazonDynamoDB"
-        ],
-        "trigger": {
-            "description": "Everyday at midnight",
-            "tags": [],
-            "type": "Cron"
-        }
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "steps": [
-                            "capture how throttled requests are trending over last 3 hrs",
-                            "capture read and write throttle events graph for that table for last 3 hrs"
-                        ]
-                    },
-                    "type": "Graph Snapshot"
-                }
-            ],
-            "template": {
-                "category": "amazon_dynamodb",
-                "id": "",
-                "name": "get_diagnostics_around_dynamodb_throttled_requests.json"
-            }
-        },
-        "index": 999,
-        "tags": [
-            "AmazonDynamoDB"
-        ],
-        "trigger": {
-            "description": "Whenever #throttled requests for a DynamoDB table is > threshold"
-        }
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "steps": [
-                            "scale down read/write iops by 2x",
-                            "don't scale up below a certain lower limit"
-                        ]
-                    },
-                    "type": "API Action"
-                }
-            ],
-            "template": {
-                "category": "amazon_dynamodb",
-                "id": "",
-                "name": "scale_down_dynamodb_throughput_when_consumed_capacity_is_less.json"
-            }
-        },
-        "index": 999,
-        "tags": [
-            "AmazonDynamoDB",
-            "Popular"
-        ],
-        "trigger": {
-            "description": "Whenever consumed read/write capacity < 20% of provisioned capacity for a DynamoDB table"
-        }
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "steps": [
-                            "scale up read/write iops by 2x",
-                            "don't scale up above a certain upper limit"
-                        ]
-                    },
-                    "type": "API Action"
-                }
-            ],
-            "template": {
-                "category": "amazon_dynamodb",
-                "id": "",
-                "name": "scale_up_dynamodb_throughput_when_consumed_capacity_is_more.json"
-            }
-        },
-        "index": 999,
-        "tags": [
-            "AmazonDynamoDB",
-            "Popular"
-        ],
-        "trigger": {
-            "description": "Whenever consumed read/write capacity > 80% of provisioned capacity for a DynamoDB table"
-        }
     },
     {
         "action_group": {

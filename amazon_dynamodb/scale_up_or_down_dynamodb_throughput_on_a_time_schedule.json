@@ -13,7 +13,7 @@
                 "data": {
                     "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/aws/Aws_dynamodb_scaling.sh",
                     "steps": [
-                        "Scale up provision capacity to a certain amount",
+                        "Scale up provision capacity to a certain amount"
                     ]
                 },
                 "type": "CLI Action"
