@@ -1,0 +1,89 @@
+{
+    "tagline": "Scale up or down a dynamodb table on a time schedule",
+    "tags": [
+        "AWSDynamoDB",
+        "AWS"
+    ],
+    "trigger": {
+        "description": "Every monday morning at 4AM"
+    },
+    "action_group": {
+        "action": [
+            {
+                "data": {
+                    "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/aws/Aws_dynamodb_scaling.sh",
+                    "steps": [
+                        "Scale up provision capacity to a certain amount",
+                    ]
+                },
+                "type": "CLI Action"
+            }
+        ],
+        "template": {
+            "category": "amazon_dynamodb",
+            "id": "",
+            "index" : 1,
+            "name": "scale_up_or_down_dynamodb_throughput_on_a_time_schedule.json"
+        }
+    },
+    "rule_template":{
+        "ActionGroup": {
+            "Actions": [
+                {
+                    "ActionTarget": "AWS",
+                    "ActionTargetType": null,
+                    "ActionType": "CLI_ACTION",
+                    "Active": true,
+                    "Data": {
+                        "AlarmNames": [],
+                        "AwsRegion": null,
+                        "CloudAPIAction": null,
+                        "ExecutionType": "PARALLEL",
+                        "Hostname": [],
+                        "LogProvider": null,
+                        "MetricDefinitions": [],
+                        "MetricNames": [],
+                        "MetricSource": null,
+                        "PingSource": null,
+                        "Retries": 0,
+                        "RuleRunbook": {
+                            "Category": "GITHUB",
+                            "Content": null,
+                            "RunbookId": null,
+                            "RunbookName": "runbooks/cli/aws/Aws_dynamodb_scaling.sh",
+                            "Timeout": 2,
+                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/2618a520fc9433a6d3241cc8102b9747d5583bcd",
+                            "Visibility": "PUBLIC"
+                        },
+                        "ServiceCheckAction": null,
+                        "Tags": []
+                    }
+                }
+            ]
+        },
+        "CapDuration": 30,
+        "CapLimit": 3,
+        "CompositeTrigger": {
+            "CompositeTriggerType": "CRON",
+            "Data": {
+                "Regex": ""
+            },
+            "TriggerSource": "CRON",
+            "Triggers": [
+                {
+                    "Data": {
+                        "AlarmName": "",
+                        "AwsRegion": "",
+                        "CronExpression": "0 4 * * 1",
+                        "Port": null,
+                        "SearchString": null,
+                        "Url": null
+                    },
+                    "TriggerSource": "CRON",
+                    "TriggerType": "CRON_TRIGGER"
+                }
+            ]
+        },
+        "RuleName": "Scale up table1 in us-east-1 to read10 and write20 every monday morning at 4amUTC"
+    }
+}
