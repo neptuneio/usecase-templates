@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# Python file to read all use case JSONs in the direcory and generate a 
+# Python file to read all use case JSONs in the direcory and generate a
 # single use cases metadata file for Neptune use-cases page.
 
 import simplejson as json
@@ -21,17 +21,17 @@ print "Processing ", len(files), " use cases."
 
 final_json = []
 for f in files:
-    with open(f) as data_file:    
+    with open(f) as data_file:
         print "Processing ", f
         head, name = os.path.split(f)
-        category = os.path.basename(head) 
+        category = os.path.basename(head)
         data = json.load(data_file)
         if 'tags' not in data:
             continue
         usecase = {}
         print category, name
         if 'tags' in data:
-            usecase['tags'] = data['tags'] 
+            usecase['tags'] = data['tags']
         if 'tagline' in data:
             usecase['tagline'] = data['tagline']
         if 'trigger' in data:
