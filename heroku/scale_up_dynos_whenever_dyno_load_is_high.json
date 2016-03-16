@@ -24,7 +24,7 @@
         "template": {
             "category": "heroku",
             "id": "",
-            "index" : 4,
+            "index" : 5,
             "name": "scale_up_dynos_whenever_dyno_load_is_high.json"
         }
     },

@@ -31,7 +31,7 @@
         "template": {
             "category": "heroku",
             "id": "",
-            "index": 7,
+            "index": 8,
             "name": "scale_down_dynos_at_the_end_of_the_day.json"
         }
     },

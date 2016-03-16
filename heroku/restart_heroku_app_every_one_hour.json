@@ -1,25 +1,19 @@
 {
-    "tagline": "Diagnose Postgres slowness or issues",
+    "tagline": "Restart heroku app every one hour",
     "tags": [
         "Heroku",
-        "Postgres",
-        "Database",
-        "Librato"
+        "Popular"
     ],
     "trigger": {
-        "description": "Whenever postgres #waiting_connections is too high"
+        "description": "Every one hour"
     },
-    "video": "https://www.youtube.com/v/OrXZXzalQRk",
     "action_group": {
         "action": [
             {
                 "data": {
-                    "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_PG_diagnostics.sh",
+                    "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_restart_app.sh",
                     "steps": [
-                        "Get list of blocking connections and locks",
-                        "Get list of long running queries",
-                        "Get PG diagnostics report",
-                        "Optionally kill all connections and restart app"
+                        "Restart heroku app or dyno"
                     ]
                 },
                 "type": "CLI Action"
@@ -28,11 +22,11 @@
         "template": {
             "category": "heroku",
             "id": "",
-            "index" : 4,
-            "name": "capture_pg_diagnostics_when_num_waiting_connections_is_high.json"
+            "index" : 2,
+            "name": "restart_heroku_app_every_one_hour.json"
         }
     },
-    "rule_template":{
+    "rule_template": {
         "ActionGroup": {
             "Actions": [
                 {
@@ -56,9 +50,9 @@
                             "Category": "GITHUB",
                             "Content": null,
                             "RunbookId": null,
-                            "RunbookName": "runbooks/cli/heroku/Heroku_PG_diagnostics.sh",
+                            "RunbookName": "runbooks/cli/heroku/Heroku_restart_app.sh",
                             "Timeout": 2,
-                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/4aa89d7dca0b2a61b27eab7c49c4192f175b7ed6",
+                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/7ffebd23cb0ed9321aa2e9f03fde54e5cb8d79bf",
                             "Visibility": "PUBLIC"
                         },
                         "ServiceCheckAction": null,
@@ -70,25 +64,26 @@
         "CapDuration": 30,
         "CapLimit": 3,
         "CompositeTrigger": {
-            "CompositeTriggerType": null,
+            "CompositeTriggerType": "CRON",
             "Data": {
-                "Regex": null
+                "Regex": ""
             },
-            "TriggerSource": null,
+            "TriggerSource": "CRON",
             "Triggers": [
                 {
                     "Data": {
-                        "AlarmName": null,
-                        "AwsRegion": null,
+                        "AlarmName": "",
+                        "AwsRegion": "",
+                        "CronExpression": "5 * * * *",
                         "Port": null,
                         "SearchString": null,
                         "Url": null
                     },
-                    "TriggerSource": null,
-                    "TriggerType": null
+                    "TriggerSource": "CRON",
+                    "TriggerType": "CRON_TRIGGER"
                 }
             ]
         },
-        "RuleName": "Diagnose Postgres slowness or issues"
+        "RuleName": "Restart heroku app every one hour"
     }
 }

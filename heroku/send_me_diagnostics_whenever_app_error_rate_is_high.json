@@ -37,7 +37,7 @@
         "template": {
             "category": "heroku",
             "id": "",
-            "index": 8,
+            "index": 9,
             "name": "send_me_diagnostics_whenever_app_error_rate_is_high.json"
         }
     },

@@ -22,7 +22,7 @@
         "template": {
             "category": "heroku",
             "id": "",
-            "index": 9,
+            "index": 10,
             "name": "send_me_newrelic_apex_and_latency_dashboard_every_week.json"
         }
     },

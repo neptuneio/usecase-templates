@@ -33,7 +33,7 @@
         "template": {
             "category": "heroku",
             "id": "",
-            "index": 5,
+            "index": 6,
             "name": "scale_up_dynos_whenever_sidekiq_queue_size_is_high.json"
         }
     },

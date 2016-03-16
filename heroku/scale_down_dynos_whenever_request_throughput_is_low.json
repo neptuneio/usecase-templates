@@ -33,7 +33,7 @@
         "template": {
             "category": "heroku",
             "id": "",
-            "index": 6,
+            "index": 7,
             "name": "scale_down_dynos_whenever_request_throughput_is_low.json"
         }
     },

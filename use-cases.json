@@ -94,12 +94,9 @@
             "action": [
                 {
                     "data": {
-                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_PG_diagnostics.sh",
+                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_restart_app.sh",
                         "steps": [
-                            "Get list of blocking connections and locks",
-                            "Get list of long running queries",
-                            "Get PG diagnostics report",
-                            "Optionally kill all connections and restart app"
+                            "Restart heroku app or dyno"
                         ]
                     },
                     "type": "CLI Action"
@@ -108,21 +105,18 @@
             "template": {
                 "category": "heroku",
                 "id": "",
-                "name": "capture_pg_diagnostics_when_num_waiting_connections_is_high.json"
+                "name": "restart_heroku_app_every_one_hour.json"
             }
         },
         "index": 2,
-        "tagline": "Diagnose Postgres slowness or issues",
+        "tagline": "Restart heroku app every one hour",
         "tags": [
             "Heroku",
-            "Postgres",
-            "Database",
-            "Librato"
+            "Popular"
         ],
         "trigger": {
-            "description": "Whenever postgres #waiting_connections is too high"
-        },
-        "video": "https://www.youtube.com/v/OrXZXzalQRk"
+            "description": "Every one hour"
+        }
     },
     {
         "action_group": {
@@ -188,6 +182,41 @@
             "action": [
                 {
                     "data": {
+                        "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_PG_diagnostics.sh",
+                        "steps": [
+                            "Get list of blocking connections and locks",
+                            "Get list of long running queries",
+                            "Get PG diagnostics report",
+                            "Optionally kill all connections and restart app"
+                        ]
+                    },
+                    "type": "CLI Action"
+                }
+            ],
+            "template": {
+                "category": "heroku",
+                "id": "",
+                "name": "capture_pg_diagnostics_when_num_waiting_connections_is_high.json"
+            }
+        },
+        "index": 4,
+        "tagline": "Diagnose Postgres slowness or issues",
+        "tags": [
+            "Heroku",
+            "Postgres",
+            "Database",
+            "Librato"
+        ],
+        "trigger": {
+            "description": "Whenever postgres #waiting_connections is too high"
+        },
+        "video": "https://www.youtube.com/v/OrXZXzalQRk"
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
                         "runbookUrl": "https://raw.githubusercontent.com/neptuneio/Community-runbooks/master/runbooks/cli/heroku/Heroku_scale_up_dynos.sh",
                         "steps": [
                             "Scale up heroku worker dynos",
@@ -203,7 +232,7 @@
                 "name": "scale_up_dynos_whenever_dyno_load_is_high.json"
             }
         },
-        "index": 4,
+        "index": 5,
         "tagline": "Scale up dynos whenever average dyno load is high",
         "tags": [
             "Heroku",
@@ -242,7 +271,7 @@
                 "name": "scale_up_dynos_whenever_sidekiq_queue_size_is_high.json"
             }
         },
-        "index": 5,
+        "index": 6,
         "tagline": "Scale up dynos whenever sidekiq queue size is high",
         "tags": [
             "Heroku",
@@ -282,7 +311,7 @@
                 "name": "scale_down_dynos_whenever_request_throughput_is_low.json"
             }
         },
-        "index": 6,
+        "index": 7,
         "tagline": "Scale down dynos whenever request throughput is low",
         "tags": [
             "Heroku",
@@ -322,7 +351,7 @@
                 "name": "scale_down_dynos_at_the_end_of_the_day.json"
             }
         },
-        "index": 7,
+        "index": 8,
         "tagline": "Scale down dynos at the end of the day",
         "tags": [
             "Heroku"
@@ -364,7 +393,7 @@
                 "name": "send_me_diagnostics_whenever_app_error_rate_is_high.json"
             }
         },
-        "index": 8,
+        "index": 9,
         "tagline": "Send me full diagnostics whenever app error rate is high",
         "tags": [
             "Heroku",
@@ -394,7 +423,7 @@
                 "name": "send_me_newrelic_apex_and_latency_dashboard_every_week.json"
             }
         },
-        "index": 9,
+        "index": 10,
         "tagline": "Send me full performance report of app every week",
         "tags": [
             "Heroku",
