@@ -5,24 +5,14 @@
                 "data": {
                     "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
                     "steps": [
-                        "get stats about db connection pooling"
+                        "shutdown all the ec2 instances in given Amazon EC2 tag"
                     ]
                 },
-                "type": "Email Runbook"
-            },
-            {
-                "data": {
-                    "steps": [
-                        "send me the trend of ConnectionCount graph over the last few hours",
-                        "send me the trend of read/write latency over the last few hours",
-                        "send me the trend of consumed read/write iops used over the last few hours"
-                    ]
-                },
-                "type": "Graph Snapshot"
+                "type": "CLI Action"
             }
         ],
         "template": {
-            "category": "amazon_rds",
+            "category": "amazon_ec2",
             "id": "",
             "name": ""
         }
@@ -31,34 +21,9 @@
         "ActionGroup": {
             "Actions": [
                 {
-                    "ActionTarget": null,
+                    "ActionTarget": "AWS",
                     "ActionTargetType": null,
-                    "ActionType": "GRAPH_SNAPSHOT",
-                    "Active": false,
-                    "Data": {
-                        "AlarmNames": [],
-                        "AwsRegion": null,
-                        "CloudAPIAction": null,
-                        "ExecutionType": "PARALLEL",
-                        "Hostname": [],
-                        "LogProvider": null,
-                        "MetricDefinitionType": null,
-                        "MetricDefinitions": [],
-                        "MetricNames": [],
-                        "MetricSource": "CLOUDWATCH",
-                        "MetricsPeriod": null,
-                        "PingSource": null,
-                        "Retries": 0,
-                        "RuleRunbook": null,
-                        "ServiceCheckAction": null,
-                        "Sources": null,
-                        "Tags": []
-                    }
-                },
-                {
-                    "ActionTarget": null,
-                    "ActionTargetType": null,
-                    "ActionType": "EMAIL_RUNBOOK",
+                    "ActionType": "CLI_ACTION",
                     "Active": true,
                     "Data": {
                         "AlarmNames": [],
@@ -76,9 +41,9 @@
                             "Category": "GITHUB",
                             "Content": null,
                             "RunbookId": null,
-                            "RunbookName": "runbooks/network-alerts/Aws_ELB_healthy_instances_too_low.sh",
+                            "RunbookName": "runbooks/cli/aws/Aws_dynamodb_scaling.sh",
                             "Timeout": 2,
-                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/5ddb0e974b4374dbeb115c50c991377bb490bea9",
+                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/2618a520fc9433a6d3241cc8102b9747d5583bcd",
                             "Visibility": "PUBLIC"
                         },
                         "ServiceCheckAction": null,
@@ -110,13 +75,15 @@
                 }
             ]
         },
-        "RuleName": "Diagnose RDS High connection count issues"
+        "RuleName": "Shutdown all the ec2 instances in given Amazon EC2 tag daily"
     },
     "tags": [
+        "AmazonEC2",
         "AWS",
-        "AmazonRDS"
+        "Popular"
     ],
     "trigger": {
-        "description": "Whenever DBConnectionCount is > threshold for an RDS DB Instance"
+        "description": "Everyday at 6pm",
+        "type": "Cron"
     }
 }

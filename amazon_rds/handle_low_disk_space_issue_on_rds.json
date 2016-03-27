@@ -5,11 +5,19 @@
                 "data": {
                     "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
                     "steps": [
-                        "scale up storage space",
-                        "don't scale up above certain upper limit"
+                        "notify me via email",
+                        "send me steps to reduce RDS instance size or storage size manually"
                     ]
                 },
-                "type": "CLI Action"
+                "type": "Email Runbook"
+            },
+            {
+                "data": {
+                    "steps": [
+                        "send me the trend of FreeableSpace graph over the last few hours"
+                    ]
+                },
+                "type": "Graph Snapshot"
             }
         ],
         "template": {
@@ -18,11 +26,96 @@
             "name": ""
         }
     },
-    "rule_template": {},
+    "rule_template": {
+        "ActionGroup": {
+            "Actions": [
+                {
+                    "ActionTarget": null,
+                    "ActionTargetType": null,
+                    "ActionType": "GRAPH_SNAPSHOT",
+                    "Active": false,
+                    "Data": {
+                        "AlarmNames": [],
+                        "AwsRegion": null,
+                        "CloudAPIAction": null,
+                        "ExecutionType": "PARALLEL",
+                        "Hostname": [],
+                        "LogProvider": null,
+                        "MetricDefinitionType": null,
+                        "MetricDefinitions": [],
+                        "MetricNames": [],
+                        "MetricSource": "CLOUDWATCH",
+                        "MetricsPeriod": null,
+                        "PingSource": null,
+                        "Retries": 0,
+                        "RuleRunbook": null,
+                        "ServiceCheckAction": null,
+                        "Sources": null,
+                        "Tags": []
+                    }
+                },
+                {
+                    "ActionTarget": null,
+                    "ActionTargetType": null,
+                    "ActionType": "EMAIL_RUNBOOK",
+                    "Active": true,
+                    "Data": {
+                        "AlarmNames": [],
+                        "AwsRegion": null,
+                        "CloudAPIAction": null,
+                        "ExecutionType": "PARALLEL",
+                        "Hostname": [],
+                        "LogProvider": null,
+                        "MetricDefinitions": [],
+                        "MetricNames": [],
+                        "MetricSource": null,
+                        "PingSource": null,
+                        "Retries": 0,
+                        "RuleRunbook": {
+                            "Category": "GITHUB",
+                            "Content": null,
+                            "RunbookId": null,
+                            "RunbookName": "runbooks/network-alerts/Aws_ELB_healthy_instances_too_low.sh",
+                            "Timeout": 2,
+                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/5ddb0e974b4374dbeb115c50c991377bb490bea9",
+                            "Visibility": "PUBLIC"
+                        },
+                        "ServiceCheckAction": null,
+                        "Tags": []
+                    }
+                }
+            ]
+        },
+        "CapDuration": 30,
+        "CapLimit": 3,
+        "CompositeTrigger": {
+            "CompositeTriggerType": null,
+            "Data": {
+                "Regex": ""
+            },
+            "TriggerSource": "AWS_CLOUDWATCH",
+            "Triggers": [
+                {
+                    "Data": {
+                        "AlarmName": "",
+                        "AwsRegion": "",
+                        "CronExpression": "",
+                        "Port": null,
+                        "SearchString": null,
+                        "Url": null
+                    },
+                    "TriggerSource": "AWS_CLOUDWATCH",
+                    "TriggerType": ""
+                }
+            ]
+        },
+        "RuleName": "Track RDS low disk space utilization"
+    },
     "tags": [
+        "AWS",
         "AmazonRDS"
     ],
     "trigger": {
-        "description": "Whenever FreeableSpace is > threshold for an RDS DB Instance"
+        "description": "Whenever FreeableSpace is < threshold for an RDS DB Instance"
     }
 }

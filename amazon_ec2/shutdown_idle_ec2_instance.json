@@ -3,17 +3,15 @@
         "action": [
             {
                 "data": {
-                    "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
                     "steps": [
-                        "scale up storage space",
-                        "don't scale up above certain upper limit"
+                        "shutdown the idle ec2 instance in the Amazon EC2 tag"
                     ]
                 },
-                "type": "CLI Action"
+                "type": "API Action"
             }
         ],
         "template": {
-            "category": "amazon_rds",
+            "category": "amazon_ec2",
             "id": "",
             "name": ""
         }
@@ -22,39 +20,14 @@
         "ActionGroup": {
             "Actions": [
                 {
-                    "ActionTarget": null,
-                    "ActionTargetType": null,
-                    "ActionType": "GRAPH_SNAPSHOT",
-                    "Active": false,
-                    "Data": {
-                        "AlarmNames": [],
-                        "AwsRegion": null,
-                        "CloudAPIAction": null,
-                        "ExecutionType": "PARALLEL",
-                        "Hostname": [],
-                        "LogProvider": null,
-                        "MetricDefinitionType": null,
-                        "MetricDefinitions": [],
-                        "MetricNames": [],
-                        "MetricSource": "CLOUDWATCH",
-                        "MetricsPeriod": null,
-                        "PingSource": null,
-                        "Retries": 0,
-                        "RuleRunbook": null,
-                        "ServiceCheckAction": null,
-                        "Sources": null,
-                        "Tags": []
-                    }
-                },
-                {
-                    "ActionTarget": null,
-                    "ActionTargetType": null,
-                    "ActionType": "EMAIL_RUNBOOK",
+                    "ActionTarget": "AWS_EC2",
+                    "ActionTargetType": "TRIGGER_HOST",
+                    "ActionType": "CLOUD_API_ACTION",
                     "Active": true,
                     "Data": {
                         "AlarmNames": [],
                         "AwsRegion": null,
-                        "CloudAPIAction": null,
+                        "CloudAPIAction": "STOP_INSTANCE",
                         "ExecutionType": "PARALLEL",
                         "Hostname": [],
                         "LogProvider": null,
@@ -67,9 +40,9 @@
                             "Category": "GITHUB",
                             "Content": null,
                             "RunbookId": null,
-                            "RunbookName": "runbooks/network-alerts/Aws_ELB_healthy_instances_too_low.sh",
+                            "RunbookName": "runbooks/cli/aws/Aws_dynamodb_scaling.sh",
                             "Timeout": 2,
-                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/5ddb0e974b4374dbeb115c50c991377bb490bea9",
+                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/2618a520fc9433a6d3241cc8102b9747d5583bcd",
                             "Visibility": "PUBLIC"
                         },
                         "ServiceCheckAction": null,
@@ -101,13 +74,15 @@
                 }
             ]
         },
-        "RuleName": "Diagnose RDS low disk spaces issues"
+        "RuleName": "Shutdown the idle ec2 instance in the Amazon EC2 tag"
     },
     "tags": [
         "AWS",
-        "AmazonRDS"
+        "AmazonEC2",
+        "Popular"
     ],
     "trigger": {
-        "description": "Whenever FreeableSpace is > threshold for an RDS DB Instance"
+        "description": "Whenever any instance under EC2 tag is idle for 2 hours",
+        "type": "Alarm"
     }
 }

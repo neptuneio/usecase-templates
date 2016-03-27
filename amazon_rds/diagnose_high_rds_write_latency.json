@@ -5,7 +5,7 @@
                 "data": {
                     "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
                     "steps": [
-                        "get stats about db connection pooling"
+                        "add provisioned iops if both queue_depth and write_latency are shooting up"
                     ]
                 },
                 "type": "Email Runbook"
@@ -13,9 +13,8 @@
             {
                 "data": {
                     "steps": [
-                        "send me the trend of ConnectionCount graph over the last few hours",
-                        "send me the trend of read/write latency over the last few hours",
-                        "send me the trend of consumed read/write iops used over the last few hours"
+                        "send me the trend of write latency over the last few hours",
+                        "send me the trend of QueueDepth graph over the last few hours"
                     ]
                 },
                 "type": "Graph Snapshot"
@@ -110,13 +109,13 @@
                 }
             ]
         },
-        "RuleName": "Diagnose RDS High connection count issues"
+        "RuleName": "Diagnose high RDS write latency"
     },
     "tags": [
         "AWS",
         "AmazonRDS"
     ],
     "trigger": {
-        "description": "Whenever DBConnectionCount is > threshold for an RDS DB Instance"
+        "description": "Whenever write latency > threshold for an RDS DB Instance"
     }
 }
