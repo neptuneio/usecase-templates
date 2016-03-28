@@ -26,7 +26,91 @@
             "name": ""
         }
     },
-    "rule_template": {},
+    "rule_template": {
+        "ActionGroup": {
+            "Actions": [
+                {
+                    "ActionTarget": "AWS_EC2",
+                    "ActionTargetType": "SPECIFIC_HOST",
+                    "ActionType": "EXECUTE_SCRIPT",
+                    "Active": false,
+                    "Data": {
+                        "AlarmNames": [],
+                        "AwsRegion": null,
+                        "CloudAPIAction": "STOP_INSTANCE",
+                        "ExecutionType": "PARALLEL",
+                        "Hostname": [],
+                        "LogProvider": null,
+                        "MetricDefinitions": [],
+                        "MetricNames": [],
+                        "MetricSource": null,
+                        "PingSource": null,
+                        "Retries": 0,
+                        "RuleRunbook": {
+                            "Category": "GITHUB",
+                            "Content": null,
+                            "RunbookId": null,
+                            "RunbookName": "runbooks/db-alerts/MSQL_performance_diagnostics.sh",
+                            "Timeout": 2,
+                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/75e38914b8d60084c1922b2ff0f77ddc4a447522",
+                            "Visibility": "PUBLIC"
+                        },
+                        "ServiceCheckAction": null,
+                        "Tags": []
+                    }
+                },
+                {
+                    "ActionTarget": null,
+                    "ActionTargetType": null,
+                    "ActionType": "GRAPH_SNAPSHOT",
+                    "Active": true,
+                    "Data": {
+                        "AlarmNames": [],
+                        "AwsRegion": null,
+                        "CloudAPIAction": null,
+                        "ExecutionType": "PARALLEL",
+                        "Hostname": [],
+                        "LogProvider": null,
+                        "MetricDefinitionType": "BY_METRIC_EXPRESSION",
+                        "MetricDefinitions": [],
+                        "MetricNames": [],
+                        "MetricSource": "DATADOG",
+                        "MetricsPeriod": null,
+                        "PingSource": null,
+                        "Retries": 0,
+                        "RuleRunbook": null,
+                        "ServiceCheckAction": null,
+                        "Sources": null,
+                        "Tags": []
+                    }
+                }
+            ]
+        },
+        "CapDuration": 30,
+        "CapLimit": 3,
+        "CompositeTrigger": {
+            "CompositeTriggerType": "EXISTING_ALARM",
+            "Data": {
+                "Regex": ""
+            },
+            "TriggerSource": "DATADOG",
+            "Triggers": [
+                {
+                    "Data": {
+                        "AlarmName": "",
+                        "AwsRegion": "",
+                        "CronExpression": "",
+                        "Port": null,
+                        "SearchString": null,
+                        "Url": null
+                    },
+                    "TriggerSource": "DATADOG",
+                    "TriggerType": "EXISTING_ALARM"
+                }
+            ]
+        },
+        "RuleName": "Diagnose slow query performance on MySQL"
+    },
     "tags": [
         "MySQL",
         "Database"

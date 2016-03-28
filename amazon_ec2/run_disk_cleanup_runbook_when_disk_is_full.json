@@ -19,8 +19,68 @@
             "name": ""
         }
     },
-    "rule_template": {},
+    "rule_template": {
+        "ActionGroup": {
+            "Actions": [
+                {
+                    "ActionTarget": "AWS_EC2",
+                    "ActionTargetType": "TRIGGER_HOST",
+                    "ActionType": "EXECUTE_SCRIPT",
+                    "Active": true,
+                    "Data": {
+                        "AlarmNames": [],
+                        "AwsRegion": null,
+                        "CloudAPIAction": "STOP_INSTANCE",
+                        "ExecutionType": "PARALLEL",
+                        "Hostname": [],
+                        "LogProvider": null,
+                        "MetricDefinitions": [],
+                        "MetricNames": [],
+                        "MetricSource": null,
+                        "PingSource": null,
+                        "Retries": 0,
+                        "RuleRunbook": {
+                            "Category": "GITHUB",
+                            "Content": null,
+                            "RunbookId": null,
+                            "RunbookName": "runbooks/diagnostics/host_level/high_disk_space_utilization_alert.sh",
+                            "Timeout": 2,
+                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/9a0a196080f7fe9b6612a89612193f24eac526fa",
+                            "Visibility": "PUBLIC"
+                        },
+                        "ServiceCheckAction": null,
+                        "Tags": []
+                    }
+                }
+            ]
+        },
+        "CapDuration": 30,
+        "CapLimit": 3,
+        "CompositeTrigger": {
+            "CompositeTriggerType": "EXISTING_ALARM",
+            "Data": {
+                "Regex": ""
+            },
+            "TriggerSource": "DATADOG",
+            "Triggers": [
+                {
+                    "Data": {
+                        "AlarmName": "",
+                        "AwsRegion": "",
+                        "CronExpression": "",
+                        "Port": null,
+                        "SearchString": null,
+                        "Url": null
+                    },
+                    "TriggerSource": "DATADOG",
+                    "TriggerType": "EXISTING_ALARM"
+                }
+            ]
+        },
+        "RuleName": "Clean up full disk"
+    },
     "tags": [
+        "Popular",
         "AmazonEC2"
     ],
     "trigger": {

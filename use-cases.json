@@ -596,6 +596,7 @@
             }
         },
         "index": 999,
+        "tagline": "When CPU is high (DataDog Alarm)",
         "tags": [
             "AmazonEC2",
             "Popular"
@@ -635,6 +636,7 @@
             }
         },
         "index": 999,
+        "tagline": "Diagnose a hung process",
         "tags": [
             "AmazonEC2",
             "Popular"
@@ -665,7 +667,9 @@
             }
         },
         "index": 999,
+        "tagline": "Clean up full disk",
         "tags": [
+            "Popular",
             "AmazonEC2"
         ],
         "trigger": {
@@ -688,12 +692,14 @@
             "template": {
                 "category": "amazon_ec2",
                 "id": "",
-                "name": "shut_down_all_ec2_instances_in_a_tag_on_schedule.json"
+                "name": "shutdown_all_ec2_instances_in_a_tag_on_schedule.json"
             }
         },
         "index": 999,
+        "tagline": "Shutdown all the ec2 instances in given Amazon EC2 tag daily",
         "tags": [
             "AmazonEC2",
+            "AWS",
             "Popular"
         ],
         "trigger": {
@@ -716,11 +722,13 @@
             "template": {
                 "category": "amazon_ec2",
                 "id": "",
-                "name": "shut_down_idle_ec2_instance.json"
+                "name": "shutdown_idle_ec2_instance.json"
             }
         },
         "index": 999,
+        "tagline": "Shutdown the idle ec2 instance in the Amazon EC2 tag",
         "tags": [
+            "AWS",
             "AmazonEC2",
             "Popular"
         ],
@@ -867,6 +875,44 @@
                     "data": {
                         "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
                         "steps": [
+                            "add provisioned iops if both queue_depth and write_latency are shooting up"
+                        ]
+                    },
+                    "type": "Email Runbook"
+                },
+                {
+                    "data": {
+                        "steps": [
+                            "send me the trend of write latency over the last few hours",
+                            "send me the trend of QueueDepth graph over the last few hours"
+                        ]
+                    },
+                    "type": "Graph Snapshot"
+                }
+            ],
+            "template": {
+                "category": "amazon_rds",
+                "id": "",
+                "name": "diagnose_high_rds_write_latency.json"
+            }
+        },
+        "index": 999,
+        "tagline": "Diagnose high RDS write latency",
+        "tags": [
+            "AWS",
+            "AmazonRDS"
+        ],
+        "trigger": {
+            "description": "Whenever write latency > threshold for an RDS DB Instance"
+        }
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                        "steps": [
                             "get stats about db connection pooling"
                         ]
                     },
@@ -890,11 +936,43 @@
             }
         },
         "index": 999,
+        "tagline": "Diagnose RDS High connection count issues",
         "tags": [
+            "AWS",
             "AmazonRDS"
         ],
         "trigger": {
             "description": "Whenever DBConnectionCount is > threshold for an RDS DB Instance"
+        }
+    },
+    {
+        "action_group": {
+            "action": [
+                {
+                    "data": {
+                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                        "steps": [
+                            "scale up storage space",
+                            "don't scale up above certain upper limit"
+                        ]
+                    },
+                    "type": "CLI Action"
+                }
+            ],
+            "template": {
+                "category": "amazon_rds",
+                "id": "",
+                "name": "handle_high_free_disk_space_issue_on_rds.json"
+            }
+        },
+        "index": 999,
+        "tagline": "Diagnose RDS low disk spaces issues",
+        "tags": [
+            "AWS",
+            "AmazonRDS"
+        ],
+        "trigger": {
+            "description": "Whenever FreeableSpace is > threshold for an RDS DB Instance"
         }
     },
     {
@@ -922,43 +1000,17 @@
             "template": {
                 "category": "amazon_rds",
                 "id": "",
-                "name": "handle_high_free_disk_space_issue_on_rds.json"
-            }
-        },
-        "index": 999,
-        "tags": [
-            "AmazonRDS"
-        ],
-        "trigger": {
-            "description": "Whenever FreeableSpace is < threshold for an RDS DB Instance"
-        }
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
-                        "steps": [
-                            "scale up storage space",
-                            "don't scale up above certain upper limit"
-                        ]
-                    },
-                    "type": "CLI Action"
-                }
-            ],
-            "template": {
-                "category": "amazon_rds",
-                "id": "",
                 "name": "handle_low_disk_space_issue_on_rds.json"
             }
         },
         "index": 999,
+        "tagline": "Track RDS low disk space utilization",
         "tags": [
+            "AWS",
             "AmazonRDS"
         ],
         "trigger": {
-            "description": "Whenever FreeableSpace is > threshold for an RDS DB Instance"
+            "description": "Whenever FreeableSpace is < threshold for an RDS DB Instance"
         }
     },
     {
@@ -993,7 +1045,9 @@
             }
         },
         "index": 999,
+        "tagline": "Diagnose RDS memory issues",
         "tags": [
+            "AWS",
             "AmazonRDS"
         ],
         "trigger": {
@@ -1021,47 +1075,13 @@
             }
         },
         "index": 999,
+        "tagline": "Scale down RDS IOPS for low throughput usage",
         "tags": [
+            "AWS",
             "AmazonRDS"
         ],
         "trigger": {
             "description": "Whenever read/write IOPS is < 20% of provisioned capacity for an RDS DB Instance"
-        }
-    },
-    {
-        "action_group": {
-            "action": [
-                {
-                    "data": {
-                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
-                        "steps": [
-                            "add provisioned iops if both queue_depth and write_latency are shooting up"
-                        ]
-                    },
-                    "type": "Email Runbook"
-                },
-                {
-                    "data": {
-                        "steps": [
-                            "send me the trend of write latency over the last few hours",
-                            "send me the trend of QueueDepth graph over the last few hours"
-                        ]
-                    },
-                    "type": "Graph Snapshot"
-                }
-            ],
-            "template": {
-                "category": "amazon_rds",
-                "id": "",
-                "name": "scale_up_iops_for_high_latency_on_rds.json"
-            }
-        },
-        "index": 999,
-        "tags": [
-            "AmazonRDS"
-        ],
-        "trigger": {
-            "description": "Whenever write latency > threshold for an RDS DB Instance"
         }
     },
     {
@@ -1085,7 +1105,9 @@
             }
         },
         "index": 999,
+        "tagline": "Scale up RDS IOPS for high throughput",
         "tags": [
+            "AWS",
             "AmazonRDS"
         ],
         "trigger": {
@@ -1234,8 +1256,9 @@
             }
         },
         "index": 999,
+        "tagline": "Restart web server",
         "tags": [
-            "ApacheNginx"
+            "WebServer"
         ],
         "trigger": {
             "description": "Whenever apache has crashed"
@@ -1262,8 +1285,10 @@
             }
         },
         "index": 999,
+        "tagline": "Restart web server",
         "tags": [
-            "ApacheNginx"
+            "Nginx",
+            "WebServer"
         ],
         "trigger": {
             "description": "Whenever nginx has crashed"
@@ -1361,6 +1386,7 @@
             }
         },
         "index": 999,
+        "tagline": "Diagnose high connection count on MySQL",
         "tags": [
             "MySQL",
             "Database"
@@ -1398,6 +1424,7 @@
             }
         },
         "index": 999,
+        "tagline": "Diagnose slow query performance on MySQL",
         "tags": [
             "MySQL",
             "Database"

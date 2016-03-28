@@ -1,14 +1,4 @@
 {
-    "tagline": "Send me full diagnostics whenever app error rate is high",
-    "tags": [
-        "Heroku",
-        "NewRelic",
-        "Popular"
-    ],
-    "trigger": {
-        "description": "Whenever heroku app error rate is > 2%"
-    },
-    "video": "https://www.youtube.com/v/c07Gn5iraeM",
     "action_group": {
         "action": [
             {
@@ -48,7 +38,7 @@
                     "ActionTarget": "HEROKU",
                     "ActionTargetType": null,
                     "ActionType": "CLI_ACTION",
-                    "Active": true,
+                    "Active": false,
                     "Data": {
                         "AlarmNames": [],
                         "AwsRegion": null,
@@ -78,7 +68,7 @@
                     "ActionTarget": null,
                     "ActionTargetType": null,
                     "ActionType": "GRAPH_SNAPSHOT",
-                    "Active": false,
+                    "Active": true,
                     "Data": {
                         "AlarmNames": [],
                         "AwsRegion": null,
@@ -97,10 +87,10 @@
                                 "type": "APPLICATION"
                             },
                             {
-                                "alias": "Error Rate",
+                                "alias": "Apdex",
                                 "data": null,
                                 "metricExpression": null,
-                                "metricName": "Errors/all",
+                                "metricName": "Apdex",
                                 "namespace": null,
                                 "type": "APPLICATION"
                             },
@@ -111,14 +101,6 @@
                                 },
                                 "metricExpression": null,
                                 "metricName": "Agent/MetricsReported/count",
-                                "namespace": null,
-                                "type": "APPLICATION"
-                            },
-                            {
-                                "alias": "Apdex",
-                                "data": null,
-                                "metricExpression": null,
-                                "metricName": "Apdex",
                                 "namespace": null,
                                 "type": "APPLICATION"
                             }
@@ -164,5 +146,15 @@
             ]
         },
         "RuleName": "Send me full diagnostics whenever app error rate is high"
-    }
+    },
+    "tagline": "Send me full diagnostics whenever app error rate is high",
+    "tags": [
+        "Heroku",
+        "NewRelic",
+        "Popular"
+    ],
+    "trigger": {
+        "description": "Whenever heroku app error rate is > 2%"
+    },
+    "video": "https://www.youtube.com/v/c07Gn5iraeM"
 }

@@ -26,14 +26,17 @@ for f in files:
         head, name = os.path.split(f)
         category = os.path.basename(head)
         data = json.load(data_file)
-        if 'tags' not in data:
+        if not 'tags' in data:
+            print "Ignoring ", f, " since it does not have tags."
             continue
         usecase = {}
         print category, name
         if 'tags' in data:
             usecase['tags'] = data['tags']
-        if 'tagline' in data:
+        if 'tagline' in data and len(data['tagline']) > 0:
             usecase['tagline'] = data['tagline']
+        elif 'rule_template' in data and 'RuleName' in data['rule_template']:
+            usecase['tagline'] = data['rule_template']['RuleName'] 
         if 'trigger' in data:
             usecase['trigger'] = data['trigger']
         if 'action_group' in data:
