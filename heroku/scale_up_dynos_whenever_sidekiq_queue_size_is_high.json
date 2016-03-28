@@ -1,14 +1,4 @@
 {
-    "tagline": "Scale up dynos whenever sidekiq queue size is high",
-    "tags": [
-        "Heroku",
-        "Popular",
-        "Librato"
-    ],
-    "trigger": {
-        "description": "Whenever sidekiq queue size is high"
-    },
-    "video": "https://www.youtube.com/v/uiLZzclu15U",
     "action_group": {
         "action": [
             {
@@ -44,7 +34,7 @@
                     "ActionTarget": "HEROKU",
                     "ActionTargetType": null,
                     "ActionType": "CLI_ACTION",
-                    "Active": true,
+                    "Active": false,
                     "Data": {
                         "AlarmNames": [],
                         "AwsRegion": null,
@@ -73,8 +63,8 @@
                 {
                     "ActionTarget": null,
                     "ActionTargetType": null,
-                    "ActionType": "WEBPAGE_SNAPSHOT",
-                    "Active": false,
+                    "ActionType": "GRAPH_SNAPSHOT",
+                    "Active": true,
                     "Data": {
                         "AlarmNames": [],
                         "AwsRegion": null,
@@ -83,13 +73,20 @@
                         "Height": 768,
                         "Hostname": [],
                         "LogProvider": null,
+                        "MetricDefinitionType": "BY_METRIC_NAME",
                         "MetricDefinitions": [],
                         "MetricNames": [],
-                        "MetricSource": null,
+                        "MetricSource": "LIBRATO",
+                        "MetricsPeriod": {
+                            "hours": 6,
+                            "name": "6hrs",
+                            "resolution": 60
+                        },
                         "PingSource": null,
                         "Retries": 0,
                         "RuleRunbook": null,
                         "ServiceCheckAction": null,
+                        "Sources": null,
                         "Tags": [],
                         "Uri": "https://staging.newrelic.com/public/charts/fAmWyK06eYB",
                         "Width": 1366
@@ -121,5 +118,15 @@
             ]
         },
         "RuleName": "Scale up dynos whever sidekiq queue size is high"
-    }
+    },
+    "tagline": "Scale up dynos whenever sidekiq queue size is high",
+    "tags": [
+        "Heroku",
+        "Popular",
+        "Librato"
+    ],
+    "trigger": {
+        "description": "Whenever sidekiq queue size is high"
+    },
+    "video": "https://www.youtube.com/v/uiLZzclu15U"
 }

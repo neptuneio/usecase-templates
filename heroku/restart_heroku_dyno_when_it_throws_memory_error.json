@@ -1,14 +1,4 @@
 {
-    "tagline": "Restart the specific heroku dyno when it has R14 memory exceeded error",
-    "tags": [
-        "Heroku",
-        "Popular",
-        "Papertrail",
-        "Logentries"
-    ],
-    "trigger": {
-        "description": "A particular heroku dyno reports R14 memory quota exceeded erorr"
-    },
     "action_group": {
         "action": [
             {
@@ -24,11 +14,10 @@
         "template": {
             "category": "heroku",
             "id": "",
-            "index" : 1,
+            "index": 1,
             "name": "restart_heroku_dyno_when_it_throws_memory_error.json"
         }
     },
-    "video": "https://www.youtube.com/v/7Td84osPKS4",
     "rule_template": {
         "ActionGroup": {
             "Actions": [
@@ -67,25 +56,37 @@
         "CapDuration": 30,
         "CapLimit": 3,
         "CompositeTrigger": {
-            "CompositeTriggerType": null,
+            "CompositeTriggerType": "EXISTING_ALARM",
             "Data": {
-                "Regex": null
+                "Regex": ""
             },
-            "TriggerSource": null,
+            "TriggerSource": "PAPERTRAIL",
             "Triggers": [
                 {
                     "Data": {
-                        "AlarmName": null,
-                        "AwsRegion": null,
+                        "AlarmName": "",
+                        "AwsRegion": "",
+                        "CronExpression": "",
                         "Port": null,
                         "SearchString": null,
                         "Url": null
                     },
-                    "TriggerSource": null,
-                    "TriggerType": null
+                    "TriggerSource": "PAPERTRAIL",
+                    "TriggerType": "EXISTING_ALARM"
                 }
             ]
         },
         "RuleName": "Restart heroku dyno when it throws memory quota exceeded errors"
-    }
+    },
+    "tagline": "Restart the specific heroku dyno when it has R14 memory exceeded error",
+    "tags": [
+        "Heroku",
+        "Popular",
+        "Papertrail",
+        "Logentries"
+    ],
+    "trigger": {
+        "description": "A particular heroku dyno reports R14 memory quota exceeded erorr"
+    },
+    "video": "https://www.youtube.com/v/7Td84osPKS4"
 }

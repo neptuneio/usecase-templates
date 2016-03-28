@@ -87,10 +87,10 @@
                                 "type": "APPLICATION"
                             },
                             {
-                                "alias": "Apdex",
+                                "alias": "Error Rate",
                                 "data": null,
                                 "metricExpression": null,
-                                "metricName": "Apdex",
+                                "metricName": "Errors/all",
                                 "namespace": null,
                                 "type": "APPLICATION"
                             },
@@ -108,9 +108,9 @@
                         "MetricNames": [],
                         "MetricSource": "NEWRELIC",
                         "MetricsPeriod": {
-                            "hours": 3,
-                            "name": "3hrs",
-                            "resolution": 60
+                            "hours": 6,
+                            "name": "6hrs",
+                            "resolution": 300
                         },
                         "PingSource": null,
                         "Retries": 0,

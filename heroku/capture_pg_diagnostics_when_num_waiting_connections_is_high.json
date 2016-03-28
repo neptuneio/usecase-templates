@@ -1,15 +1,4 @@
 {
-    "tagline": "Diagnose Postgres slowness or issues",
-    "tags": [
-        "Heroku",
-        "Postgres",
-        "Database",
-        "Librato"
-    ],
-    "trigger": {
-        "description": "Whenever postgres #waiting_connections is too high"
-    },
-    "video": "https://www.youtube.com/v/OrXZXzalQRk",
     "action_group": {
         "action": [
             {
@@ -28,11 +17,11 @@
         "template": {
             "category": "heroku",
             "id": "",
-            "index" : 4,
+            "index": 4,
             "name": "capture_pg_diagnostics_when_num_waiting_connections_is_high.json"
         }
     },
-    "rule_template":{
+    "rule_template": {
         "ActionGroup": {
             "Actions": [
                 {
@@ -70,25 +59,37 @@
         "CapDuration": 30,
         "CapLimit": 3,
         "CompositeTrigger": {
-            "CompositeTriggerType": null,
+            "CompositeTriggerType": "EXISTING_ALARM",
             "Data": {
-                "Regex": null
+                "Regex": ""
             },
-            "TriggerSource": null,
+            "TriggerSource": "LIBRATO",
             "Triggers": [
                 {
                     "Data": {
-                        "AlarmName": null,
-                        "AwsRegion": null,
+                        "AlarmName": "",
+                        "AwsRegion": "",
+                        "CronExpression": "",
                         "Port": null,
                         "SearchString": null,
                         "Url": null
                     },
-                    "TriggerSource": null,
-                    "TriggerType": null
+                    "TriggerSource": "LIBRATO",
+                    "TriggerType": "EXISTING_ALARM"
                 }
             ]
         },
         "RuleName": "Diagnose Postgres slowness or issues"
-    }
+    },
+    "tagline": "Diagnose Postgres slowness or issues",
+    "tags": [
+        "Heroku",
+        "Postgres",
+        "Database",
+        "Librato"
+    ],
+    "trigger": {
+        "description": "Whenever postgres #waiting_connections is too high"
+    },
+    "video": "https://www.youtube.com/v/OrXZXzalQRk"
 }

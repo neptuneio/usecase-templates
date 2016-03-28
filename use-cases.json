@@ -1315,8 +1315,9 @@
             }
         },
         "index": 999,
+        "tagline": "Hadoop disk space remediation rule",
         "tags": [
-            "HadoopHbase"
+            "Hadoop/Hbase"
         ],
         "trigger": {
             "description": "Whenever percent_used_diskspace is > threshold on a hbase node"
@@ -1350,8 +1351,9 @@
             }
         },
         "index": 999,
+        "tagline": "Handle blacklisted node in hadoop cluster",
         "tags": [
-            "HadoopHbase"
+            "Hadoop/Hbase"
         ],
         "trigger": {
             "description": "Whenever a node is blacklisted in hadoop cluster"

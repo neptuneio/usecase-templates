@@ -25,9 +25,97 @@
             "name": ""
         }
     },
-    "rule_template": {},
+    "rule_template": {
+        "ActionGroup": {
+            "Actions": [
+                {
+                    "ActionTarget": null,
+                    "ActionTargetType": "TRIGGER_HOST",
+                    "ActionType": "EXECUTE_SCRIPT",
+                    "Active": false,
+                    "Data": {
+                        "AlarmNames": [],
+                        "AwsRegion": null,
+                        "CloudAPIAction": null,
+                        "ExecutionType": "PARALLEL",
+                        "Hostname": [],
+                        "LogProvider": null,
+                        "MetricDefinitions": [],
+                        "MetricNames": [],
+                        "MetricSource": null,
+                        "PingSource": null,
+                        "Retries": 0,
+                        "RuleRunbook": {
+                            "Category": "GITHUB",
+                            "Content": null,
+                            "RunbookId": null,
+                            "RunbookName": "runbooks/application-alerts/Restart_apache_tomcat.sh",
+                            "Timeout": 2,
+                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/847480574ab673c1cb1b220c5c9217335c1ea5ca",
+                            "Visibility": "PUBLIC"
+                        },
+                        "ServiceCheckAction": null,
+                        "Tags": []
+                    }
+                },
+                {
+                    "ActionTarget": null,
+                    "ActionTargetType": null,
+                    "ActionType": "GRAPH_SNAPSHOT",
+                    "Active": true,
+                    "Data": {
+                        "AlarmNames": [],
+                        "AwsRegion": null,
+                        "CloudAPIAction": null,
+                        "ExecutionType": "PARALLEL",
+                        "Hostname": [],
+                        "LogProvider": null,
+                        "MetricDefinitionType": "BY_HOST_AND_NAME",
+                        "MetricDefinitions": [],
+                        "MetricNames": [],
+                        "MetricSource": "DATADOG",
+                        "MetricsPeriod": {
+                            "hours": 6,
+                            "name": "6hrs",
+                            "resolution": 60
+                        },
+                        "PingSource": null,
+                        "Retries": 0,
+                        "RuleRunbook": null,
+                        "ServiceCheckAction": null,
+                        "Sources": null,
+                        "Tags": []
+                    }
+                }
+            ]
+        },
+        "CapDuration": 30,
+        "CapLimit": 3,
+        "CompositeTrigger": {
+            "CompositeTriggerType": "EXISTING_ALARM",
+            "Data": {
+                "Regex": ""
+            },
+            "TriggerSource": "DATADOG",
+            "Triggers": [
+                {
+                    "Data": {
+                        "AlarmName": "",
+                        "AwsRegion": "",
+                        "CronExpression": "",
+                        "Port": null,
+                        "SearchString": null,
+                        "Url": null
+                    },
+                    "TriggerSource": "DATADOG",
+                    "TriggerType": "EXISTING_ALARM"
+                }
+            ]
+        },
+        "RuleName": "Handle blacklisted node in hadoop cluster"
+    },
     "tags": [
-        "HadoopHbase"
+        "Hadoop/Hbase"
     ],
     "trigger": {
         "description": "Whenever a node is blacklisted in hadoop cluster"

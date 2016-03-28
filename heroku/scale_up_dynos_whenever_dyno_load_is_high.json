@@ -1,13 +1,4 @@
 {
-    "tagline": "Scale up dynos whenever average dyno load is high",
-    "tags": [
-        "Heroku",
-        "Librato"
-    ],
-    "trigger": {
-        "description": "When Librato alerts that average dyno load is high"
-    },
-    "video": "https://www.youtube.com/v/uiLZzclu15U",
     "action_group": {
         "action": [
             {
@@ -24,7 +15,7 @@
         "template": {
             "category": "heroku",
             "id": "",
-            "index" : 5,
+            "index": 5,
             "name": "scale_up_dynos_whenever_dyno_load_is_high.json"
         }
     },
@@ -60,31 +51,6 @@
                         "ServiceCheckAction": null,
                         "Tags": []
                     }
-                },
-                {
-                    "ActionTarget": null,
-                    "ActionTargetType": null,
-                    "ActionType": "WEBPAGE_SNAPSHOT",
-                    "Active": false,
-                    "Data": {
-                        "AlarmNames": [],
-                        "AwsRegion": null,
-                        "CloudAPIAction": null,
-                        "ExecutionType": "PARALLEL",
-                        "Height": 768,
-                        "Hostname": [],
-                        "LogProvider": null,
-                        "MetricDefinitions": [],
-                        "MetricNames": [],
-                        "MetricSource": null,
-                        "PingSource": null,
-                        "Retries": 0,
-                        "RuleRunbook": null,
-                        "ServiceCheckAction": null,
-                        "Tags": [],
-                        "Uri": "https://staging.newrelic.com/public/charts/fAmWyK06eYB",
-                        "Width": 1366
-                    }
                 }
             ]
         },
@@ -112,5 +78,14 @@
             ]
         },
         "RuleName": "Scale up dynos whenever average dyno load is high"
-    }
+    },
+    "tagline": "Scale up dynos whenever average dyno load is high",
+    "tags": [
+        "Heroku",
+        "Librato"
+    ],
+    "trigger": {
+        "description": "When Librato alerts that average dyno load is high"
+    },
+    "video": "https://www.youtube.com/v/uiLZzclu15U"
 }

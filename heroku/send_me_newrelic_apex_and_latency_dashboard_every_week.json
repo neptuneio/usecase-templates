@@ -1,13 +1,4 @@
 {
-    "tagline": "Send me full performance report of app every week",
-    "tags": [
-        "Heroku",
-        "NewRelic"
-    ],
-    "trigger": {
-        "description": "Every week on sunday night"
-    },
-    "video": "https://www.youtube.com/v/p41vcCoY1JA",
     "action_group": {
         "action": [
             {
@@ -44,6 +35,22 @@
                         "MetricDefinitionType": "APPLICATION_METRIC",
                         "MetricDefinitions": [
                             {
+                                "alias": "Apdex",
+                                "data": null,
+                                "metricExpression": null,
+                                "metricName": "Apdex",
+                                "namespace": null,
+                                "type": "APPLICATION"
+                            },
+                            {
+                                "alias": "Error Rate",
+                                "data": null,
+                                "metricExpression": null,
+                                "metricName": "Errors/all",
+                                "namespace": null,
+                                "type": "APPLICATION"
+                            },
+                            {
                                 "alias": "Web Throughput",
                                 "data": null,
                                 "metricExpression": null,
@@ -58,22 +65,6 @@
                                 },
                                 "metricExpression": null,
                                 "metricName": "Agent/MetricsReported/count",
-                                "namespace": null,
-                                "type": "APPLICATION"
-                            },
-                            {
-                                "alias": "Error Rate",
-                                "data": null,
-                                "metricExpression": null,
-                                "metricName": "Errors/all",
-                                "namespace": null,
-                                "type": "APPLICATION"
-                            },
-                            {
-                                "alias": "Apdex",
-                                "data": null,
-                                "metricExpression": null,
-                                "metricName": "Apdex",
                                 "namespace": null,
                                 "type": "APPLICATION"
                             }
@@ -119,5 +110,14 @@
             ]
         },
         "RuleName": "Send me full performance report of app every week"
-    }
+    },
+    "tagline": "Send me full performance report of app every week",
+    "tags": [
+        "Heroku",
+        "NewRelic"
+    ],
+    "trigger": {
+        "description": "Every week on sunday night"
+    },
+    "video": "https://www.youtube.com/v/p41vcCoY1JA"
 }
