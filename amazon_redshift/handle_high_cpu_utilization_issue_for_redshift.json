@@ -18,7 +18,66 @@
             "name": ""
         }
     },
-    "rule_template": {},
+    "rule_template": {
+        "ActionGroup": {
+            "Actions": [
+                {
+                    "ActionTarget": null,
+                    "ActionTargetType": null,
+                    "ActionType": "EMAIL_RUNBOOK",
+                    "Active": true,
+                    "Data": {
+                        "AlarmNames": [],
+                        "AwsRegion": null,
+                        "CloudAPIAction": null,
+                        "ExecutionType": "PARALLEL",
+                        "Hostname": [],
+                        "LogProvider": null,
+                        "MetricDefinitions": [],
+                        "MetricNames": [],
+                        "MetricSource": null,
+                        "PingSource": null,
+                        "Retries": 0,
+                        "RuleRunbook": {
+                            "Category": "GITHUB",
+                            "Content": null,
+                            "RunbookId": null,
+                            "RunbookName": "runbooks/diagnostics/host_level/high_cpu_utilization.sh",
+                            "Timeout": 2,
+                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/9d514b45a3da4d7732407e363d33d7518918d621",
+                            "Visibility": "PUBLIC"
+                        },
+                        "ServiceCheckAction": null,
+                        "Tags": []
+                    }
+                }
+            ]
+        },
+        "CapDuration": 30,
+        "CapLimit": 3,
+        "CompositeTrigger": {
+            "CompositeTriggerType": "CRON",
+            "Data": {
+                "Regex": ""
+            },
+            "TriggerSource": "AWS_CLOUDWATCH",
+            "Triggers": [
+                {
+                    "Data": {
+                        "AlarmName": "",
+                        "AwsRegion": "",
+                        "CronExpression": "",
+                        "Port": null,
+                        "SearchString": null,
+                        "Url": null
+                    },
+                    "TriggerSource": "AWS_CLOUDWATCH",
+                    "TriggerType": ""
+                }
+            ]
+        },
+        "RuleName": "Diagnose high  CPU on Redshift cluster instances"
+    },
     "tags": [
         "AmazonRedShift"
     ],

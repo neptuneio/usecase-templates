@@ -110,6 +110,7 @@
         },
         "RuleName": null
     },
+    "tagline": "Diagnose service issues when a URL is not pingable",
     "tags": [
         "ServiceAvailability",
         "URLMonitoring"

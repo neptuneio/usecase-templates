@@ -81,6 +81,7 @@
         },
         "RuleName": null
     },
+    "tagline": "Restart a process whenever a service response does not match a pattern",
     "tags": [
         "ServiceAvailability",
         "URLMonitoring"

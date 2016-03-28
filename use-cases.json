@@ -456,6 +456,7 @@
             }
         },
         "index": 999,
+        "tagline": "Take EBS snapshot every night",
         "tags": [
             "EBS"
         ],
@@ -490,6 +491,7 @@
             }
         },
         "index": 999,
+        "tagline": "Diagnose high EBS read/write latencies",
         "tags": [
             "EBS"
         ],
@@ -526,6 +528,7 @@
             }
         },
         "index": 999,
+        "tagline": "Scale down EBS provisioned IOPS for less usage",
         "tags": [
             "EBS"
         ],
@@ -562,6 +565,7 @@
             }
         },
         "index": 999,
+        "tagline": "Scale up EBS provisioned IOPS on high usage",
         "tags": [
             "EBS"
         ],
@@ -767,6 +771,7 @@
             }
         },
         "index": 999,
+        "tagline": "Diagnose high 5XX errors from instances behind load balancer",
         "tags": [
             "ELB"
         ],
@@ -802,6 +807,7 @@
             }
         },
         "index": 999,
+        "tagline": "Diagnose high 5xx errors on ELB (load balancer)",
         "tags": [
             "ELB"
         ],
@@ -829,6 +835,7 @@
             }
         },
         "index": 999,
+        "tagline": "Diagnose ELB high spillover count",
         "tags": [
             "ELB"
         ],
@@ -863,6 +870,7 @@
             }
         },
         "index": 999,
+        "tagline": "Diagnose high  request count reported by ELB",
         "tags": [
             "ELB"
         ],
@@ -1137,6 +1145,7 @@
             }
         },
         "index": 999,
+        "tagline": "Diagnose high  CPU on Redshift cluster instances",
         "tags": [
             "AmazonRedShift"
         ],
@@ -1163,6 +1172,7 @@
             }
         },
         "index": 999,
+        "tagline": "Diagnose high database connection count on Redshift cluster",
         "tags": [
             "AmazonRedShift"
         ],
@@ -1191,6 +1201,7 @@
             }
         },
         "index": 999,
+        "tagline": "Remediate high disk usage issue on Redshift cluster",
         "tags": [
             "AmazonRedShift"
         ],
@@ -1230,6 +1241,7 @@
             }
         },
         "index": 999,
+        "tagline": "Diagnose unhealthy Redshift cluster",
         "tags": [
             "AmazonRedShift"
         ],
@@ -1467,7 +1479,7 @@
         },
         "index": 999,
         "redirect": "/services",
-        "tagline": null,
+        "tagline": "Diagnose service issues when a URL is not pingable",
         "tags": [
             "ServiceAvailability",
             "URLMonitoring"
@@ -1505,7 +1517,7 @@
         },
         "index": 999,
         "redirect": "/services",
-        "tagline": null,
+        "tagline": "Restart a process whenever a service response does not match a pattern",
         "tags": [
             "ServiceAvailability",
             "URLMonitoring"

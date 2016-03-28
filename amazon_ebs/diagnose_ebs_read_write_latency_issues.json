@@ -24,7 +24,103 @@
             "name": ""
         }
     },
-    "rule_template": {},
+    "rule_template": {
+        "ActionGroup": {
+            "Actions": [
+                {
+                    "ActionTarget": "AWS",
+                    "ActionTargetType": null,
+                    "ActionType": "GRAPH_SNAPSHOT",
+                    "Active": false,
+                    "Data": {
+                        "AlarmNames": [],
+                        "AwsRegion": "us-east-1",
+                        "CloudAPIAction": null,
+                        "ExecutionType": "PARALLEL",
+                        "Hostname": [],
+                        "LogProvider": null,
+                        "MetricDefinitionType": null,
+                        "MetricDefinitions": [],
+                        "MetricNames": [],
+                        "MetricSource": "CLOUDWATCH",
+                        "MetricsPeriod": {
+                            "hours": 6,
+                            "name": "6hrs",
+                            "resolution": 60
+                        },
+                        "PingSource": null,
+                        "Retries": 0,
+                        "RuleRunbook": {
+                            "Category": "GITHUB",
+                            "Content": null,
+                            "RunbookId": null,
+                            "RunbookName": "runbooks/cli/aws/Aws_ELB_high_latency_alert.sh",
+                            "Timeout": 2,
+                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/7ac3156276f1d0c55d9d2fac2623eea787b2d671",
+                            "Visibility": "PUBLIC"
+                        },
+                        "ServiceCheckAction": null,
+                        "Sources": null,
+                        "Tags": []
+                    }
+                },
+                {
+                    "ActionTarget": "AWS",
+                    "ActionTargetType": null,
+                    "ActionType": "EMAIL_RUNBOOK",
+                    "Active": true,
+                    "Data": {
+                        "AlarmNames": [],
+                        "AwsRegion": null,
+                        "CloudAPIAction": null,
+                        "ExecutionType": "PARALLEL",
+                        "Hostname": [],
+                        "LogProvider": null,
+                        "MetricDefinitions": [],
+                        "MetricNames": [],
+                        "MetricSource": null,
+                        "PingSource": null,
+                        "Retries": 0,
+                        "RuleRunbook": {
+                            "Category": "GITHUB",
+                            "Content": null,
+                            "RunbookId": null,
+                            "RunbookName": "runbooks/cli/aws/Aws_ELB_high_latency_alert.sh",
+                            "Timeout": 2,
+                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/7ac3156276f1d0c55d9d2fac2623eea787b2d671",
+                            "Visibility": "PUBLIC"
+                        },
+                        "ServiceCheckAction": null,
+                        "Tags": []
+                    }
+                }
+            ]
+        },
+        "CapDuration": 30,
+        "CapLimit": 3,
+        "CompositeTrigger": {
+            "CompositeTriggerType": "CRON",
+            "Data": {
+                "Regex": ""
+            },
+            "TriggerSource": "AWS_CLOUDWATCH",
+            "Triggers": [
+                {
+                    "Data": {
+                        "AlarmName": "",
+                        "AwsRegion": "",
+                        "CronExpression": "",
+                        "Port": null,
+                        "SearchString": null,
+                        "Url": null
+                    },
+                    "TriggerSource": "AWS_CLOUDWATCH",
+                    "TriggerType": ""
+                }
+            ]
+        },
+        "RuleName": "Diagnose high EBS read/write latencies"
+    },
     "tags": [
         "EBS"
     ],

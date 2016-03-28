@@ -18,7 +18,73 @@
             "name": ""
         }
     },
-    "rule_template": {},
+    "rule_template": {
+        "ActionGroup": {
+            "Actions": [
+                {
+                    "ActionTarget": null,
+                    "ActionTargetType": "SPECIFIC_TAGS",
+                    "ActionType": "EXECUTE_SCRIPT",
+                    "Active": true,
+                    "Data": {
+                        "AlarmNames": [],
+                        "AwsRegion": "us-east-1",
+                        "CloudAPIAction": null,
+                        "ExecutionType": "PARALLEL",
+                        "Hostname": [],
+                        "LogProvider": null,
+                        "MetricDefinitionType": null,
+                        "MetricDefinitions": [],
+                        "MetricNames": [],
+                        "MetricSource": "CLOUDWATCH",
+                        "MetricsPeriod": {
+                            "hours": 3,
+                            "name": "3hrs",
+                            "resolution": 60
+                        },
+                        "PingSource": null,
+                        "Retries": 0,
+                        "RuleRunbook": {
+                            "Category": "GITHUB",
+                            "Content": null,
+                            "RunbookId": null,
+                            "RunbookName": "runbooks/diagnostics/host_level/high_disk_space_utilization_alert.sh",
+                            "Timeout": 2,
+                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/9a0a196080f7fe9b6612a89612193f24eac526fa",
+                            "Visibility": "PUBLIC"
+                        },
+                        "ServiceCheckAction": null,
+                        "Sources": null,
+                        "Tags": []
+                    }
+                }
+            ]
+        },
+        "CapDuration": 30,
+        "CapLimit": 3,
+        "CompositeTrigger": {
+            "CompositeTriggerType": "EXISTING_ALARM",
+            "Data": {
+                "Regex": ""
+            },
+            "TriggerSource": "AWS_CLOUDWATCH",
+            "Triggers": [
+                {
+                    "Data": {
+                        "AlarmName": "",
+                        "AwsRegion": "",
+                        "CronExpression": "",
+                        "Port": null,
+                        "SearchString": null,
+                        "Url": null
+                    },
+                    "TriggerSource": "AWS_CLOUDWATCH",
+                    "TriggerType": "EXISTING_ALARM"
+                }
+            ]
+        },
+        "RuleName": "Remediate high disk usage issue on Redshift cluster"
+    },
     "tags": [
         "AmazonRedShift"
     ],

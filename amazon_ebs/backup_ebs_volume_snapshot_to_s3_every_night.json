@@ -17,7 +17,66 @@
             "name": ""
         }
     },
-    "rule_template": {},
+    "rule_template": {
+        "ActionGroup": {
+            "Actions": [
+                {
+                    "ActionTarget": "AWS",
+                    "ActionTargetType": null,
+                    "ActionType": "CLI_ACTION",
+                    "Active": true,
+                    "Data": {
+                        "AlarmNames": [],
+                        "AwsRegion": null,
+                        "CloudAPIAction": null,
+                        "ExecutionType": "PARALLEL",
+                        "Hostname": [],
+                        "LogProvider": null,
+                        "MetricDefinitions": [],
+                        "MetricNames": [],
+                        "MetricSource": null,
+                        "PingSource": null,
+                        "Retries": 0,
+                        "RuleRunbook": {
+                            "Category": "GITHUB",
+                            "Content": null,
+                            "RunbookId": null,
+                            "RunbookName": "runbooks/cli/aws/Aws_ELB_high_latency_alert.sh",
+                            "Timeout": 2,
+                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/7ac3156276f1d0c55d9d2fac2623eea787b2d671",
+                            "Visibility": "PUBLIC"
+                        },
+                        "ServiceCheckAction": null,
+                        "Tags": []
+                    }
+                }
+            ]
+        },
+        "CapDuration": 30,
+        "CapLimit": 3,
+        "CompositeTrigger": {
+            "CompositeTriggerType": "CRON",
+            "Data": {
+                "Regex": ""
+            },
+            "TriggerSource": "CRON",
+            "Triggers": [
+                {
+                    "Data": {
+                        "AlarmName": "",
+                        "AwsRegion": "",
+                        "CronExpression": "0 0 * * *",
+                        "Port": null,
+                        "SearchString": null,
+                        "Url": null
+                    },
+                    "TriggerSource": "CRON",
+                    "TriggerType": "CRON_TRIGGER"
+                }
+            ]
+        },
+        "RuleName": "Take EBS snapshot every night"
+    },
     "tags": [
         "EBS"
     ],
