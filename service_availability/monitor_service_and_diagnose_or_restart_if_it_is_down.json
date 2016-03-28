@@ -26,7 +26,90 @@
             "name": ""
         }
     },
-    "rule_template": {},
+    "redirect": "/services",
+    "rule_template": {
+        "ActionGroup": {
+            "Actions": [
+                {
+                    "ActionTarget": null,
+                    "ActionTargetType": "SPECIFIC_HOST",
+                    "ActionType": "EMAIL_RUNBOOK",
+                    "Active": false,
+                    "Data": {
+                        "AlarmNames": [],
+                        "AwsRegion": null,
+                        "CloudAPIAction": null,
+                        "Hostname": [],
+                        "MetricDefinitions": [],
+                        "MetricNames": [],
+                        "MetricSource": null,
+                        "Retries": 0,
+                        "RuleRunbook": {
+                            "Category": "GITHUB",
+                            "Content": null,
+                            "RunbookId": null,
+                            "RunbookName": "runbooks/cli/heroku/Heroku_app_diagnostics.sh",
+                            "Timeout": 2,
+                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/b804303da79e9afe9f5cf2b055e166a423eea637",
+                            "Visibility": "PUBLIC"
+                        },
+                        "Tags": []
+                    }
+                },
+                {
+                    "ActionTarget": null,
+                    "ActionTargetType": null,
+                    "ActionType": "GRAPH_SNAPSHOT",
+                    "Active": true,
+                    "Data": {
+                        "AlarmNames": [],
+                        "AwsRegion": "us-east-1",
+                        "CloudAPIAction": null,
+                        "Hostname": [],
+                        "LogProvider": null,
+                        "MetricDefinitionType": null,
+                        "MetricDefinitions": [],
+                        "MetricNames": [],
+                        "MetricSource": "CLOUDWATCH",
+                        "MetricsPeriod": {
+                            "hours": 6,
+                            "name": "6hrs",
+                            "resolution": 60
+                        },
+                        "PingSource": null,
+                        "Retries": 0,
+                        "RuleRunbook": null,
+                        "ServiceCheckAction": null,
+                        "Sources": null,
+                        "Tags": []
+                    }
+                }
+            ]
+        },
+        "CapDuration": 30,
+        "CapLimit": 3,
+        "CompositeTrigger": {
+            "CompositeTriggerType": "AVAILABILITY_CHECK",
+            "Data": {
+                "Regex": null
+            },
+            "TriggerSource": "AVAILABILITY_CHECK",
+            "Triggers": [
+                {
+                    "Data": {
+                        "AlarmName": null,
+                        "AwsRegion": null,
+                        "Port": 443,
+                        "SearchString": null,
+                        "Url": null
+                    },
+                    "TriggerSource": "AVAILABILITY_CHECK",
+                    "TriggerType": "AVAILABILITY_TRIGGER"
+                }
+            ]
+        },
+        "RuleName": null
+    },
     "tags": [
         "ServiceAvailability",
         "URLMonitoring"

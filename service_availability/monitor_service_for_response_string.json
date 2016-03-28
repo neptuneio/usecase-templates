@@ -25,7 +25,62 @@
             "name": ""
         }
     },
-    "rule_template": {},
+    "redirect": "/services",
+    "rule_template": {
+        "ActionGroup": {
+            "Actions": [
+                {
+                    "ActionTarget": null,
+                    "ActionTargetType": "SPECIFIC_HOST",
+                    "ActionType": "EXECUTE_SCRIPT",
+                    "Active": true,
+                    "Data": {
+                        "AlarmNames": [],
+                        "AwsRegion": null,
+                        "CloudAPIAction": null,
+                        "Hostname": [],
+                        "MetricDefinitions": [],
+                        "MetricNames": [],
+                        "MetricSource": null,
+                        "Retries": 0,
+                        "RuleRunbook": {
+                            "Category": "GITHUB",
+                            "Content": null,
+                            "RunbookId": null,
+                            "RunbookName": "runbooks/host-level-alerts/Nginx_process_crashed.sh",
+                            "Timeout": 2,
+                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/a3625d759f3d21a4c6badac232ec405bd9c02670",
+                            "Visibility": "PUBLIC"
+                        },
+                        "Tags": []
+                    }
+                }
+            ]
+        },
+        "CapDuration": 30,
+        "CapLimit": 3,
+        "CompositeTrigger": {
+            "CompositeTriggerType": "AVAILABILITY_CHECK",
+            "Data": {
+                "Regex": null
+            },
+            "TriggerSource": "AVAILABILITY_CHECK",
+            "Triggers": [
+                {
+                    "Data": {
+                        "AlarmName": null,
+                        "AwsRegion": null,
+                        "Port": 443,
+                        "SearchString": "response_string_here",
+                        "Url": null
+                    },
+                    "TriggerSource": "AVAILABILITY_CHECK",
+                    "TriggerType": "AVAILABILITY_TRIGGER"
+                }
+            ]
+        },
+        "RuleName": null
+    },
     "tags": [
         "ServiceAvailability",
         "URLMonitoring"

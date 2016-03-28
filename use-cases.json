@@ -80,6 +80,7 @@
             }
         },
         "index": 2,
+        "redirect": "/awsDynamoDB",
         "tagline": "Scale up a table throughput when consumed capacity is greater than 80%",
         "tags": [
             "AWSDynamoDB",
@@ -138,6 +139,7 @@
             }
         },
         "index": 3,
+        "redirect": "/awsDynamoDB",
         "tagline": "Scale down a table throughput when consumed capacity is lower than 20%",
         "tags": [
             "AWSDynamoDB",
@@ -1464,6 +1466,8 @@
             }
         },
         "index": 999,
+        "redirect": "/services",
+        "tagline": null,
         "tags": [
             "ServiceAvailability",
             "URLMonitoring"
@@ -1500,6 +1504,8 @@
             }
         },
         "index": 999,
+        "redirect": "/services",
+        "tagline": null,
         "tags": [
             "ServiceAvailability",
             "URLMonitoring"

@@ -50,6 +50,8 @@ for f in files:
             usecase['action_group']['template'] = template_details
         if 'video' in data:
             usecase['video'] = data['video']
+        if 'redirect' in data:
+            usecase['redirect'] = data['redirect']
         final_json.append(usecase)
 
 # Sort the usecases based on index.
