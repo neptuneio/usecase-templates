@@ -21,8 +21,7 @@
         "index": 1,
         "tagline": "Scale up or down a dynamodb table on a time schedule",
         "tags": [
-            "AWSDynamoDB",
-            "AWS"
+            "AWSDynamoDB"
         ],
         "trigger": {
             "description": "Every monday morning at 4AM"
@@ -83,8 +82,7 @@
         "redirect": "/awsDynamoDB",
         "tagline": "Scale up a table throughput when consumed capacity is greater than 80%",
         "tags": [
-            "AWSDynamoDB",
-            "AWS"
+            "AWSDynamoDB"
         ],
         "trigger": {
             "description": "When consumed capacity is greater than 80% of provisioned capacity for 5min"
@@ -142,8 +140,7 @@
         "redirect": "/awsDynamoDB",
         "tagline": "Scale down a table throughput when consumed capacity is lower than 20%",
         "tags": [
-            "AWSDynamoDB",
-            "AWS"
+            "AWSDynamoDB"
         ],
         "trigger": {
             "description": "When consumed capacity is lower than 20% of provisioned capacity for 2hrs"
@@ -443,7 +440,7 @@
                     "data": {
                         "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
                         "steps": [
-                            "capture the EBS volume snapshot and store it in S3 bucket"
+                            "capture the AWS EBS volume snapshot and store it in S3 bucket"
                         ]
                     },
                     "type": "CLI Action"
@@ -456,9 +453,9 @@
             }
         },
         "index": 999,
-        "tagline": "Take EBS snapshot every night",
+        "tagline": "Take AWS EBS snapshot every night",
         "tags": [
-            "EBS"
+            "AWS EBS"
         ],
         "trigger": {
             "description": "Everyday at midnight"
@@ -491,12 +488,12 @@
             }
         },
         "index": 999,
-        "tagline": "Diagnose high EBS read/write latencies",
+        "tagline": "Diagnose high AWS EBS read/write latencies",
         "tags": [
-            "EBS"
+            "AWS EBS"
         ],
         "trigger": {
-            "description": "Whenever avg read/write latency (ms/op) is > threshold for an EBS volume"
+            "description": "Whenever avg read/write latency (ms/op) is > threshold for an AWS EBS volume"
         }
     },
     {
@@ -528,12 +525,12 @@
             }
         },
         "index": 999,
-        "tagline": "Scale down EBS provisioned IOPS for less usage",
+        "tagline": "Scale down AWS EBS provisioned IOPS for less usage",
         "tags": [
-            "EBS"
+            "AWS EBS"
         ],
         "trigger": {
-            "description": "Whenever VolumeThroughputPercentage < 20% for an EBS volume"
+            "description": "Whenever VolumeThroughputPercentage < 20% for an AWS EBS volume"
         }
     },
     {
@@ -565,12 +562,12 @@
             }
         },
         "index": 999,
-        "tagline": "Scale up EBS provisioned IOPS on high usage",
+        "tagline": "Scale up AWS EBS provisioned IOPS on high usage",
         "tags": [
-            "EBS"
+            "AWS EBS"
         ],
         "trigger": {
-            "description": "Whenever VolumeThroughputPercentage > 80% for an EBS volume"
+            "description": "Whenever VolumeThroughputPercentage > 80% for an AWS EBS volume"
         }
     },
     {
@@ -604,7 +601,7 @@
         "index": 999,
         "tagline": "When CPU is high (DataDog Alarm)",
         "tags": [
-            "AmazonEC2",
+            "AWS ec2",
             "Popular"
         ],
         "trigger": {
@@ -644,7 +641,7 @@
         "index": 999,
         "tagline": "Diagnose a hung process",
         "tags": [
-            "AmazonEC2",
+            "AWS ec2",
             "Popular"
         ],
         "trigger": {
@@ -676,7 +673,7 @@
         "tagline": "Clean up full disk",
         "tags": [
             "Popular",
-            "AmazonEC2"
+            "AWS ec2"
         ],
         "trigger": {
             "description": "Whenever disk is 95% full"
@@ -704,8 +701,7 @@
         "index": 999,
         "tagline": "Shutdown all the ec2 instances in given Amazon EC2 tag daily",
         "tags": [
-            "AmazonEC2",
-            "AWS",
+            "AWS ec2",
             "Popular"
         ],
         "trigger": {
@@ -734,8 +730,7 @@
         "index": 999,
         "tagline": "Shutdown the idle ec2 instance in the Amazon EC2 tag",
         "tags": [
-            "AWS",
-            "AmazonEC2",
+            "AWS ec2",
             "Popular"
         ],
         "trigger": {
@@ -748,9 +743,9 @@
             "action": [
                 {
                     "data": {
-                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderAWS ELBTooLowAlert.sh",
                         "steps": [
-                            "capture cpu, mem, request_counts, health_check_status for all the nodes under the ELB"
+                            "capture cpu, mem, request_counts, health_check_status for all the nodes under the AWS ELB"
                         ]
                     },
                     "type": "Execute Diagnostics Runbook"
@@ -758,7 +753,7 @@
                 {
                     "data": {
                         "steps": [
-                            "capture the trend of http_500 errors generated by ELB only (not from registered instances)"
+                            "capture the trend of http_500 errors generated by AWS ELB only (not from registered instances)"
                         ]
                     },
                     "type": "Graph Snapshot"
@@ -773,7 +768,7 @@
         "index": 999,
         "tagline": "Diagnose high 5XX errors from instances behind load balancer",
         "tags": [
-            "ELB"
+            "AWS ELB"
         ],
         "trigger": {
             "description": "Whenever HTTPCode_Backend_5XX is > threshold (HTTP response codes generated by registered instances only)"
@@ -793,8 +788,8 @@
                 {
                     "data": {
                         "steps": [
-                            "capture the trend of http_500 errors generated by ELB only (not from registered instances)",
-                            "capture the CPUUtilization of ELB"
+                            "capture the trend of http_500 errors generated by AWS ELB only (not from registered instances)",
+                            "capture the CPUUtilization of AWS ELB"
                         ]
                     },
                     "type": "Graph Snapshot"
@@ -807,12 +802,12 @@
             }
         },
         "index": 999,
-        "tagline": "Diagnose high 5xx errors on ELB (load balancer)",
+        "tagline": "Diagnose high 5xx errors on AWS ELB (load balancer)",
         "tags": [
-            "ELB"
+            "AWS ELB"
         ],
         "trigger": {
-            "description": "Whenever HTTPCode_ELB_5XX is > threshold (ELB errors only, not from registered instances)"
+            "description": "Whenever HTTPCode_AWS ELB_5XX is > threshold (AWS ELB errors only, not from registered instances)"
         }
     },
     {
@@ -820,9 +815,9 @@
             "action": [
                 {
                     "data": {
-                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
+                        "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderAWS ELBTooLowAlert.sh",
                         "steps": [
-                            "capture cpu, mem, request_counts, health_check_status for all the nodes under the ELB"
+                            "capture cpu, mem, request_counts, health_check_status for all the nodes under the AWS ELB"
                         ]
                     },
                     "type": "Execute Diagnostics Runbook"
@@ -835,12 +830,12 @@
             }
         },
         "index": 999,
-        "tagline": "Diagnose ELB high spillover count",
+        "tagline": "Diagnose AWS ELB high spillover count",
         "tags": [
-            "ELB"
+            "AWS ELB"
         ],
         "trigger": {
-            "description": "Whenever ELB spill_over_count is > threshold"
+            "description": "Whenever AWS ELB spill_over_count is > threshold"
         }
     },
     {
@@ -857,7 +852,7 @@
                 {
                     "data": {
                         "steps": [
-                            "capture the trend of ELB_request_count and send graph by email"
+                            "capture the trend of AWS ELB_request_count and send graph by email"
                         ]
                     },
                     "type": "Graph Snapshot"
@@ -870,12 +865,12 @@
             }
         },
         "index": 999,
-        "tagline": "Diagnose high  request count reported by ELB",
+        "tagline": "Diagnose high  request count reported by AWS ELB",
         "tags": [
-            "ELB"
+            "AWS ELB"
         ],
         "trigger": {
-            "description": "Whenever ELB request_count is > threshold"
+            "description": "Whenever AWS ELB request_count is > threshold"
         }
     },
     {
@@ -909,8 +904,7 @@
         "index": 999,
         "tagline": "Diagnose high RDS write latency",
         "tags": [
-            "AWS",
-            "AmazonRDS"
+            "AWS RDS"
         ],
         "trigger": {
             "description": "Whenever write latency > threshold for an RDS DB Instance"
@@ -948,8 +942,7 @@
         "index": 999,
         "tagline": "Diagnose RDS High connection count issues",
         "tags": [
-            "AWS",
-            "AmazonRDS"
+            "AWS RDS"
         ],
         "trigger": {
             "description": "Whenever DBConnectionCount is > threshold for an RDS DB Instance"
@@ -978,8 +971,7 @@
         "index": 999,
         "tagline": "Diagnose RDS low disk spaces issues",
         "tags": [
-            "AWS",
-            "AmazonRDS"
+            "AWS RDS"
         ],
         "trigger": {
             "description": "Whenever FreeableSpace is > threshold for an RDS DB Instance"
@@ -1016,8 +1008,7 @@
         "index": 999,
         "tagline": "Track RDS low disk space utilization",
         "tags": [
-            "AWS",
-            "AmazonRDS"
+            "AWS RDS"
         ],
         "trigger": {
             "description": "Whenever FreeableSpace is < threshold for an RDS DB Instance"
@@ -1057,8 +1048,7 @@
         "index": 999,
         "tagline": "Diagnose RDS memory issues",
         "tags": [
-            "AWS",
-            "AmazonRDS"
+            "AWS RDS"
         ],
         "trigger": {
             "description": "Whenever FreeableMemory is > threshold for an RDS DB Instance"
@@ -1087,8 +1077,7 @@
         "index": 999,
         "tagline": "Scale down RDS IOPS for low throughput usage",
         "tags": [
-            "AWS",
-            "AmazonRDS"
+            "AWS RDS"
         ],
         "trigger": {
             "description": "Whenever read/write IOPS is < 20% of provisioned capacity for an RDS DB Instance"
@@ -1117,8 +1106,7 @@
         "index": 999,
         "tagline": "Scale up RDS IOPS for high throughput",
         "tags": [
-            "AWS",
-            "AmazonRDS"
+            "AWS RDS"
         ],
         "trigger": {
             "description": "Whenever read/write IOPS is > 80% of provisioned capacity for an RDS DB Instance"
@@ -1147,7 +1135,7 @@
         "index": 999,
         "tagline": "Diagnose high  CPU on Redshift cluster instances",
         "tags": [
-            "AmazonRedShift"
+            "AWS RedShift"
         ],
         "trigger": {
             "description": "Whenever aggregate CPUUtilization is > threshold for a Redshift cluster"
@@ -1174,7 +1162,7 @@
         "index": 999,
         "tagline": "Diagnose high database connection count on Redshift cluster",
         "tags": [
-            "AmazonRedShift"
+            "AWS RedShift"
         ],
         "trigger": {
             "description": "Whenever #DataBaseConnections is > threshold for a Redshift cluster"
@@ -1203,7 +1191,7 @@
         "index": 999,
         "tagline": "Remediate high disk usage issue on Redshift cluster",
         "tags": [
-            "AmazonRedShift"
+            "AWS RedShift"
         ],
         "trigger": {
             "description": "Whenever aggregate PercentDiskSpaceUsed is > threshold for a Redshift cluster"
@@ -1243,7 +1231,7 @@
         "index": 999,
         "tagline": "Diagnose unhealthy Redshift cluster",
         "tags": [
-            "AmazonRedShift"
+            "AWS RedShift"
         ],
         "trigger": {
             "description": "Whenever HealthStatus is UNHEALTHY for a Redshift cluster"
