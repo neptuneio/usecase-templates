@@ -104,7 +104,7 @@
         "RuleName": "Diagnose RDS low disk spaces issues"
     },
     "tags": [
-        "AmazonRDS"
+        "AWS RDS"
     ],
     "trigger": {
         "description": "Whenever FreeableSpace is > threshold for an RDS DB Instance"

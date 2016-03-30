@@ -81,7 +81,7 @@
     },
     "tags": [
         "Popular",
-        "AmazonEC2"
+        "AWS ec2"
     ],
     "trigger": {
         "description": "Whenever disk is 95% full"

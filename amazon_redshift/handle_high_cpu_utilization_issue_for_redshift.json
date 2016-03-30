@@ -79,7 +79,7 @@
         "RuleName": "Diagnose high  CPU on Redshift cluster instances"
     },
     "tags": [
-        "AmazonRedShift"
+        "AWS RedShift"
     ],
     "trigger": {
         "description": "Whenever aggregate CPUUtilization is > threshold for a Redshift cluster"

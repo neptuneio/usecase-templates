@@ -119,7 +119,7 @@
         "RuleName": "Diagnose unhealthy Redshift cluster"
     },
     "tags": [
-        "AmazonRedShift"
+        "AWS RedShift"
     ],
     "trigger": {
         "description": "Whenever HealthStatus is UNHEALTHY for a Redshift cluster"

@@ -114,7 +114,7 @@
         "RuleName": "Diagnose a hung process"
     },
     "tags": [
-        "AmazonEC2",
+        "AWS ec2",
         "Popular"
     ],
     "trigger": {

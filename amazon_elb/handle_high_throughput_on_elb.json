@@ -12,7 +12,7 @@
             {
                 "data": {
                     "steps": [
-                        "capture the trend of ELB_request_count and send graph by email"
+                        "capture the trend of AWS ELB_request_count and send graph by email"
                     ]
                 },
                 "type": "Graph Snapshot"
@@ -85,7 +85,7 @@
                             "Category": "GITHUB",
                             "Content": null,
                             "RunbookId": null,
-                            "RunbookName": "runbooks/cli/aws/Aws_ELB_high_latency_alert.sh",
+                            "RunbookName": "runbooks/cli/aws/Aws_AWS ELB_high_latency_alert.sh",
                             "Timeout": 2,
                             "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/7ac3156276f1d0c55d9d2fac2623eea787b2d671",
                             "Visibility": "PUBLIC"
@@ -119,12 +119,12 @@
                 }
             ]
         },
-        "RuleName": "Diagnose high  request count reported by ELB"
+        "RuleName": "Diagnose high  request count reported by AWS ELB"
     },
     "tags": [
-        "ELB"
+        "AWS ELB"
     ],
     "trigger": {
-        "description": "Whenever ELB request_count is > threshold"
+        "description": "Whenever AWS ELB request_count is > threshold"
     }
 }

@@ -119,12 +119,12 @@
                 }
             ]
         },
-        "RuleName": "Diagnose high EBS read/write latencies"
+        "RuleName": "Diagnose high AWS EBS read/write latencies"
     },
     "tags": [
-        "EBS"
+        "AWS EBS"
     ],
     "trigger": {
-        "description": "Whenever avg read/write latency (ms/op) is > threshold for an EBS volume"
+        "description": "Whenever avg read/write latency (ms/op) is > threshold for an AWS EBS volume"
     }
 }

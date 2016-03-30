@@ -115,7 +115,7 @@
         "RuleName": "Diagnose RDS memory issues"
     },
     "tags": [
-        "AmazonRDS"
+        "AWS RDS"
     ],
     "trigger": {
         "description": "Whenever FreeableMemory is > threshold for an RDS DB Instance"

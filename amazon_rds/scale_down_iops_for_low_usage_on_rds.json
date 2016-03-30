@@ -79,7 +79,7 @@
         "RuleName": "Scale down RDS IOPS for low throughput usage"
     },
     "tags": [
-        "AmazonRDS"
+        "AWS RDS"
     ],
     "trigger": {
         "description": "Whenever read/write IOPS is < 20% of provisioned capacity for an RDS DB Instance"

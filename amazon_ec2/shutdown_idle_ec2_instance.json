@@ -77,7 +77,7 @@
         "RuleName": "Shutdown the idle ec2 instance in the Amazon EC2 tag"
     },
     "tags": [
-        "AmazonEC2",
+        "AWS ec2",
         "Popular"
     ],
     "trigger": {

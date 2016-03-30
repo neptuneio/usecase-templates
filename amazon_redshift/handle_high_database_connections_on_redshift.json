@@ -76,7 +76,7 @@
         "RuleName": "Diagnose high database connection count on Redshift cluster"
     },
     "tags": [
-        "AmazonRedShift"
+        "AWS RedShift"
     ],
     "trigger": {
         "description": "Whenever #DataBaseConnections is > threshold for a Redshift cluster"

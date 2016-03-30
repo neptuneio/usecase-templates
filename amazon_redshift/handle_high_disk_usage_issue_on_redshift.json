@@ -86,7 +86,7 @@
         "RuleName": "Remediate high disk usage issue on Redshift cluster"
     },
     "tags": [
-        "AmazonRedShift"
+        "AWS RedShift"
     ],
     "trigger": {
         "description": "Whenever aggregate PercentDiskSpaceUsed is > threshold for a Redshift cluster"

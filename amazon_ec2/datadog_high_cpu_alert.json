@@ -140,7 +140,7 @@
         "RuleName": "When CPU is high (DataDog Alarm)"
     },
     "tags": [
-        "AmazonEC2",
+        "AWS ec2",
         "Popular"
     ],
     "trigger": {

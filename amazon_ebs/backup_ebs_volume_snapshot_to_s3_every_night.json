@@ -5,7 +5,7 @@
                 "data": {
                     "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderELBTooLowAlert.sh",
                     "steps": [
-                        "capture the EBS volume snapshot and store it in S3 bucket"
+                        "capture the AWS EBS volume snapshot and store it in S3 bucket"
                     ]
                 },
                 "type": "CLI Action"
@@ -75,10 +75,10 @@
                 }
             ]
         },
-        "RuleName": "Take EBS snapshot every night"
+        "RuleName": "Take AWS EBS snapshot every night"
     },
     "tags": [
-        "EBS"
+        "AWS EBS"
     ],
     "trigger": {
         "description": "Everyday at midnight"

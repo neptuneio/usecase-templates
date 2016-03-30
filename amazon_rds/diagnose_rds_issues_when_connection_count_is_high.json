@@ -113,7 +113,7 @@
         "RuleName": "Diagnose RDS High connection count issues"
     },
     "tags": [
-        "AmazonRDS"
+        "AWS RDS"
     ],
     "trigger": {
         "description": "Whenever DBConnectionCount is > threshold for an RDS DB Instance"

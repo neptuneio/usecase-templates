@@ -79,7 +79,7 @@
         "RuleName": "Scale up RDS IOPS for high throughput"
     },
     "tags": [
-        "AmazonRDS"
+        "AWS RDS"
     ],
     "trigger": {
         "description": "Whenever read/write IOPS is > 80% of provisioned capacity for an RDS DB Instance"

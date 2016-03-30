@@ -78,7 +78,7 @@
         "RuleName": "Shutdown all the ec2 instances in given Amazon EC2 tag daily"
     },
     "tags": [
-        "AmazonEC2",
+        "AWS ec2",
         "Popular"
     ],
     "trigger": {

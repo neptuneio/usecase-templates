@@ -121,12 +121,12 @@
                 }
             ]
         },
-        "RuleName": "Scale up EBS provisioned IOPS on high usage"
+        "RuleName": "Scale up AWS EBS provisioned IOPS on high usage"
     },
     "tags": [
-        "EBS"
+        "AWS EBS"
     ],
     "trigger": {
-        "description": "Whenever VolumeThroughputPercentage > 80% for an EBS volume"
+        "description": "Whenever VolumeThroughputPercentage > 80% for an AWS EBS volume"
     }
 }

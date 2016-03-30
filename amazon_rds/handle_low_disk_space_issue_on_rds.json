@@ -112,7 +112,7 @@
         "RuleName": "Track RDS low disk space utilization"
     },
     "tags": [
-        "AmazonRDS"
+        "AWS RDS"
     ],
     "trigger": {
         "description": "Whenever FreeableSpace is < threshold for an RDS DB Instance"
