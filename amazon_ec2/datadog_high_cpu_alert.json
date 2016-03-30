@@ -141,7 +141,8 @@
     },
     "tags": [
         "AWS ec2",
-        "Popular"
+        "Popular",
+        "Datadog"
     ],
     "trigger": {
         "description": "Whenever cpu is high (DataDog Alert)"

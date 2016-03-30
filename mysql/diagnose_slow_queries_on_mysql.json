@@ -113,7 +113,8 @@
     },
     "tags": [
         "MySQL",
-        "Database"
+        "Database",
+        "Datadog"
     ],
     "trigger": {
         "description": "Whenever #slow queries is too high for MySQL db"

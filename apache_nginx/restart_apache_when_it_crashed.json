@@ -79,7 +79,8 @@
         "RuleName": "Restart web server"
     },
     "tags": [
-        "WebServer"
+        "WebServer",
+        "Datadog"
     ],
     "trigger": {
         "description": "Whenever apache has crashed"

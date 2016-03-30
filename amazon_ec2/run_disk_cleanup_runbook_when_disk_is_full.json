@@ -81,7 +81,8 @@
     },
     "tags": [
         "Popular",
-        "AWS ec2"
+        "AWS ec2",
+        "Datadog"
     ],
     "trigger": {
         "description": "Whenever disk is 95% full"

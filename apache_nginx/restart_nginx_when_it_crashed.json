@@ -80,7 +80,8 @@
     },
     "tags": [
         "Nginx",
-        "WebServer"
+        "WebServer",
+        "Datadog"
     ],
     "trigger": {
         "description": "Whenever nginx has crashed"

@@ -115,7 +115,8 @@
         "RuleName": "Handle blacklisted node in hadoop cluster"
     },
     "tags": [
-        "Hadoop/Hbase"
+        "Hadoop/Hbase",
+        "Datadog"
     ],
     "trigger": {
         "description": "Whenever a node is blacklisted in hadoop cluster"

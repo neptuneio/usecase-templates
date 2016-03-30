@@ -113,7 +113,8 @@
     },
     "tags": [
         "MySQL",
-        "Database"
+        "Database",
+        "Datadog"
     ],
     "trigger": {
         "description": "Whenever #connections is too high for MySQL db"

@@ -115,7 +115,8 @@
     },
     "tags": [
         "AWS ec2",
-        "Popular"
+        "Popular",
+        "Datadog"
     ],
     "trigger": {
         "description": "Whenever a process is hung"

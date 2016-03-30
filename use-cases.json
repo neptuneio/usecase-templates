@@ -602,7 +602,8 @@
         "tagline": "When CPU is high (DataDog Alarm)",
         "tags": [
             "AWS ec2",
-            "Popular"
+            "Popular",
+            "Datadog"
         ],
         "trigger": {
             "description": "Whenever cpu is high (DataDog Alert)"
@@ -642,7 +643,8 @@
         "tagline": "Diagnose a hung process",
         "tags": [
             "AWS ec2",
-            "Popular"
+            "Popular",
+            "Datadog"
         ],
         "trigger": {
             "description": "Whenever a process is hung"
@@ -673,7 +675,8 @@
         "tagline": "Clean up full disk",
         "tags": [
             "Popular",
-            "AWS ec2"
+            "AWS ec2",
+            "Datadog"
         ],
         "trigger": {
             "description": "Whenever disk is 95% full"
@@ -1260,7 +1263,8 @@
         "index": 999,
         "tagline": "Restart web server",
         "tags": [
-            "WebServer"
+            "WebServer",
+            "Datadog"
         ],
         "trigger": {
             "description": "Whenever apache has crashed"
@@ -1290,7 +1294,8 @@
         "tagline": "Restart web server",
         "tags": [
             "Nginx",
-            "WebServer"
+            "WebServer",
+            "Datadog"
         ],
         "trigger": {
             "description": "Whenever nginx has crashed"
@@ -1355,7 +1360,8 @@
         "index": 999,
         "tagline": "Handle blacklisted node in hadoop cluster",
         "tags": [
-            "Hadoop/Hbase"
+            "Hadoop/Hbase",
+            "Datadog"
         ],
         "trigger": {
             "description": "Whenever a node is blacklisted in hadoop cluster"
@@ -1393,7 +1399,8 @@
         "tagline": "Diagnose high connection count on MySQL",
         "tags": [
             "MySQL",
-            "Database"
+            "Database",
+            "Datadog"
         ],
         "trigger": {
             "description": "Whenever #connections is too high for MySQL db"
@@ -1431,7 +1438,8 @@
         "tagline": "Diagnose slow query performance on MySQL",
         "tags": [
             "MySQL",
-            "Database"
+            "Database",
+            "Datadog"
         ],
         "trigger": {
             "description": "Whenever #slow queries is too high for MySQL db"
