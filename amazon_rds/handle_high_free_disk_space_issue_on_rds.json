@@ -104,7 +104,6 @@
         "RuleName": "Diagnose RDS low disk spaces issues"
     },
     "tags": [
-        "AWS",
         "AmazonRDS"
     ],
     "trigger": {

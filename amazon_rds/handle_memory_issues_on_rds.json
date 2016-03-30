@@ -115,7 +115,6 @@
         "RuleName": "Diagnose RDS memory issues"
     },
     "tags": [
-        "AWS",
         "AmazonRDS"
     ],
     "trigger": {

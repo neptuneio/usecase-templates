@@ -112,7 +112,6 @@
         "RuleName": "Diagnose high RDS write latency"
     },
     "tags": [
-        "AWS",
         "AmazonRDS"
     ],
     "trigger": {

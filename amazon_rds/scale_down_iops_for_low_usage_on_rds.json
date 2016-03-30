@@ -79,7 +79,6 @@
         "RuleName": "Scale down RDS IOPS for low throughput usage"
     },
     "tags": [
-        "AWS",
         "AmazonRDS"
     ],
     "trigger": {

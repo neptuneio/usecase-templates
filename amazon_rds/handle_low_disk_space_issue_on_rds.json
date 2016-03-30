@@ -112,7 +112,6 @@
         "RuleName": "Track RDS low disk space utilization"
     },
     "tags": [
-        "AWS",
         "AmazonRDS"
     ],
     "trigger": {

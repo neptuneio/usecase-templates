@@ -113,7 +113,6 @@
         "RuleName": "Diagnose RDS High connection count issues"
     },
     "tags": [
-        "AWS",
         "AmazonRDS"
     ],
     "trigger": {

@@ -1,8 +1,7 @@
 {
     "tagline": "Scale up or down a dynamodb table on a time schedule",
     "tags": [
-        "AWSDynamoDB",
-        "AWS"
+        "AWSDynamoDB"
     ],
     "trigger": {
         "description": "Every monday morning at 4AM"

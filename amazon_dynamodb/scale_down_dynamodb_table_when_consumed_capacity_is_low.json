@@ -1,8 +1,7 @@
 {
     "tagline": "Scale down a table throughput when consumed capacity is lower than 20%",
     "tags": [
-        "AWSDynamoDB",
-        "AWS"
+        "AWSDynamoDB"
     ],
     "trigger": {
         "description": "When consumed capacity is lower than 20% of provisioned capacity for 2hrs"

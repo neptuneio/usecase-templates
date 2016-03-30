@@ -79,7 +79,6 @@
         "RuleName": "Scale up RDS IOPS for high throughput"
     },
     "tags": [
-        "AWS",
         "AmazonRDS"
     ],
     "trigger": {
