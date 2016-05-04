@@ -4,6 +4,14 @@
             {
                 "data": {
                     "steps": [
+                        "Get ELB access logs and grep them for 5XX status code"
+                    ]
+                },
+                "type": "CLI Action"
+            },
+            {
+                "data": {
+                    "steps": [
                         "notify me via email, and send me runbook to resolve the alert manually"
                     ]
                 },
@@ -28,6 +36,43 @@
     "rule_template": {
         "ActionGroup": {
             "Actions": [
+                {
+                    "ActionTarget": "AWS",
+                    "ActionTargetType": null,
+                    "ActionType": "CLI_ACTION",
+                    "Active": true,
+                    "Data": {
+                        "AlarmNames": [],
+                        "AwsRegion": "us-east-1",
+                        "CloudAPIAction": null,
+                        "ExecutionType": "PARALLEL",
+                        "Hostname": [],
+                        "LogProvider": null,
+                        "MetricDefinitionType": null,
+                        "MetricDefinitions": [],
+                        "MetricNames": [],
+                        "MetricSource": "CLOUDWATCH",
+                        "MetricsPeriod": {
+                            "hours": 3,
+                            "name": "3hrs",
+                            "resolution": 60
+                        },
+                        "PingSource": null,
+                        "Retries": 0,
+                        "RuleRunbook": {
+                            "Category": "GITHUB",
+                            "Content": null,
+                            "RunbookId": null,
+                            "RunbookName": "runbooks/cli/aws/elb/get_elb_logs.py",
+                            "Timeout": 2,
+                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/105eabc8791122370366bd998957bbe93130c764",
+                            "Visibility": "PUBLIC"
+                        },
+                        "ServiceCheckAction": null,
+                        "Sources": null,
+                        "Tags": []
+                    }
+                },
                 {
                     "ActionTarget": null,
                     "ActionTargetType": null,
@@ -55,9 +100,9 @@
                             "Category": "GITHUB",
                             "Content": null,
                             "RunbookId": null,
-                            "RunbookName": "runbooks/application-alerts/HTTP_500_error_rate_too_high.sh",
+                            "RunbookName": "runbooks/cli/aws/Aws_ELB_high_latency_alert.sh",
                             "Timeout": 2,
-                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/7a69a961d74ad3d015c61c7bf7ef12879ba81bec",
+                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/7ac3156276f1d0c55d9d2fac2623eea787b2d671",
                             "Visibility": "PUBLIC"
                         },
                         "ServiceCheckAction": null,
@@ -69,7 +114,7 @@
                     "ActionTarget": null,
                     "ActionTargetType": null,
                     "ActionType": "EMAIL_RUNBOOK",
-                    "Active": true,
+                    "Active": false,
                     "Data": {
                         "AlarmNames": [],
                         "AwsRegion": null,
@@ -86,7 +131,7 @@
                             "Category": "GITHUB",
                             "Content": null,
                             "RunbookId": null,
-                            "RunbookName": "runbooks/cli/aws/Aws_AWS ELB_high_latency_alert.sh",
+                            "RunbookName": "runbooks/cli/aws/Aws_ELB_high_latency_alert.sh",
                             "Timeout": 2,
                             "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/7ac3156276f1d0c55d9d2fac2623eea787b2d671",
                             "Visibility": "PUBLIC"

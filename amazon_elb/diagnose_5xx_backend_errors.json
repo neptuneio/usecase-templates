@@ -3,6 +3,14 @@
         "action": [
             {
                 "data": {
+                    "steps": [
+                        "Get ELB access logs and grep them for 5XX status codes"
+                    ]
+                },
+                "type": "CLI Action"
+            },
+            {
+                "data": {
                     "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderAWS ELBTooLowAlert.sh",
                     "steps": [
                         "capture cpu, mem, request_counts, health_check_status for all the nodes under the AWS ELB"
@@ -31,7 +39,7 @@
                 {
                     "ActionTarget": "AWS",
                     "ActionTargetType": null,
-                    "ActionType": "GRAPH_SNAPSHOT",
+                    "ActionType": "CLI_ACTION",
                     "Active": false,
                     "Data": {
                         "AlarmNames": [],
@@ -55,9 +63,46 @@
                             "Category": "GITHUB",
                             "Content": null,
                             "RunbookId": null,
-                            "RunbookName": "runbooks/cli/aws/Aws_AWS ELB_high_latency_alert.sh",
+                            "RunbookName": "runbooks/cli/aws/elb/get_elb_logs.py",
                             "Timeout": 2,
-                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/7ac3156276f1d0c55d9d2fac2623eea787b2d671",
+                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/105eabc8791122370366bd998957bbe93130c764",
+                            "Visibility": "PUBLIC"
+                        },
+                        "ServiceCheckAction": null,
+                        "Sources": null,
+                        "Tags": []
+                    }
+                },
+                {
+                    "ActionTarget": null,
+                    "ActionTargetType": null,
+                    "ActionType": "GRAPH_SNAPSHOT",
+                    "Active": true,
+                    "Data": {
+                        "AlarmNames": [],
+                        "AwsRegion": "us-east-1",
+                        "CloudAPIAction": null,
+                        "ExecutionType": "PARALLEL",
+                        "Hostname": [],
+                        "LogProvider": null,
+                        "MetricDefinitionType": null,
+                        "MetricDefinitions": [],
+                        "MetricNames": [],
+                        "MetricSource": "CLOUDWATCH",
+                        "MetricsPeriod": {
+                            "hours": 3,
+                            "name": "3hrs",
+                            "resolution": 60
+                        },
+                        "PingSource": null,
+                        "Retries": 0,
+                        "RuleRunbook": {
+                            "Category": "GITHUB",
+                            "Content": null,
+                            "RunbookId": null,
+                            "RunbookName": "runbooks/application-alerts/HTTP_500_error_rate_too_high.sh",
+                            "Timeout": 2,
+                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/7a69a961d74ad3d015c61c7bf7ef12879ba81bec",
                             "Visibility": "PUBLIC"
                         },
                         "ServiceCheckAction": null,
@@ -69,7 +114,7 @@
                     "ActionTarget": null,
                     "ActionTargetType": "SPECIFIC_TAGS",
                     "ActionType": "EXECUTE_SCRIPT",
-                    "Active": true,
+                    "Active": false,
                     "Data": {
                         "AlarmNames": [],
                         "AwsRegion": null,
@@ -82,15 +127,7 @@
                         "MetricSource": null,
                         "PingSource": null,
                         "Retries": 0,
-                        "RuleRunbook": {
-                            "Category": "GITHUB",
-                            "Content": null,
-                            "RunbookId": null,
-                            "RunbookName": "runbooks/application-alerts/HTTP_500_error_rate_too_high.sh",
-                            "Timeout": 2,
-                            "Url": "https://api.github.com/repos/neptuneio/Community-runbooks/git/blobs/7a69a961d74ad3d015c61c7bf7ef12879ba81bec",
-                            "Visibility": "PUBLIC"
-                        },
+                        "RuleRunbook": null,
                         "ServiceCheckAction": null,
                         "Tags": []
                     }
