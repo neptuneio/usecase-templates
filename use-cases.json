@@ -746,6 +746,14 @@
             "action": [
                 {
                     "data": {
+                        "steps": [
+                            "Get ELB access logs and grep them for 5XX status codes"
+                        ]
+                    },
+                    "type": "CLI Action"
+                },
+                {
+                    "data": {
                         "runbookUrl": "https://github.com/neptuneio/Community-runbooks/blob/master/runbooks/network-alerts/AwsUnhealthyHostsUnderAWS ELBTooLowAlert.sh",
                         "steps": [
                             "capture cpu, mem, request_counts, health_check_status for all the nodes under the AWS ELB"
@@ -780,6 +788,14 @@
     {
         "action_group": {
             "action": [
+                {
+                    "data": {
+                        "steps": [
+                            "Get ELB access logs and grep them for 5XX status code"
+                        ]
+                    },
+                    "type": "CLI Action"
+                },
                 {
                     "data": {
                         "steps": [
